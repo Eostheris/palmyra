@@ -1,6 +1,7 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
+import Image from 'next/image';
 
 export function DynamicBackground() {
   const pathname = usePathname();
@@ -10,10 +11,12 @@ export function DynamicBackground() {
 
   if (isPalmyraBg && !isBusinessPage) {
     return (
-      <img 
+      <Image 
         src="/palmyrawide.png" 
         alt="Palmyra Background" 
-        className="fixed inset-0 w-full h-full object-cover -z-10 opacity-70" 
+        fill
+        className="object-cover -z-10 opacity-70"
+        priority
       />
     );
   }

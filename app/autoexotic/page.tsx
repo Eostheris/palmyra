@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default function AutoExoticPage() {
+export default function AutoExoticShell() {
   return (
     <div className="fixed inset-0 w-full h-full flex items-center justify-center overflow-hidden z-0">
       <Image src="/autoexoticcshall.png" alt="Auto Exotic" fill={true} className="object-cover absolute inset-0 -z-10 opacity-80" />
@@ -23,7 +23,7 @@ export default function AutoExoticPage() {
             </a>
           </div>
           <div className="flex-1 flex flex-col items-center justify-center gap-6">
-            <img src="/RonnieOnions.png" alt="Ronnie Onions" className="w-80 h-80 object-contain rounded-xl border-4 border-blue-400 shadow-lg mb-4" />
+            <Image src="/RonnieOnions.png" alt="Ronnie Onions" width={320} height={320} className="object-contain rounded-xl border-4 border-blue-400 shadow-lg mb-4" />
             <div className="bg-neutral-900/80 rounded-xl p-6 w-full">
               <h2 className="text-2xl font-bold mb-2 text-blue-200 text-center">Owner: Ronnie Onions</h2>
               <p className="text-base text-blue-100 text-center italic">
