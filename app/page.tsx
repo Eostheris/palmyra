@@ -3,41 +3,18 @@ import { Button } from '../components/ui/button';
 
 export default function Home() {
   return (
-    <main className="min-h-screen w-full bg-black text-white flex flex-col items-center justify-start">
-      {/* Hero Section */}
-      <div className="relative w-full h-[400px] flex items-center justify-center">
-        <Image src="/palmyrawide.png" alt="Palmyra Server" fill={true} className="object-cover opacity-60" />
-        <div className="absolute inset-0 flex flex-col items-center justify-center z-10">
-          <h1 className="text-5xl font-bold mb-4">Palmyra</h1>
-          <p className="text-lg mb-6">A modern FiveM server experience</p>
-          <Button size="lg" className="bg-white text-black font-semibold" asChild>
-            <a href="fivem://connect/YOUR_SERVER_IP">Connect to Server</a>
+    <main className="h-screen w-full text-white flex flex-col items-center justify-center relative overflow-hidden">
+      {/* Server Introduction Section with cool effect */}
+      <section className="flex flex-col items-center justify-center h-full w-full text-center px-4 relative">
+        <Image src="/palmyrawide.png" alt="Palmyra Background" fill={true} className="object-cover fixed inset-0 -z-10 opacity-70" />
+        <div className="relative z-10">
+          <h1 className="text-7xl font-extrabold mb-6 drop-shadow-lg text-white">Palmyra RP</h1>
+          <p className="text-2xl max-w-2xl mb-8 drop-shadow-lg text-white/90">
+            Welcome to Palmyra RP, the next evolution in FiveM roleplay. Our community is built for mature, immersive, and fair roleplay—where your story matters and every player is valued. Experience custom features, active staff, and a vibrant city that sets us apart from every other server. Join us and be part of something better.
+          </p>
+          <Button size="lg" className="bg-white text-black font-semibold shadow-xl" asChild>
+            <a href="https://cfx.re/join/lgv9do">Connect to Server</a>
           </Button>
-        </div>
-      </div>
-      {/* Departments Section */}
-      <section className="w-full max-w-5xl py-12 px-4">
-        <h2 className="text-3xl font-semibold mb-8">Departments</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Example department cards, replace with dynamic data */}
-          <div className="bg-neutral-900 rounded-lg shadow-lg p-6 flex flex-col items-center">
-            <Image src="/palmyraloading2.png" alt="Police" width={120} height={80} className="rounded mb-4" />
-            <h3 className="text-xl font-bold mb-2">Police Department</h3>
-            <p className="mb-4 text-center">Uphold the law and keep Palmyra safe.</p>
-            <Button variant="outline" className="w-full">Apply</Button>
-          </div>
-          <div className="bg-neutral-900 rounded-lg shadow-lg p-6 flex flex-col items-center">
-            <Image src="/palmyraloading2.png" alt="EMS" width={120} height={80} className="rounded mb-4" />
-            <h3 className="text-xl font-bold mb-2">EMS Department</h3>
-            <p className="mb-4 text-center">Provide medical assistance and save lives.</p>
-            <Button variant="outline" className="w-full">Apply</Button>
-          </div>
-          <div className="bg-neutral-900 rounded-lg shadow-lg p-6 flex flex-col items-center">
-            <Image src="/palmyraloading2.png" alt="Fire" width={120} height={80} className="rounded mb-4" />
-            <h3 className="text-xl font-bold mb-2">Fire Department</h3>
-            <p className="mb-4 text-center">Respond to emergencies and protect the city.</p>
-            <Button variant="outline" className="w-full">Apply</Button>
-          </div>
         </div>
       </section>
     </main>
