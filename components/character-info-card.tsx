@@ -20,7 +20,7 @@ interface Character {
     firstname: string
     lastname: string
     birthdate: string
-    gender: string
+    gender: string | number
     nationality: string
     phone: string
   }
@@ -291,7 +291,7 @@ export default function CharacterInfoCard({ discordId, selectedCharacterId, onCh
               </div>
               <div className="flex justify-between items-center">
                 <span className="text-white font-bold min-w-32">Gender:</span>
-                <span className="text-white font-semibold">{selectedCharacter.charinfo.gender === '0' ? 'Male' : 'Female'}</span>
+                <span className="text-white font-semibold">{selectedCharacter.charinfo.gender === 0 || selectedCharacter.charinfo.gender === '0' ? 'Male' : 'Female'}</span>
               </div>
               <div className="flex justify-between items-center">
                 <span className="text-white font-bold min-w-32">Nationality:</span>
