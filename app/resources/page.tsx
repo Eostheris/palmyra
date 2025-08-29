@@ -1,5 +1,6 @@
 "use client";
 
+import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { Card } from "../../components/ui/card";
 import { Badge } from "../../components/ui/badge";
@@ -121,7 +122,7 @@ const controlsData = [
   ]}
 ];
 
-export default function ResourcesPage() {
+function ResourcesContent() {
   const searchParams = useSearchParams();
   const activeCategory = searchParams.get('category') || 'faq';
 
@@ -315,5 +316,26 @@ export default function ResourcesPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function ResourcesPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen pb-16 bg-transparent">
+        <div className="max-w-none mx-auto px-4 lg:px-8 mt-8">
+          <div className="mb-8 text-center">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-white drop-shadow-lg">
+              Player Resources
+            </h1>
+            <p className="text-xl text-white/80 max-w-6xl mx-auto leading-relaxed">
+              Loading...
+            </p>
+          </div>
+        </div>
+      </div>
+    }>
+      <ResourcesContent />
+    </Suspense>
   );
 }
