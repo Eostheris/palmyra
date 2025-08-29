@@ -9083,7 +9083,6 @@ return {
         type = 'automobile',
         hash = `polstalkerr`,
     },
-
     poltorencer = {
         name = 'Torrence (Police)',
         brand = 'VAPID',
@@ -9093,7 +9092,6 @@ return {
         type = 'automobile',
         hash = `poltorencer`,
     },
-
     polvigeror = {
         name = 'Vigero (Police)',
         brand = 'DECLASSE',
@@ -9103,7 +9101,6 @@ return {
         type = 'automobile',
         hash = `polvigeror`,
     },
-
     codecvpi = {
         name = 'Code 3 CVPI',
         brand = 'Vapid',
@@ -9113,7 +9110,6 @@ return {
         type = 'automobile',
         hash = `codecvpi`,
     },
-
     c324alamopd = {
         name = 'Alamo C324',
         brand = 'Declasse',
@@ -9123,7 +9119,6 @@ return {
         type = 'automobile',
         hash = `c324alamopd`,
     },
-
     tfpdstorm = {
         name = 'Sandstorm (Police)',
         brand = 'Vapid',
@@ -9133,7 +9128,6 @@ return {
         type = 'automobile',
         hash = `tfpdstorm`,
     },
-
     tfpdstorm2 = {
         name = 'Sandstorm Slicktop (Police)',
         brand = 'Vapid',
@@ -9143,7 +9137,6 @@ return {
         type = 'automobile',
         hash = `tfpdstorm2`,
     },
-
     polheli = {
         name = 'Police Helicopter',
         brand = 'Nagasaki',
@@ -9153,7 +9146,6 @@ return {
         type = 'heli',
         hash = `polheli`,
     },
-
     kurumahr1 = {
         name = "Kuruma HR1",
         brand = "Karin",
@@ -9163,7 +9155,6 @@ return {
         type = "automobile",
         hash = `kurumahr1`,
     },
-
     nsandstorm = {
         name = "Sandstorm",
         brand = "Vapid",
@@ -9173,7 +9164,6 @@ return {
         type = "automobile",
         hash = `nsandstorm`,
     },
-
     nsandstorm2 = {
         name = "Sandstorm 2",
         brand = "Vapid",
@@ -9183,7 +9173,6 @@ return {
         type = "automobile",
         hash = `nsandstorm2`,
     },
-
     nsandstorm3 = {
         name = "Sandstorm 3",
         brand = "Vapid",
@@ -9193,7 +9182,6 @@ return {
         type = "automobile",
         hash = `nsandstorm3`,
     },
-
     hellenstorm = {
         name = "Hellenstorm",
         brand = "Vapid",
@@ -9203,7 +9191,6 @@ return {
         type = "automobile",
         hash = `hellenstorm`,
     },
-
     italigton = {
         name = "Italigton",
         brand = "Grotti",
@@ -9213,7 +9200,6 @@ return {
         type = "automobile",
         hash = `italigton`,
     },
-
     hycrh7 = {
         name = "Hycr H7",
         brand = "Annis",
@@ -9223,7 +9209,6 @@ return {
         type = "automobile",
         hash = `hycrh7`,
     },
-
     hycsun = {
         name = "Hycr Sun",
         brand = "Maibatsu",
@@ -9233,7 +9218,6 @@ return {
         type = "automobile",
         hash = `hycsun`,
     },
-
     domcust = {
         name = "Dominator Custom",
         brand = "Vapid",
@@ -9959,7 +9943,7 @@ return {
         type = "automobile",
         hash = `gbturismogts`,
     },
-    
+
     flatbed3 = {
         name = "Flatbed 3",
         brand = "Vapid",
@@ -10904,7 +10888,7 @@ return {
         type = "automobile",
         hash = `vanzlamcon`,
     },
-      rrseminalhawkx = {
+    rrseminalhawkx = {
         name = "Seminal Hawk X",
         brand = "Bravado",
         model = "rrseminalhawkx",
@@ -10931,7 +10915,7 @@ return {
         type     = "automobile",
         hash     = `g4m82`,
     },
-     obeysportwd = {
+    obeysportwd = {
         name     = "GT",
         brand    = "Obey",
         model    = "obeysportwd",

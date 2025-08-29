@@ -454,6 +454,15 @@ export const vehicleData: Record<string, VehicleInfo> = {
     "hash": "benson"
   },
   "benson2": {
+    "name": "Benson (Cluckin\\",
+    "brand": "Vapid",
+    "model": "benson2",
+    "price": 60635,
+    "category": "commercial",
+    "type": "automobile",
+    "hash": "benson2"
+  },
+  "besra": {
     "name": "Besra",
     "brand": "Western",
     "model": "besra",
@@ -1165,7 +1174,16 @@ export const vehicleData: Record<string, VehicleInfo> = {
     "hash": "carbonizzare"
   },
   "carbonrs": {
+    "brand": "Nagasaki",
     "name": "Carbon RS",
+    "model": "carbonrs",
+    "price": 22500,
+    "category": "motorcycles",
+    "type": "bike",
+    "hash": "carbonrs"
+  },
+  "cargobob": {
+    "name": "Cargobob",
     "brand": "Western",
     "model": "cargobob",
     "price": 5616986,
@@ -3118,7 +3136,16 @@ export const vehicleData: Record<string, VehicleInfo> = {
     "hash": "hexer"
   },
   "hotknife": {
+    "brand": "Vapid",
     "name": "Hotknife",
+    "model": "hotknife",
+    "price": 27000,
+    "category": "muscle",
+    "type": "automobile",
+    "hash": "hotknife"
+  },
+  "hotring": {
+    "name": "Hotring Sabre",
     "brand": "Declasse",
     "model": "hotring",
     "price": 79724,
@@ -3460,7 +3487,16 @@ export const vehicleData: Record<string, VehicleInfo> = {
     "hash": "italirsx"
   },
   "iwagen": {
+    "brand": "Obey",
     "name": "I-Wagen",
+    "model": "iwagen",
+    "price": 25000,
+    "category": "suvs",
+    "type": "automobile",
+    "hash": "iwagen"
+  },
+  "jackal": {
+    "name": "Jackal",
     "brand": "Ocelot",
     "model": "jackal",
     "price": 33000,
@@ -4018,6 +4054,15 @@ export const vehicleData: Record<string, VehicleInfo> = {
     "hash": "minivan2"
   },
   "mixer": {
+    "brand": "HVY",
+    "category": "industrial",
+    "hash": "mixer",
+    "model": "mixer",
+    "name": "Mixer",
+    "type": "automobile",
+    "price": 53283
+  },
+  "mixer2": {
     "name": "Mixer",
     "brand": "HVY",
     "model": "mixer2",
@@ -5738,7 +5783,16 @@ export const vehicleData: Record<string, VehicleInfo> = {
   },
   "seasparrow3": {
     "name": "Sparrow (Prop)",
+    "model": "seasparrow3",
+    "price": 7760028,
     "brand": "",
+    "category": "helicopters",
+    "type": "heli",
+    "hash": "seasparrow3"
+  },
+  "seminole": {
+    "name": "Seminole",
+    "brand": "Canis",
     "model": "seminole",
     "price": 32000,
     "category": "suvs",
@@ -7825,6 +7879,573 @@ export const vehicleData: Record<string, VehicleInfo> = {
     "hash": "ztype"
   },
   "zr3806str": {
+    "name": "ZR380 6STR",
+    "brand": "ANNIS",
+    "model": "zr3806str",
+    "price": 80000,
+    "category": "sports",
+    "type": "automobile",
+    "hash": "zr3806str"
+  },
+  "schwarzer2": {
+    "name": "Schwarzer 2",
+    "brand": "BENEFAC",
+    "model": "schwarzer2",
+    "price": 140000,
+    "category": "sports",
+    "type": "automobile",
+    "hash": "schwarzer2"
+  },
+  "gauntlet6str": {
+    "name": "Gauntlet 6STR",
+    "brand": "BRAVADO",
+    "model": "gauntlet6str",
+    "price": 80000,
+    "category": "muscle",
+    "type": "automobile",
+    "hash": "gauntlet6str"
+  },
+  "yosemite6str": {
+    "name": "Yosemite 6STR",
+    "brand": "DECLASSE",
+    "model": "yosemite6str",
+    "price": 80000,
+    "category": "muscle",
+    "type": "automobile",
+    "hash": "yosemite6str"
+  },
+  "ruiner6str": {
+    "name": "Ruiner 6STR",
+    "brand": "IMPONTE",
+    "model": "ruiner6str",
+    "price": 80000,
+    "category": "muscle",
+    "type": "automobile",
+    "hash": "ruiner6str"
+  },
+  "tempesta2": {
+    "name": "Tempesta 2",
+    "brand": "PEGASSI",
+    "model": "tempesta2",
+    "price": 325000,
+    "category": "super",
+    "type": "automobile",
+    "hash": "tempesta2"
+  },
+  "sentinel6str2": {
+    "name": "Sentinel 6STR 2",
+    "brand": "UBERMACH",
+    "model": "sentinel6str2",
+    "price": 80000,
+    "category": "coupes",
+    "type": "automobile",
+    "hash": "sentinel6str2"
+  },
+  "ellie6str": {
+    "name": "Ellie 6STR",
+    "brand": "VAPID",
+    "model": "ellie6str",
+    "price": 80000,
+    "category": "muscle",
+    "type": "automobile",
+    "hash": "ellie6str"
+  },
+  "rh4": {
+    "name": "RH4",
+    "brand": "ANNIS",
+    "model": "rh4",
+    "price": 38500,
+    "category": "sportsclassic",
+    "type": "automobile",
+    "hash": "rh4"
+  },
+  "elegyrh6": {
+    "name": "Elegy RH6",
+    "brand": "ANNIS",
+    "model": "elegyrh6",
+    "price": 165000,
+    "category": "sports",
+    "type": "automobile",
+    "hash": "elegyrh6"
+  },
+  "elegyx": {
+    "name": "Elegy X",
+    "brand": "ANNIS",
+    "model": "elegyx",
+    "price": 145000,
+    "category": "sports",
+    "type": "automobile",
+    "hash": "elegyx"
+  },
+  "zr250": {
+    "name": "ZR250",
+    "brand": "ANNIS",
+    "model": "zr250",
+    "price": 40000,
+    "category": "sports",
+    "type": "automobile",
+    "hash": "zr250"
+  },
+  "zr390": {
+    "name": "ZR390",
+    "brand": "ANNIS",
+    "model": "zr390",
+    "price": 50000,
+    "category": "sports",
+    "type": "automobile",
+    "hash": "zr390"
+  },
+  "dubsta4x4": {
+    "name": "Dubsta 4x4",
+    "brand": "BENEFAC",
+    "model": "dubsta4x4",
+    "price": 75000,
+    "category": "suvs",
+    "type": "automobile",
+    "hash": "dubsta4x4"
+  },
+  "kriegerc": {
+    "name": "Krieger C",
+    "brand": "BENEFAC",
+    "model": "kriegerc",
+    "price": 65000,
+    "category": "sportsclassics",
+    "type": "automobile",
+    "hash": "kriegerc"
+  },
+  "sancyb4": {
+    "name": "Sancy B4",
+    "brand": "BORDEAUX",
+    "model": "sancyb4",
+    "price": 20000,
+    "category": "sportsclassics",
+    "type": "automobile",
+    "hash": "sancyb4"
+  },
+  "buffaloh": {
+    "name": "Buffalo H",
+    "brand": "BRAVADO",
+    "model": "buffaloh",
+    "price": 49800,
+    "category": "muscle",
+    "type": "automobile",
+    "hash": "buffaloh"
+  },
+  "gresleyh": {
+    "name": "Gresley H",
+    "brand": "BRAVADO",
+    "model": "gresleyh",
+    "price": 80000,
+    "category": "suvs",
+    "type": "automobile",
+    "hash": "gresleyh"
+  },
+  "verlierergt": {
+    "name": "Verlierer GT",
+    "brand": "BRAVADO",
+    "model": "verlierergt",
+    "price": 150000,
+    "category": "sports",
+    "type": "automobile",
+    "hash": "verlierergt"
+  },
+  "vulture": {
+    "name": "Vulture",
+    "brand": "BRAVADO",
+    "model": "vulture",
+    "price": 25000,
+    "category": "muscle",
+    "type": "automobile",
+    "hash": "vulture"
+  },
+  "tampar": {
+    "name": "Tampa R",
+    "brand": "DECLASSE",
+    "model": "tampar",
+    "price": 32000,
+    "category": "muscle",
+    "type": "automobile",
+    "hash": "tampar"
+  },
+  "supergts": {
+    "name": "Super GTS",
+    "brand": "DEWBAUCH",
+    "model": "supergts",
+    "price": 165000,
+    "category": "sports",
+    "type": "automobile",
+    "hash": "supergts"
+  },
+  "millennial": {
+    "name": "Millennial",
+    "brand": "DINKA",
+    "model": "millennial",
+    "price": 35000,
+    "category": "sedans",
+    "type": "automobile",
+    "hash": "millennial"
+  },
+  "nexus": {
+    "name": "Nexus",
+    "brand": "DINKA",
+    "model": "nexus",
+    "price": 155000,
+    "category": "sports",
+    "type": "automobile",
+    "hash": "nexus"
+  },
+  "serena": {
+    "name": "Serena",
+    "brand": "DINKA",
+    "model": "serena",
+    "price": 12500,
+    "category": "sportsclassics",
+    "type": "automobile",
+    "hash": "serena"
+  },
+  "tachyon": {
+    "name": "Tachyon",
+    "brand": "HIJAK",
+    "model": "tachyon",
+    "price": 60000,
+    "category": "sportsclassics",
+    "type": "automobile",
+    "hash": "tachyon"
+  },
+  "coquette4c": {
+    "name": "Coquette 4C",
+    "brand": "INVERTO",
+    "model": "coquette4c",
+    "price": 175000,
+    "category": "sports",
+    "type": "automobile",
+    "hash": "coquette4c"
+  },
+  "s98": {
+    "name": "S98",
+    "brand": "KARIN",
+    "model": "s98",
+    "price": 550000,
+    "category": "super",
+    "type": "automobile",
+    "hash": "s98"
+  },
+  "ariant": {
+    "name": "Ariant",
+    "brand": "KARIN",
+    "model": "ariant",
+    "price": 45000,
+    "category": "sedans",
+    "type": "automobile",
+    "hash": "ariant"
+  },
+  "asteropers": {
+    "name": "Asterope RS",
+    "brand": "KARIN",
+    "model": "asteropers",
+    "price": 34000,
+    "category": "sedans",
+    "type": "automobile",
+    "hash": "asteropers"
+  },
+  "boorc": {
+    "name": "Boor C",
+    "brand": "KARIN",
+    "model": "boorc",
+    "price": 80000,
+    "category": "offroad",
+    "type": "automobile",
+    "hash": "boorc"
+  },
+  "rebeld": {
+    "name": "Rebel D",
+    "brand": "KARIN",
+    "model": "rebeld",
+    "price": 80000,
+    "category": "offroad",
+    "type": "automobile",
+    "hash": "rebeld"
+  },
+  "sigma3": {
+    "name": "Sigma 3",
+    "brand": "KARIN",
+    "model": "sigma3",
+    "price": 50000,
+    "category": "sports",
+    "type": "automobile",
+    "hash": "sigma3"
+  },
+  "sultan2c": {
+    "name": "Sultan 2C",
+    "brand": "KARIN",
+    "model": "sultan2c",
+    "price": 135500,
+    "category": "sports",
+    "type": "automobile",
+    "hash": "sultan2c"
+  },
+  "sultanrsv8": {
+    "name": "Sultan RS V8",
+    "brand": "KARIN",
+    "model": "sultanrsv8",
+    "price": 135000,
+    "category": "sports",
+    "type": "automobile",
+    "hash": "sultanrsv8"
+  },
+  "sultanrsv82": {
+    "name": "Sultan RS V8 2",
+    "brand": "KARIN",
+    "model": "sultanrsv82",
+    "price": 135000,
+    "category": "sports",
+    "type": "automobile",
+    "hash": "sultanrsv82"
+  },
+  "sunrise1": {
+    "name": "Sunrise 1",
+    "brand": "MAIBATSU",
+    "model": "sunrise1",
+    "price": 80000,
+    "category": "sedans",
+    "type": "automobile",
+    "hash": "sunrise1"
+  },
+  "niner": {
+    "name": "Niner",
+    "brand": "OBEY",
+    "model": "niner",
+    "price": 130000,
+    "category": "sports",
+    "type": "automobile",
+    "hash": "niner"
+  },
+  "argento": {
+    "name": "Argento",
+    "brand": "OBEY",
+    "model": "argento",
+    "price": 55000,
+    "category": "sedans",
+    "type": "automobile",
+    "hash": "argento"
+  },
+  "mantis": {
+    "name": "Mantis",
+    "brand": "OCELOT",
+    "model": "mantis",
+    "price": 145000,
+    "category": "sports",
+    "type": "automobile",
+    "hash": "mantis"
+  },
+  "bati901": {
+    "name": "Bati 901",
+    "brand": "PEGASSI",
+    "model": "bati901",
+    "price": 80000,
+    "category": "motorcycles",
+    "type": "bike",
+    "hash": "bati901"
+  },
+  "infernussr": {
+    "name": "Infernus SR",
+    "brand": "PEGASSI",
+    "model": "infernussr",
+    "price": 170000,
+    "category": "super",
+    "type": "automobile",
+    "hash": "infernussr"
+  },
+  "matador": {
+    "name": "Matador",
+    "brand": "PEGASSI",
+    "model": "matador",
+    "price": 40000,
+    "category": "sportsclassics",
+    "type": "automobile",
+    "hash": "matador"
+  },
+  "monroec": {
+    "name": "Monroe C",
+    "brand": "PEGASSI",
+    "model": "monroec",
+    "price": 115000,
+    "category": "sportsclassics",
+    "type": "automobile",
+    "hash": "monroec"
+  },
+  "monroer": {
+    "name": "Monroe R",
+    "brand": "PEGASSI",
+    "model": "monroer",
+    "price": 105000,
+    "category": "sportsclassics",
+    "type": "automobile",
+    "hash": "monroer"
+  },
+  "p711": {
+    "name": "P711",
+    "brand": "PFISTER",
+    "model": "p711",
+    "price": 165000,
+    "category": "sports",
+    "type": "automobile",
+    "hash": "p711"
+  },
+  "callista": {
+    "name": "Callista",
+    "brand": "PFISTER",
+    "model": "callista",
+    "price": 70000,
+    "category": "sportsclassics",
+    "type": "automobile",
+    "hash": "callista"
+  },
+  "cometr": {
+    "name": "Comet R",
+    "brand": "PFISTER",
+    "model": "cometr",
+    "price": 130000,
+    "category": "sports",
+    "type": "automobile",
+    "hash": "cometr"
+  },
+  "mf1": {
+    "name": "MF1",
+    "brand": "PROGEN",
+    "model": "mf1",
+    "price": 375000,
+    "category": "super",
+    "type": "automobile",
+    "hash": "mf1"
+  },
+  "t20gtr": {
+    "name": "T20 GTR",
+    "brand": "T20",
+    "model": "t20gtr",
+    "price": 365000,
+    "category": "super",
+    "type": "automobile",
+    "hash": "t20gtr"
+  },
+  "650e": {
+    "name": "650E",
+    "brand": "SHITZU",
+    "model": "650e",
+    "price": 80000,
+    "category": "boats",
+    "type": "boat",
+    "hash": "650e"
+  },
+  "castella": {
+    "name": "Castella",
+    "brand": "SHITZU",
+    "model": "castella",
+    "price": 80000,
+    "category": "boats",
+    "type": "boat",
+    "hash": "castella"
+  },
+  "adders": {
+    "name": "Adders",
+    "brand": "Adder",
+    "model": "adders",
+    "price": 240000,
+    "category": "super",
+    "type": "automobile",
+    "hash": "adders"
+  },
+  "sentinelmk4": {
+    "name": "Sentinel MK4",
+    "brand": "UBERMACHT",
+    "model": "sentinelmk4",
+    "price": 35000,
+    "category": "coupes",
+    "type": "automobile",
+    "hash": "sentinelmk4"
+  },
+  "sentineldm": {
+    "name": "Sentinel DM",
+    "brand": "UBERMACH",
+    "model": "sentineldm",
+    "price": 70000,
+    "category": "coupes",
+    "type": "automobile",
+    "hash": "sentineldm"
+  },
+  "vorstand": {
+    "name": "Vorstand",
+    "brand": "UBERMACH",
+    "model": "vorstand",
+    "price": 60000,
+    "category": "sports",
+    "type": "automobile",
+    "hash": "vorstand"
+  },
+  "contenderc": {
+    "name": "Contender C",
+    "brand": "VAPID",
+    "model": "contenderc",
+    "price": 60000,
+    "category": "offroad",
+    "type": "automobile",
+    "hash": "contenderc"
+  },
+  "domgtcoupe": {
+    "name": "Dominator GT Coupe",
+    "brand": "VAPID",
+    "model": "domgtcoupe",
+    "price": 44500,
+    "category": "muscle",
+    "type": "automobile",
+    "hash": "domgtcoupe"
+  },
+  "sabot": {
+    "name": "Sabot",
+    "brand": "VAPID",
+    "model": "sabot",
+    "price": 200000,
+    "category": "super",
+    "type": "automobile",
+    "hash": "sabot"
+  },
+  "hachurac": {
+    "name": "Hachura C",
+    "brand": "VULCAR",
+    "model": "hachurac",
+    "price": 125000,
+    "category": "sports",
+    "type": "automobile",
+    "hash": "hachurac"
+  },
+  "r255": {
+    "name": "R255",
+    "brand": "VULCAR",
+    "model": "r255",
+    "price": 80000,
+    "category": "blacklist",
+    "type": "automobile",
+    "hash": "r255"
+  },
+  "zodiac": {
+    "name": "Zodiac",
+    "brand": "VULCAR",
+    "model": "zodiac",
+    "price": 80000,
+    "category": "sports",
+    "type": "automobile",
+    "hash": "zodiac"
+  },
+  "stratumc": {
+    "name": "Stratum C",
+    "brand": "",
+    "model": "stratumc",
+    "price": 27500,
+    "category": "sedans",
+    "type": "automobile",
+    "hash": "stratumc"
+  },
+  "ptfregentxl": {
     "name": "Regent Police",
     "brand": "Declasse",
     "model": "ptfregentxl",
@@ -8157,6 +8778,15 @@ export const vehicleData: Record<string, VehicleInfo> = {
     "type": "automobile",
     "hash": "expolscout"
   },
+  "2vd_vscout": {
+    "name": "Scout 2VD",
+    "brand": "",
+    "model": "2vd_vscout",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_vscout"
+  },
   "VICTOR": {
     "name": "Victor",
     "brand": "Vapid",
@@ -8246,6 +8876,15 @@ export const vehicleData: Record<string, VehicleInfo> = {
     "category": "Emergency",
     "type": "automobile",
     "hash": "popo25"
+  },
+  "'20sacexp'": {
+    "name": "SAC Expansion",
+    "brand": "LSSD",
+    "model": "20sacexp",
+    "price": 90000,
+    "category": "Emergency",
+    "type": "automobile",
+    "hash": "20sacexp"
   },
   "polalamor": {
     "name": "Alamo Classic (Police)",
@@ -8464,6 +9103,1743 @@ export const vehicleData: Record<string, VehicleInfo> = {
     "hash": "polheli"
   },
   "kurumahr1": {
+    "name": "Kuruma HR1",
+    "brand": "Karin",
+    "model": "kurumahr1",
+    "price": 125000,
+    "category": "sports",
+    "type": "automobile",
+    "hash": "kurumahr1"
+  },
+  "nsandstorm": {
+    "name": "Sandstorm",
+    "brand": "Vapid",
+    "model": "nsandstorm",
+    "price": 70000,
+    "category": "offroad",
+    "type": "automobile",
+    "hash": "nsandstorm"
+  },
+  "nsandstorm2": {
+    "name": "Sandstorm 2",
+    "brand": "Vapid",
+    "model": "nsandstorm2",
+    "price": 75000,
+    "category": "offroad",
+    "type": "automobile",
+    "hash": "nsandstorm2"
+  },
+  "nsandstorm3": {
+    "name": "Sandstorm 3",
+    "brand": "Vapid",
+    "model": "nsandstorm3",
+    "price": 70000,
+    "category": "offroad",
+    "type": "automobile",
+    "hash": "nsandstorm3"
+  },
+  "hellenstorm": {
+    "name": "Hellenstorm",
+    "brand": "Vapid",
+    "model": "hellenstorm",
+    "price": 125000,
+    "category": "offroad",
+    "type": "automobile",
+    "hash": "hellenstorm"
+  },
+  "italigton": {
+    "name": "Italigton",
+    "brand": "Grotti",
+    "model": "italigton",
+    "price": 165000,
+    "category": "sports",
+    "type": "automobile",
+    "hash": "italigton"
+  },
+  "hycrh7": {
+    "name": "Hycr H7",
+    "brand": "Annis",
+    "model": "hycrh7",
+    "price": 150000,
+    "category": "boostexclusive",
+    "type": "automobile",
+    "hash": "hycrh7"
+  },
+  "hycsun": {
+    "name": "Hycr Sun",
+    "brand": "Maibatsu",
+    "model": "hycsun",
+    "price": 120000,
+    "category": "blacklist",
+    "type": "automobile",
+    "hash": "hycsun"
+  },
+  "domcust": {
+    "name": "Dominator Custom",
+    "brand": "Vapid",
+    "model": "domcust",
+    "price": 80000,
+    "category": "blacklist",
+    "type": "automobile",
+    "hash": "domcust"
+  },
+  "italigtc": {
+    "name": "Italigtc",
+    "brand": "Grotti",
+    "model": "italigtc",
+    "price": 165000,
+    "category": "sports",
+    "type": "automobile",
+    "hash": "italigtc"
+  },
+  "gb811s2": {
+    "name": "GB811 S2",
+    "brand": "Pfister",
+    "model": "gb811s2",
+    "price": 265000,
+    "category": "super",
+    "type": "automobile",
+    "hash": "gb811s2"
+  },
+  "gbadmiral": {
+    "name": "GB Admiral",
+    "brand": "Declasse",
+    "model": "gbadmiral",
+    "price": 24500,
+    "category": "sedans",
+    "type": "automobile",
+    "hash": "gbadmiral"
+  },
+  "gbargento7f": {
+    "name": "GB Argento 7F",
+    "brand": "Obey",
+    "model": "gbargento7f",
+    "price": 70000,
+    "category": "sedans",
+    "type": "automobile",
+    "hash": "gbargento7f"
+  },
+  "gbbanshees": {
+    "name": "GB Banshee S",
+    "brand": "Bravado",
+    "model": "gbbanshees",
+    "price": 170000,
+    "category": "sports",
+    "type": "automobile",
+    "hash": "gbbanshees"
+  },
+  "gbbisonhf": {
+    "name": "GB Bison HF",
+    "brand": "Bravado",
+    "model": "gbbisonhf",
+    "price": 65000,
+    "category": "offroad",
+    "type": "automobile",
+    "hash": "gbbisonhf"
+  },
+  "gbbisonstx": {
+    "name": "GB Bison STX",
+    "brand": "Bravado",
+    "model": "gbbisonstx",
+    "price": 22000,
+    "category": "vans",
+    "type": "automobile",
+    "hash": "gbbisonstx"
+  },
+  "gbboxboy": {
+    "name": "GB Boxboy",
+    "brand": "Brute",
+    "model": "gbboxboy",
+    "price": 25000,
+    "category": "vans",
+    "type": "automobile",
+    "hash": "gbboxboy"
+  },
+  "gbboxboyft": {
+    "name": "GB Boxboy FT",
+    "brand": "Brute",
+    "model": "gbboxboyft",
+    "price": 29000,
+    "category": "vans",
+    "type": "automobile",
+    "hash": "gbboxboyft"
+  },
+  "gbbriosof": {
+    "name": "GB Brioso F",
+    "brand": "Grotti",
+    "model": "gbbriosof",
+    "price": 5000,
+    "category": "compacts",
+    "type": "automobile",
+    "hash": "gbbriosof"
+  },
+  "gbclubxr": {
+    "name": "GB Club XR",
+    "brand": "BF",
+    "model": "gbclubxr",
+    "price": 7500,
+    "category": "compacts",
+    "type": "automobile",
+    "hash": "gbclubxr"
+  },
+  "gbcometcl": {
+    "name": "GB Comet CL",
+    "brand": "Pfister",
+    "model": "gbcometcl",
+    "price": 20000,
+    "category": "sportsclassics",
+    "type": "automobile",
+    "hash": "gbcometcl"
+  },
+  "gbcomets1t": {
+    "name": "GB Comet S1T",
+    "brand": "Pfister",
+    "model": "gbcomets1t",
+    "price": 45000,
+    "category": "sportsclassics",
+    "type": "automobile",
+    "hash": "gbcomets1t"
+  },
+  "gbcomets2r": {
+    "name": "GB Comet S2R",
+    "brand": "Pfister",
+    "model": "gbcomets2r",
+    "price": 190000,
+    "category": "sports",
+    "type": "automobile",
+    "hash": "gbcomets2r"
+  },
+  "gbcomets2rc": {
+    "name": "GB Comet S2RC",
+    "brand": "Pfister",
+    "model": "gbcomets2rc",
+    "price": 165000,
+    "category": "sports",
+    "type": "automobile",
+    "hash": "gbcomets2rc"
+  },
+  "gbdominatorgsx": {
+    "name": "GB Dominator GSX",
+    "brand": "Vapid",
+    "model": "gbdominatorgsx",
+    "price": 39800,
+    "category": "muscle",
+    "type": "automobile",
+    "hash": "gbdominatorgsx"
+  },
+  "gbemerussb1": {
+    "name": "GB Emerus SB1",
+    "brand": "Progen",
+    "model": "gbemerussb1",
+    "price": 425000,
+    "category": "super",
+    "type": "automobile",
+    "hash": "gbemerussb1"
+  },
+  "gbemsbisonstx": {
+    "name": "GB EMS Bison STX",
+    "brand": "Bravado",
+    "model": "gbemsbisonstx",
+    "price": 80000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "gbemsbisonstx"
+  },
+  "gbemsesperta": {
+    "name": "GB EMS Esperta",
+    "brand": "Grotti",
+    "model": "gbemsesperta",
+    "price": 80000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "gbemsesperta"
+  },
+  "gbeon": {
+    "name": "GB Eon",
+    "brand": "Pfister",
+    "model": "gbeon",
+    "price": 120000,
+    "category": "sedans",
+    "type": "automobile",
+    "hash": "gbeon"
+  },
+  "gbeonpol": {
+    "name": "GB Eon Police",
+    "brand": "Pfister",
+    "model": "gbeonpol",
+    "price": 80000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "gbeonpol"
+  },
+  "gbesperta": {
+    "name": "GB Esperta",
+    "brand": "Grotti",
+    "model": "gbesperta",
+    "price": 35000,
+    "category": "vans",
+    "type": "automobile",
+    "hash": "gbesperta"
+  },
+  "gbfirevoyager": {
+    "name": "GB Fire Voyager",
+    "brand": "Bravado",
+    "model": "gbfirevoyager",
+    "price": 80000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "gbfirevoyager"
+  },
+  "gbgresleystx": {
+    "name": "GB Gresley STX",
+    "brand": "Bravado",
+    "model": "gbgresleystx",
+    "price": 88000,
+    "category": "suvs",
+    "type": "automobile",
+    "hash": "gbgresleystx"
+  },
+  "gbhades": {
+    "name": "GB Hades",
+    "brand": "Pegassi",
+    "model": "gbhades",
+    "price": 38500,
+    "category": "sedans",
+    "type": "automobile",
+    "hash": "gbhades"
+  },
+  "gbharmann": {
+    "name": "GB Harmann",
+    "brand": "Benefactor",
+    "model": "gbharmann",
+    "price": 85000,
+    "category": "sedans",
+    "type": "automobile",
+    "hash": "gbharmann"
+  },
+  "gbimpaler": {
+    "name": "GB Impaler",
+    "brand": "Declasse",
+    "model": "gbimpaler",
+    "price": 22400,
+    "category": "sedans",
+    "type": "automobile",
+    "hash": "gbimpaler"
+  },
+  "gbirisz": {
+    "name": "GB Iris Z",
+    "brand": "Ocelot",
+    "model": "gbirisz",
+    "price": 40000,
+    "category": "sedans",
+    "type": "automobile",
+    "hash": "gbirisz"
+  },
+  "gbissimetro": {
+    "name": "GB Issi Metro",
+    "brand": "Weeny",
+    "model": "gbissimetro",
+    "price": 12000,
+    "category": "compacts",
+    "type": "automobile",
+    "hash": "gbissimetro"
+  },
+  "gbkomodagt": {
+    "name": "GB Komoda GT",
+    "brand": "Lampadati",
+    "model": "gbkomodagt",
+    "price": 48000,
+    "category": "sportsclassics",
+    "type": "automobile",
+    "hash": "gbkomodagt"
+  },
+  "gblod4": {
+    "name": "GB LOD4",
+    "brand": "Vapid",
+    "model": "gblod4",
+    "price": 87800,
+    "category": "offroad",
+    "type": "automobile",
+    "hash": "gblod4"
+  },
+  "gbmilano": {
+    "name": "GB Milano",
+    "brand": "Grotti",
+    "model": "gbmilano",
+    "price": 195000,
+    "category": "sports",
+    "type": "automobile",
+    "hash": "gbmilano"
+  },
+  "gbmogulrs": {
+    "name": "GB Mogul RS",
+    "brand": "Mammoth",
+    "model": "gbmogulrs",
+    "price": 125000,
+    "category": "sports",
+    "type": "automobile",
+    "hash": "gbmogulrs"
+  },
+  "gbmojave": {
+    "name": "GB Mojave",
+    "brand": "Canis",
+    "model": "gbmojave",
+    "price": 65000,
+    "category": "offroad",
+    "type": "automobile",
+    "hash": "gbmojave"
+  },
+  "gbneonct": {
+    "name": "GB Neon CT",
+    "brand": "Pfister",
+    "model": "gbneonct",
+    "price": 175000,
+    "category": "sports",
+    "type": "automobile",
+    "hash": "gbneonct"
+  },
+  "gbnexusrr": {
+    "name": "GB Nexus RR",
+    "brand": "Dinka",
+    "model": "gbnexusrr",
+    "price": 160000,
+    "category": "sports",
+    "type": "automobile",
+    "hash": "gbnexusrr"
+  },
+  "gbpolbisonhf": {
+    "name": "GB Police Bison HF",
+    "brand": "Bravado",
+    "model": "gbpolbisonhf",
+    "price": 80000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "gbpolbisonhf"
+  },
+  "gbpolbisonstx": {
+    "name": "GB Police Bison STX",
+    "brand": "Bravado",
+    "model": "gbpolbisonstx",
+    "price": 80000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "gbpolbisonstx"
+  },
+  "gbpolclubxr": {
+    "name": "GB Police Club XR",
+    "brand": "BF",
+    "model": "gbpolclubxr",
+    "price": 80000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "gbpolclubxr"
+  },
+  "gbpolcometcl": {
+    "name": "GB Police Comet CL",
+    "brand": "Pfister",
+    "model": "gbpolcometcl",
+    "price": 80000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "gbpolcometcl"
+  },
+  "gbpolcomets2r": {
+    "name": "GB Police Comet S2R",
+    "brand": "Pfister",
+    "model": "gbpolcomets2r",
+    "price": 80000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "gbpolcomets2r"
+  },
+  "gbpoldomgsx": {
+    "name": "GB Police Dominator GSX",
+    "brand": "Vapid",
+    "model": "gbpoldomgsx",
+    "price": 80000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "gbpoldomgsx"
+  },
+  "gbpolprospero": {
+    "name": "GB Police Prospero",
+    "brand": "Grotti",
+    "model": "gbpolprospero",
+    "price": 80000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "gbpolprospero"
+  },
+  "gbpolsolace": {
+    "name": "GB Police Solace",
+    "brand": "Dinka",
+    "model": "gbpolsolace",
+    "price": 80000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "gbpolsolace"
+  },
+  "gbpolstanierle": {
+    "name": "GB Police Stanier LE",
+    "brand": "Vapid",
+    "model": "gbpolstanierle",
+    "price": 80000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "gbpolstanierle"
+  },
+  "gbpolstarlight": {
+    "name": "GB Police Starlight",
+    "brand": "Lampadati",
+    "model": "gbpolstarlight",
+    "price": 80000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "gbpolstarlight"
+  },
+  "gbpolsultanrsx": {
+    "name": "GB Police Sultan RSX",
+    "brand": "Karin",
+    "model": "gbpolsultanrsx",
+    "price": 80000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "gbpolsultanrsx"
+  },
+  "gbpoltahomagt": {
+    "name": "GB Police Tahoma GT",
+    "brand": "Declasse",
+    "model": "gbpoltahomagt",
+    "price": 80000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "gbpoltahomagt"
+  },
+  "gbpoltr3s": {
+    "name": "GB Police TR3S",
+    "brand": "Vapid",
+    "model": "gbpoltr3s",
+    "price": 80000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "gbpoltr3s"
+  },
+  "gbpolturismogt": {
+    "name": "GB Police Turismo GT",
+    "brand": "Grotti",
+    "model": "gbpolturismogt",
+    "price": 80000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "gbpolturismogt"
+  },
+  "gbprospero": {
+    "name": "GB Prospero",
+    "brand": "Grotti",
+    "model": "gbprospero",
+    "price": 200000,
+    "category": "boostexclusive",
+    "type": "automobile",
+    "hash": "gbprospero"
+  },
+  "gbraidillon": {
+    "name": "GB Raidillon",
+    "brand": "Pfister",
+    "model": "gbraidillon",
+    "price": 50000,
+    "category": "sportsclassics",
+    "type": "automobile",
+    "hash": "gbraidillon"
+  },
+  "gbronin": {
+    "name": "GB Ronin",
+    "brand": "Dinka",
+    "model": "gbronin",
+    "price": 135000,
+    "category": "sports",
+    "type": "automobile",
+    "hash": "gbronin"
+  },
+  "gbsapphire": {
+    "name": "GB Sapphire",
+    "brand": "Ocelot",
+    "model": "gbsapphire",
+    "price": 90000,
+    "category": "coupes",
+    "type": "automobile",
+    "hash": "gbsapphire"
+  },
+  "gbschlagenr": {
+    "name": "GB Schlagen R",
+    "brand": "Benefactor",
+    "model": "gbschlagenr",
+    "price": 65750,
+    "category": "sports",
+    "type": "automobile",
+    "hash": "gbschlagenr"
+  },
+  "gbschlagensp": {
+    "name": "GB Schlagen SP",
+    "brand": "Benefactor",
+    "model": "gbschlagensp",
+    "price": 85000,
+    "category": "sports",
+    "type": "automobile",
+    "hash": "gbschlagensp"
+  },
+  "gbschrauber": {
+    "name": "GB Schrauber",
+    "brand": "Bravado",
+    "model": "gbschrauber",
+    "price": 42500,
+    "category": "sedans",
+    "type": "automobile",
+    "hash": "gbschrauber"
+  },
+  "gbschwartzers": {
+    "name": "GB Schwartzer S",
+    "brand": "Benefactor",
+    "model": "gbschwartzers",
+    "price": 125000,
+    "category": "sports",
+    "type": "automobile",
+    "hash": "gbschwartzers"
+  },
+  "gbsentinelgts": {
+    "name": "GB Sentinel GTS",
+    "brand": "Ubermacht",
+    "model": "gbsentinelgts",
+    "price": 50000,
+    "category": "coupes",
+    "type": "automobile",
+    "hash": "gbsentinelgts"
+  },
+  "gbsidewinder": {
+    "name": "GB Sidewinder",
+    "brand": "Canis",
+    "model": "gbsidewinder",
+    "price": 27000,
+    "category": "sportsclassics",
+    "type": "automobile",
+    "hash": "gbsidewinder"
+  },
+  "gbsolace": {
+    "name": "GB Solace",
+    "brand": "Dinka",
+    "model": "gbsolace",
+    "price": 145000,
+    "category": "sports",
+    "type": "automobile",
+    "hash": "gbsolace"
+  },
+  "gbsolacev": {
+    "name": "GB Solace V",
+    "brand": "Dinka",
+    "model": "gbsolacev",
+    "price": 155000,
+    "category": "sports",
+    "type": "automobile",
+    "hash": "gbsolacev"
+  },
+  "gbstanierle": {
+    "name": "GB Stanier LE",
+    "brand": "Vapid",
+    "model": "gbstanierle",
+    "price": 25000,
+    "category": "sedans",
+    "type": "automobile",
+    "hash": "gbstanierle"
+  },
+  "gbstarlight": {
+    "name": "GB Starlight",
+    "brand": "Lampadati",
+    "model": "gbstarlight",
+    "price": 55000,
+    "category": "suvs",
+    "type": "automobile",
+    "hash": "gbstarlight"
+  },
+  "gbsultanrsx": {
+    "name": "GB Sultan RSX",
+    "brand": "Karin",
+    "model": "gbsultanrsx",
+    "price": 140000,
+    "category": "sports",
+    "type": "automobile",
+    "hash": "gbsultanrsx"
+  },
+  "gbtahomagt": {
+    "name": "GB Tahoma GT",
+    "brand": "Declasse",
+    "model": "gbtahomagt",
+    "price": 24500,
+    "category": "muscle",
+    "type": "automobile",
+    "hash": "gbtahomagt"
+  },
+  "gbtaxiargento7f": {
+    "name": "GB Taxi Argento 7F",
+    "brand": "Obey",
+    "model": "gbtaxiargento7f",
+    "price": 80000,
+    "category": "service",
+    "type": "automobile",
+    "hash": "gbtaxiargento7f"
+  },
+  "gbtaxieon": {
+    "name": "GB Taxi Eon",
+    "brand": "Pfister",
+    "model": "gbtaxieon",
+    "price": 80000,
+    "category": "service",
+    "type": "automobile",
+    "hash": "gbtaxieon"
+  },
+  "gbtaxistanierle": {
+    "name": "GB Taxi Stanier LE",
+    "brand": "Vapid",
+    "model": "gbtaxistanierle",
+    "price": 80000,
+    "category": "service",
+    "type": "automobile",
+    "hash": "gbtaxistanierle"
+  },
+  "gbtaxistarlight": {
+    "name": "GB Taxi Starlight",
+    "brand": "Lampadati",
+    "model": "gbtaxistarlight",
+    "price": 80000,
+    "category": "service",
+    "type": "automobile",
+    "hash": "gbtaxistarlight"
+  },
+  "gbtenfr": {
+    "name": "GB Ten FR",
+    "brand": "Pfister",
+    "model": "gbtenfr",
+    "price": 245000,
+    "category": "super",
+    "type": "automobile",
+    "hash": "gbtenfr"
+  },
+  "gbterrorizer": {
+    "name": "GB Terrorizer",
+    "brand": "Nagasaki",
+    "model": "gbterrorizer",
+    "price": 80000,
+    "category": "offroad",
+    "type": "automobile",
+    "hash": "gbterrorizer"
+  },
+  "gbtr3s": {
+    "name": "GB TR3S",
+    "brand": "Vapid",
+    "model": "gbtr3s",
+    "price": 80000,
+    "category": "boostexclusive",
+    "type": "automobile",
+    "hash": "gbtr3s"
+  },
+  "gbturismogt": {
+    "name": "GB Turismo GT",
+    "brand": "Grotti",
+    "model": "gbturismogt",
+    "price": 60000,
+    "category": "sportsclassics",
+    "type": "automobile",
+    "hash": "gbturismogt"
+  },
+  "gbturismogts": {
+    "name": "GB Turismo GTS",
+    "brand": "Grotti",
+    "model": "gbturismogts",
+    "price": 60000,
+    "category": "sportsclassics",
+    "type": "automobile",
+    "hash": "gbturismogts"
+  },
+  "flatbed3": {
+    "name": "Flatbed 3",
+    "brand": "Vapid",
+    "model": "flatbed3",
+    "price": 60000,
+    "category": "vans",
+    "type": "automobile",
+    "hash": "flatbed3"
+  },
+  "gbvivant": {
+    "name": "GB Vivant",
+    "brand": "Ocelot",
+    "model": "gbvivant",
+    "price": 5000,
+    "category": "compacts",
+    "type": "automobile",
+    "hash": "gbvivant"
+  },
+  "gbvivantgrb": {
+    "name": "GB Vivant GRB",
+    "brand": "Ocelot",
+    "model": "gbvivantgrb",
+    "price": 14500,
+    "category": "compacts",
+    "type": "automobile",
+    "hash": "gbvivantgrb"
+  },
+  "gbvoyager": {
+    "name": "GB Voyager",
+    "brand": "Bravado",
+    "model": "gbvoyager",
+    "price": 80000,
+    "category": "vans",
+    "type": "automobile",
+    "hash": "gbvoyager"
+  },
+  "gbvoyager2": {
+    "name": "GB Voyager 2",
+    "brand": "Bravado",
+    "model": "gbvoyager2",
+    "price": 80000,
+    "category": "vans",
+    "type": "automobile",
+    "hash": "gbvoyager2"
+  },
+  "gbvoyagerb": {
+    "name": "GB Voyager B",
+    "brand": "Bravado",
+    "model": "gbvoyagerb",
+    "price": 80000,
+    "category": "vans",
+    "type": "automobile",
+    "hash": "gbvoyagerb"
+  },
+  "gbvoyagerb2": {
+    "name": "GB Voyager B2",
+    "brand": "Bravado",
+    "model": "gbvoyagerb2",
+    "price": 80000,
+    "category": "blacklist",
+    "type": "automobile",
+    "hash": "gbvoyagerb2"
+  },
+  "gbvoyagerg": {
+    "name": "GB Voyager G",
+    "brand": "Bravado",
+    "model": "gbvoyagerg",
+    "price": 80000,
+    "category": "vans",
+    "type": "automobile",
+    "hash": "gbvoyagerg"
+  },
+  "gbvoyagerh": {
+    "name": "GB Voyager H",
+    "brand": "Bravado",
+    "model": "gbvoyagerh",
+    "price": 80000,
+    "category": "vans",
+    "type": "automobile",
+    "hash": "gbvoyagerh"
+  },
+  "gbpoldominatorgsx": {
+    "name": "GB Police Dominator GSX",
+    "brand": "Vapid",
+    "model": "gbpoldominatorgsx",
+    "price": 80000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "gbpoldominatorgsx"
+  },
+  "hvemsbuff4": {
+    "name": "POLICE4",
+    "brand": "BRAVADO",
+    "model": "hvemsbuff4",
+    "price": 80000,
+    "category": "emergency",
+    "type": "car",
+    "hash": "hvemsbuff4"
+  },
+  "hvemsgrang": {
+    "name": "SHERIFF2",
+    "brand": "DECLASSE",
+    "model": "hvemsgrang",
+    "price": 80000,
+    "category": "emergency",
+    "type": "car",
+    "hash": "hvemsgrang"
+  },
+  "hvemsscout": {
+    "name": "SHERIFF2",
+    "brand": "VAPID",
+    "model": "hvemsscout",
+    "price": 80000,
+    "category": "emergency",
+    "type": "car",
+    "hash": "hvemsscout"
+  },
+  "hvswift": {
+    "name": "HVSWIFT",
+    "brand": "AUGUSTW",
+    "model": "hvswift",
+    "price": 80000,
+    "category": "helicopter",
+    "type": "heli",
+    "hash": "hvswift"
+  },
+  "sandbulance": {
+    "name": "SANDBULANCE",
+    "brand": "VAPID",
+    "model": "sandbulance",
+    "price": 80000,
+    "category": "emergency",
+    "type": "car",
+    "hash": "sandbulance"
+  },
+  "nsandbrush4": {
+    "name": "NSANDBRUSH4",
+    "brand": "Vapid",
+    "model": "nsandbrush4",
+    "price": 80000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "nsandbrush4"
+  },
+  "nsandbrush6": {
+    "name": "NSANDBRUSH6",
+    "brand": "Vapid",
+    "model": "nsandbrush6",
+    "price": 80000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "nsandbrush6"
+  },
+  "2vd_bstx2": {
+    "name": "Buffalo STX 2VD",
+    "brand": "Bravado",
+    "model": "2vd_bstx2",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_bstx2"
+  },
+  "2vd_buffalo4": {
+    "name": "Buffalo STX 4 2VD",
+    "brand": "Bravado",
+    "model": "2vd_buffalo4",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_buffalo4"
+  },
+  "2vd_buffhell1": {
+    "name": "Buffalo Hell 1 2VD",
+    "brand": "Bravado",
+    "model": "2vd_buffhell1",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_buffhell1"
+  },
+  "2vd_conada": {
+    "name": "Conada 2VD",
+    "brand": "",
+    "model": "2vd_conada",
+    "price": 90000,
+    "category": "emergency",
+    "type": "heli",
+    "hash": "2vd_conada"
+  },
+  "2vd_gstcypt1b": {
+    "name": "GST Cypt 1B 2VD",
+    "brand": "",
+    "model": "2vd_gstcypt1b",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_gstcypt1b"
+  },
+  "2vd_gstguard1": {
+    "name": "GST Guard 1 2VD",
+    "brand": "Vapid",
+    "model": "2vd_gstguard1",
+    "price": 90000,
+    "category": "utility",
+    "type": "automobile",
+    "hash": "2vd_gstguard1"
+  },
+  "2vd_gstsemxl1": {
+    "name": "GST Sem XL1 2VD",
+    "brand": "",
+    "model": "2vd_gstsemxl1",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_gstsemxl1"
+  },
+  "2vd_gstt203": {
+    "name": "GST T203 2VD",
+    "brand": "",
+    "model": "2vd_gstt203",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_gstt203"
+  },
+  "2vd_gstvigzx4": {
+    "name": "GST Vigero ZX4 2VD",
+    "brand": "",
+    "model": "2vd_gstvigzx4",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_gstvigzx4"
+  },
+  "2vd_hr680": {
+    "name": "HR680 2VD",
+    "brand": "",
+    "model": "2vd_hr680",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_hr680"
+  },
+  "2vd_hr1100r": {
+    "name": "HR1100R 2VD",
+    "brand": "",
+    "model": "2vd_hr1100r",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_hr1100r"
+  },
+  "2vd_hrspec": {
+    "name": "HR Spec 2VD",
+    "brand": "",
+    "model": "2vd_hrspec",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_hrspec"
+  },
+  "2vd_mbrickade": {
+    "name": "M Brickade 2VD",
+    "brand": "MTL",
+    "model": "2vd_mbrickade",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_mbrickade"
+  },
+  "2vd_patrolboat": {
+    "name": "Patrol Boat 2VD",
+    "brand": "",
+    "model": "2vd_patrolboat",
+    "price": 90000,
+    "category": "emergency",
+    "type": "boat",
+    "hash": "2vd_patrolboat"
+  },
+  "2vd_predator": {
+    "name": "Predator 2VD",
+    "brand": "",
+    "model": "2vd_predator",
+    "price": 90000,
+    "category": "emergency",
+    "type": "boat",
+    "hash": "2vd_predator"
+  },
+  "2vd_scout2": {
+    "name": "Scout 2 2VD",
+    "brand": "",
+    "model": "2vd_scout2",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_scout2"
+  },
+  "2vd_seashark": {
+    "name": "Seashark 2VD",
+    "brand": "",
+    "model": "2vd_seashark",
+    "price": 90000,
+    "category": "emergency",
+    "type": "boat",
+    "hash": "2vd_seashark"
+  },
+  "2vd_streiter": {
+    "name": "Streiter 2VD",
+    "brand": "",
+    "model": "2vd_streiter",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_streiter"
+  },
+  "2vd_supervolito": {
+    "name": "Supervolito 2VD",
+    "brand": "",
+    "model": "2vd_supervolito",
+    "price": 90000,
+    "category": "emergency",
+    "type": "heli",
+    "hash": "2vd_supervolito"
+  },
+  "2vd_vsandking": {
+    "name": "Sandking 2VD",
+    "brand": "",
+    "model": "2vd_vsandking",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_vsandking"
+  },
+  "2vd_vstaniert": {
+    "name": "Stanier T 2VD",
+    "brand": "",
+    "model": "2vd_vstaniert",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_vstaniert"
+  },
+  "2vd_vstanier": {
+    "name": "Transit 2VD",
+    "brand": "",
+    "model": "2vd_vstanier",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_vstanier"
+  },
+  "2vd_oomnisegt": {
+    "name": "Omnis e-GT 2VD",
+    "brand": "",
+    "model": "2vd_oomnisegt",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_oomnisegt"
+  },
+  "2vd_odrafter": {
+    "name": "Drafter 2VD",
+    "brand": "",
+    "model": "2vd_odrafter",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_odrafter"
+  },
+  "2vd_icoquette4": {
+    "name": "Coquette 4 2VD",
+    "brand": "",
+    "model": "2vd_icoquette4",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_icoquette4"
+  },
+  "2vd_buffaloevx": {
+    "name": "Buffalo EVX 2VD",
+    "brand": "",
+    "model": "2vd_buffaloevx",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_buffaloevx"
+  },
+  "2vd_buffalo4hv2": {
+    "name": "Buffalo 4 HV2 2VD",
+    "brand": "",
+    "model": "2vd_buffalo4hv2",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_buffalo4hv2"
+  },
+  "2vd_bbison": {
+    "name": "Bison 2VD",
+    "brand": "",
+    "model": "2vd_bbison",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_bbison"
+  },
+  "2vd_bbanshee3": {
+    "name": "Banshee 3 2VD",
+    "brand": "",
+    "model": "2vd_bbanshee3",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_bbanshee3"
+  },
+  "2vd_avstr": {
+    "name": "VSTR 2VD",
+    "brand": "",
+    "model": "2vd_avstr",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_avstr"
+  },
+  "2vd_ahelion": {
+    "name": "Hellion 2VD",
+    "brand": "",
+    "model": "2vd_ahelion",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_ahelion"
+  },
+  "2vd_yosemite1500": {
+    "name": "Yosemite 1500 2VD",
+    "brand": "",
+    "model": "2vd_yosemite1500",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_yosemite1500"
+  },
+  "2vd_vtorrence": {
+    "name": "Torrence 2VD",
+    "brand": "",
+    "model": "2vd_vtorrence",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_vtorrence"
+  },
+  "2vd_terminus": {
+    "name": "Terminus 2VD",
+    "brand": "",
+    "model": "2vd_terminus",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_terminus"
+  },
+  "2vd_komoda": {
+    "name": "Komoda 2VD",
+    "brand": "",
+    "model": "2vd_komoda",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_komoda"
+  },
+  "2vd_dominator10": {
+    "name": "Dominator 10 2VD",
+    "brand": "",
+    "model": "2vd_dominator10",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_dominator10"
+  },
+  "2vd_dburritos": {
+    "name": "Burritos 2VD",
+    "brand": "",
+    "model": "2vd_dburritos",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_dburritos"
+  },
+  "2vd_castigator": {
+    "name": "Castigator 2VD",
+    "brand": "",
+    "model": "2vd_castigator",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_castigator"
+  },
+  "2vd_bmaverick": {
+    "name": "Maverick 2VD",
+    "brand": "",
+    "model": "2vd_bmaverick",
+    "price": 90000,
+    "category": "emergency",
+    "type": "heli",
+    "hash": "2vd_bmaverick"
+  },
+  "2vd_bgreenwood": {
+    "name": "Greenwood 2VD",
+    "brand": "",
+    "model": "2vd_bgreenwood",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_bgreenwood"
+  },
+  "2vd_bdorado": {
+    "name": "Dorado 2VD",
+    "brand": "",
+    "model": "2vd_bdorado",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_bdorado"
+  },
+  "2vd_vstanie": {
+    "name": "Stanier E 2VD",
+    "brand": "",
+    "model": "2vd_vstanie",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_vstanie"
+  },
+  "2vd_vcaracara3": {
+    "name": "Caracara 3 2VD",
+    "brand": "",
+    "model": "2vd_vcaracara3",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_vcaracara3"
+  },
+  "2vd_tailgater2": {
+    "name": "Tailgater 2 2VD",
+    "brand": "",
+    "model": "2vd_tailgater2",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_tailgater2"
+  },
+  "2vd_gresley": {
+    "name": "Gresley 2VD",
+    "brand": "",
+    "model": "2vd_gresley",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_gresley"
+  },
+  "2vd_granger2": {
+    "name": "Granger 2 2VD",
+    "brand": "",
+    "model": "2vd_granger2",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_granger2"
+  },
+  "2vd_eparagon": {
+    "name": "Paragon E 2VD",
+    "brand": "",
+    "model": "2vd_eparagon",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_eparagon"
+  },
+  "2vd_buffalo2": {
+    "name": "Buffalo 2 2VD",
+    "brand": "",
+    "model": "2vd_buffalo2",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_buffalo2"
+  },
+  "2vd_buffalo": {
+    "name": "Buffalo 2VD",
+    "brand": "",
+    "model": "2vd_buffalo",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_buffalo"
+  },
+  "2vd_acavalcade3": {
+    "name": "Cavalcade 3 2VD",
+    "brand": "",
+    "model": "2vd_acavalcade3",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_acavalcade3"
+  },
+  "2vd_aleutian": {
+    "name": "Aleutian 2VD",
+    "brand": "",
+    "model": "2vd_aleutian",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_aleutian"
+  },
+  "2vd_bstx": {
+    "name": "Buffalo STX 2VD",
+    "brand": "",
+    "model": "2vd_bstx",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_bstx"
+  },
+  "2vd_buffalo4h": {
+    "name": "Buffalo 4H 2VD",
+    "brand": "",
+    "model": "2vd_buffalo4h",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_buffalo4h"
+  },
+  "2vd_cypher": {
+    "name": "Cypher 2VD",
+    "brand": "",
+    "model": "2vd_cypher",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_cypher"
+  },
+  "2vd_dvigerozx": {
+    "name": "Vigero ZX 2VD",
+    "brand": "",
+    "model": "2vd_dvigerozx",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_dvigerozx"
+  },
+  "2vd_gauntlet4": {
+    "name": "Gauntlet 4 2VD",
+    "brand": "",
+    "model": "2vd_gauntlet4",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_gauntlet4"
+  },
+  "2vd_impaler5": {
+    "name": "Impaler 5 2VD",
+    "brand": "",
+    "model": "2vd_impaler5",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_impaler5"
+  },
+  "2vd_speedo5": {
+    "name": "Speedo 5 2VD",
+    "brand": "",
+    "model": "2vd_speedo5",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_speedo5"
+  },
+  "2vd_vcaracara": {
+    "name": "Caracara 2VD",
+    "brand": "",
+    "model": "2vd_vcaracara",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_vcaracara"
+  },
+  "2vd_coach": {
+    "name": "Coach 2VD",
+    "brand": "",
+    "model": "2vd_coach",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_coach"
+  },
+  "2vd_hakuchou": {
+    "name": "Hakuchou 2VD",
+    "brand": "",
+    "model": "2vd_hakuchou",
+    "price": 90000,
+    "category": "emergency",
+    "type": "bike",
+    "hash": "2vd_hakuchou"
+  },
+  "2vd_manchez3": {
+    "name": "Manchez 3 2VD",
+    "brand": "",
+    "model": "2vd_manchez3",
+    "price": 90000,
+    "category": "emergency",
+    "type": "bike",
+    "hash": "2vd_manchez3"
+  },
+  "2vd_outlaw": {
+    "name": "Outlaw 2VD",
+    "brand": "",
+    "model": "2vd_outlaw",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_outlaw"
+  },
+  "2vd_shinobi": {
+    "name": "Shinobi 2VD",
+    "brand": "",
+    "model": "2vd_shinobi",
+    "price": 90000,
+    "category": "emergency",
+    "type": "bike",
+    "hash": "2vd_shinobi"
+  },
+  "2vd_versus": {
+    "name": "Versus 2VD",
+    "brand": "",
+    "model": "2vd_versus",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_versus"
+  },
+  "2vd_2yosemite1500": {
+    "name": "Yosemite 1500 2 2VD",
+    "brand": "",
+    "model": "2vd_2yosemite1500",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_2yosemite1500"
+  },
+  "2vd_gresley2": {
+    "name": "Gresley 2 2VD",
+    "brand": "",
+    "model": "2vd_gresley2",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_gresley2"
+  },
+  "2vd_otailgater2": {
+    "name": "Tailgater 2 O 2VD",
+    "brand": "",
+    "model": "2vd_otailgater2",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_otailgater2"
+  },
+  "2vd_terminus2": {
+    "name": "Terminus 2 2VD",
+    "brand": "",
+    "model": "2vd_terminus2",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_terminus2"
+  },
+  "2vd_vscout2": {
+    "name": "Scout 2 2VD",
+    "brand": "",
+    "model": "2vd_vscout2",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_vscout2"
+  },
+  "2vd_vtorrence2": {
+    "name": "Torrence 2 2VD",
+    "brand": "",
+    "model": "2vd_vtorrence2",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_vtorrence2"
+  },
+  "ph_acavalcade3": {
+    "name": "Cavalcade 3 PH",
+    "brand": "",
+    "model": "ph_acavalcade3",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "ph_acavalcade3"
+  },
+  "ph_bbuffalostx": {
+    "name": "Buffalo STX PH",
+    "brand": "Bravado",
+    "model": "ph_bbuffalostx",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "ph_bbuffalostx"
+  },
+  "ph_bjogger": {
+    "name": "BJogger PH",
+    "brand": "Bravado",
+    "model": "ph_bjogger",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "ph_bjogger"
+  },
+  "ph_cterminus": {
+    "name": "Terminus PH",
+    "brand": "Canis",
+    "model": "ph_cterminus",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "ph_cterminus"
+  },
+  "ph_dgranger2": {
+    "name": "Granger 2 PH",
+    "brand": "Declasse",
+    "model": "ph_dgranger2",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "ph_dgranger2"
+  },
+  "ph_vscoutxl": {
+    "name": "Scout XL PH",
+    "brand": "Vapid",
+    "model": "ph_vscoutxl",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "ph_vscoutxl"
+  },
+  "ph_vstanier": {
+    "name": "Stanier PH",
+    "brand": "Vapid",
+    "model": "ph_vstanier",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "ph_vstanier"
+  },
+  "vd_buffalo4": {
+    "name": "Buffalo 4 VD",
+    "brand": "Bravado",
+    "model": "vd_buffalo4",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "vd_buffalo4"
+  },
+  "vd_dkanjosjscx": {
+    "name": "Kanjo SJ SCX VD",
+    "brand": "",
+    "model": "vd_dkanjosjscx",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "vd_dkanjosjscx"
+  },
+  "2vd_vscoutxl": {
+    "name": "Scout XL 2VD",
+    "brand": "Vapid",
+    "model": "2vd_vscoutxl",
+    "price": 90000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2vd_vscoutxl"
+  },
+  "SADOMGTTT": {
+    "name": "SADOM GT TT",
+    "brand": "Vapid",
+    "model": "SADOMGTTT",
+    "price": 90000,
+    "category": "sports",
+    "type": "automobile",
+    "hash": "SADOMGTTT"
+  },
+  "vanzlamcon": {
+    "name": "Count",
+    "brand": "Pegassi",
+    "model": "vanzlamcon",
+    "price": 90000,
+    "category": "super",
+    "type": "automobile",
+    "hash": "vanzlamcon"
+  },
+  "rrseminalhawkx": {
+    "name": "Seminal Hawk X",
+    "brand": "Bravado",
+    "model": "rrseminalhawkx",
+    "price": 90000,
+    "category": "super",
+    "type": "automobile",
+    "hash": "rrseminalhawkx"
+  },
+  "rrhellenstorml": {
+    "name": "Hellenstorm Lifted",
+    "brand": "Vapid",
+    "model": "rrhellenstorml",
+    "price": 175000,
+    "category": "super",
+    "type": "automobile",
+    "hash": "rrhellenstorml"
+  },
+  "g4m82": {
+    "name": "G4 M82",
+    "brand": "Obey",
+    "model": "g4m82",
+    "price": 150000,
+    "category": "super",
+    "type": "automobile",
+    "hash": "g4m82"
+  },
+  "obeysportwd": {
+    "name": "GT",
+    "brand": "Obey",
+    "model": "obeysportwd",
+    "price": 150000,
+    "category": "super",
+    "type": "automobile",
+    "hash": "obeysportwd"
+  },
+  "riotcat2025": {
+    "name": "Riot Cat 2025",
+    "brand": "Bravado",
+    "model": "2025riotcat",
+    "price": 125000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "2025riotcat"
+  },
+  "riotpitbull": {
+    "name": "Riot Pitbull",
+    "brand": "Bravado",
+    "model": "riotpitbull",
+    "price": 125000,
+    "category": "emergency",
+    "type": "automobile",
+    "hash": "riotpitbull"
+  },
+  "mh6m": {
+    "name": "MH-6M Little Bird",
+    "brand": "BOING",
+    "model": "mh6m",
+    "price": 52000,
+    "category": "emergency",
+    "type": "aircraft",
+    "hash": "mh6m"
+  },
+  "riothuey": {
+    "name": "Riot Huey",
+    "brand": "BOING",
+    "model": "riothuey",
+    "price": 175000,
+    "category": "emergency",
+    "type": "aircraft",
+    "hash": "riothuey"
+  },
+  "polbikeb": {
+    "name": "Police Hog",
+    "brand": "Vulkan",
+    "model": "polbikeb",
+    "price": 175000,
+    "category": "emergency",
+    "type": "bike",
+    "hash": "polbikeb"
+  },
+  "onx_polalamo": {
     "name": "Police Alamo 2700LX",
     "brand": "Declasse",
     "model": "onx_polalamo",
@@ -8849,6 +11225,15 @@ export const vehicleData: Record<string, VehicleInfo> = {
     "category": "sports",
     "type": "automobile",
     "hash": "gstturc1"
+  },
+  "204sPatriotStretch": {
+    "name": "Patriot Stretch",
+    "brand": "Mammoth",
+    "model": "204sPatriotStretch",
+    "price": 90000,
+    "category": "van",
+    "type": "automobile",
+    "hash": "204sPatriotStretch"
   },
   "WmacEnus": {
     "name": "Jubilee Forged ",
