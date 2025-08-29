@@ -86,10 +86,11 @@ export default function ProfilePage() {
       <div className="relative z-10 min-h-screen pt-[120px] px-4 pb-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <h1 className="text-5xl font-bold mb-6 bg-gradient-to-r from-[#EA9449] via-[#FFD700] to-[#29C1B0] bg-clip-text text-transparent">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#EA9449] via-[#29C1B0] to-[#EA9449] drop-shadow-2xl">
               Character Profile
             </h1>
-            <p className="text-gray-300 text-xl max-w-2xl mx-auto">
+            <div className="w-32 h-1 bg-gradient-to-r from-[#EA9449] to-[#29C1B0] mx-auto rounded-full mt-4"></div>
+            <p className="text-gray-300 text-xl max-w-2xl mx-auto mt-6">
               Connect your Discord account to view your FiveM character information
             </p>
           </div>

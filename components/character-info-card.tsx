@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Separator } from '@/components/ui/separator'
-import { Avatar, AvatarFallback } from '@/components/ui/avatar'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { 
   User, 
@@ -223,208 +222,181 @@ export default function CharacterInfoCard({ discordId, selectedCharacterId, onCh
   }
 
   return (
-    <div className="w-full max-w-6xl mx-auto space-y-8">
+    <div className="w-full max-w-7xl mx-auto space-y-6">
       {/* Character Selection */}
       {characters.length > 1 && (
-        <Card className="bg-gray-900/80 backdrop-blur-sm border-gray-700 shadow-2xl">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-white">
-              <User className="w-5 h-5" />
-              Select Character
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <Select 
-              value={selectedCharacter?.citizenid || ''} 
-              onValueChange={(value) => {
-                const character = characters.find(char => char.citizenid === value)
-                if (character) {
-                  setSelectedCharacter(character)
-                  onCharacterSelect?.(value)
-                }
-              }}
-            >
-              <SelectTrigger className="w-full bg-gray-800 border-gray-600 text-white">
-                <SelectValue placeholder="Select a character" />
-              </SelectTrigger>
-              <SelectContent className="bg-gray-800 border-gray-600">
-                {characters.map((character) => (
-                  <SelectItem 
-                    key={character.citizenid} 
-                    value={character.citizenid}
-                    className="text-white hover:bg-gray-700"
-                  >
-                    {character.charinfo.firstname} {character.charinfo.lastname} ({character.citizenid})
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </CardContent>
-        </Card>
+        <div className="bg-black/80 backdrop-blur-sm border border-neutral-800 rounded-2xl p-6">
+          <h3 className="text-white font-bold text-lg mb-4 flex items-center gap-2">
+            <User className="w-5 h-5" />
+            Select Character
+          </h3>
+          <Select 
+            value={selectedCharacter?.citizenid || ''} 
+            onValueChange={(value) => {
+              const character = characters.find(char => char.citizenid === value)
+              if (character) {
+                setSelectedCharacter(character)
+                onCharacterSelect?.(value)
+              }
+            }}
+          >
+            <SelectTrigger className="w-full bg-neutral-900 border-neutral-700 text-white rounded-lg h-12">
+              <SelectValue placeholder="Select a character" />
+            </SelectTrigger>
+            <SelectContent className="bg-neutral-900 border-neutral-700">
+              {characters.map((character) => (
+                <SelectItem 
+                  key={character.citizenid} 
+                  value={character.citizenid}
+                  className="text-white hover:bg-neutral-800"
+                >
+                  {character.charinfo.firstname} {character.charinfo.lastname} ({character.citizenid})
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
       )}
 
       {/* Character Details */}
       {selectedCharacter && (
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           
-          {/* Basic Information */}
-          <Card className="bg-gray-900/80 backdrop-blur-sm border-gray-700 shadow-2xl">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-white">
+          {/* Character Information Panel */}
+          <div className="bg-black/80 backdrop-blur-sm border border-neutral-800 rounded-2xl p-8">
+            <div className="mb-6">
+              <h2 className="text-white font-bold text-xl mb-2 flex items-center gap-3">
                 <User className="w-5 h-5" />
                 Character Information
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="text-center mb-4">
-                <Avatar className="w-16 h-16 mx-auto mb-3">
-                  <AvatarFallback className="bg-[#EA9449] text-white text-lg">
-                    {selectedCharacter.charinfo.firstname[0]}{selectedCharacter.charinfo.lastname[0]}
-                  </AvatarFallback>
-                </Avatar>
-                <h3 className="font-bold text-xl text-white">
-                  {selectedCharacter.charinfo.firstname} {selectedCharacter.charinfo.lastname}
-                </h3>
-                <p className="text-gray-400 text-sm">{selectedCharacter.citizenid}</p>
-              </div>
-              
-              <Separator className="bg-gray-600" />
-              
-              <div className="space-y-3">
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-400">Birthdate:</span>
-                  <span className="text-white font-medium">{selectedCharacter.charinfo.birthdate}</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-400">Gender:</span>
-                  <span className="text-white font-medium">{selectedCharacter.charinfo.gender === '0' ? 'Male' : 'Female'}</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-400">Nationality:</span>
-                  <span className="text-white font-medium">{selectedCharacter.charinfo.nationality}</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-400">Phone:</span>
-                  <div className="flex items-center gap-2">
-                    <Phone className="w-4 h-4 text-[#EA9449]" />
-                    <span className="text-white font-medium">{selectedCharacter.charinfo.phone}</span>
-                  </div>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-400">Blood Type:</span>
-                  <span className="text-white font-medium">{selectedCharacter.metadata.bloodtype}</span>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+              </h2>
+            </div>
 
-          {/* Money & Banking */}
-          <Card className="bg-gray-900/80 backdrop-blur-sm border-gray-700 shadow-2xl">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-white">
+            {/* Character Header */}
+            <div className="mb-8">
+              <h3 className="text-white font-black text-2xl">
+                {selectedCharacter.charinfo.firstname} {selectedCharacter.charinfo.lastname}
+              </h3>
+              <span className="inline-block bg-neutral-800 text-neutral-300 px-3 py-1 rounded-lg text-sm font-semibold mt-2">
+                {selectedCharacter.citizenid}
+              </span>
+            </div>
+
+            <Separator className="bg-neutral-700 mb-6" />
+
+            {/* Personal Details */}
+            <div className="space-y-4">
+              <div className="flex justify-between items-center">
+                <span className="text-white font-bold min-w-32">Birthdate:</span>
+                <span className="text-white font-semibold">{selectedCharacter.charinfo.birthdate}</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-white font-bold min-w-32">Gender:</span>
+                <span className="text-white font-semibold">{selectedCharacter.charinfo.gender === '0' ? 'Male' : 'Female'}</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-white font-bold min-w-32">Nationality:</span>
+                <span className="text-white font-semibold">{selectedCharacter.charinfo.nationality}</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-white font-bold min-w-32">Phone:</span>
+                <div className="flex items-center gap-2">
+                  <Phone className="w-4 h-4 text-neutral-400" />
+                  <span className="text-white font-semibold">{selectedCharacter.charinfo.phone}</span>
+                </div>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-white font-bold min-w-32">Blood Type:</span>
+                <span className="text-white font-semibold">{selectedCharacter.metadata.bloodtype}</span>
+              </div>
+            </div>
+
+            <Separator className="bg-neutral-700 my-6" />
+
+            {/* Licenses */}
+            <div>
+              <h4 className="text-white font-bold text-sm uppercase tracking-wide mb-4 opacity-90">Active Licenses</h4>
+              <div className="flex flex-wrap gap-2">
+                {selectedCharacter.metadata.licences.driver && (
+                  <Badge className="bg-green-600/20 text-green-400 border border-green-600/40 hover:bg-green-600/30">
+                    <Car className="w-3 h-3 mr-1" />
+                    Driver&apos;s License
+                  </Badge>
+                )}
+                {selectedCharacter.metadata.licences.weapon && (
+                  <Badge className="bg-green-600/20 text-green-400 border border-green-600/40 hover:bg-green-600/30">
+                    <Zap className="w-3 h-3 mr-1" />
+                    Weapon License
+                  </Badge>
+                )}
+                {selectedCharacter.metadata.licences.business && (
+                  <Badge className="bg-green-600/20 text-green-400 border border-green-600/40 hover:bg-green-600/30">
+                    <Briefcase className="w-3 h-3 mr-1" />
+                    Business License
+                  </Badge>
+                )}
+                {!selectedCharacter.metadata.licences.driver && 
+                 !selectedCharacter.metadata.licences.weapon && 
+                 !selectedCharacter.metadata.licences.business && (
+                  <span className="text-neutral-500 text-sm">No active licenses</span>
+                )}
+              </div>
+            </div>
+          </div>
+
+          {/* Finances & Employment Panel */}
+          <div className="bg-black/80 backdrop-blur-sm border border-neutral-800 rounded-2xl p-8">
+            <div className="mb-6">
+              <h2 className="text-white font-bold text-xl mb-2 flex items-center gap-3">
                 <Wallet className="w-5 h-5" />
-                Finances
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
+                Finances & Employment
+              </h2>
+            </div>
+
+            {/* Money Section */}
+            <div className="mb-8">
+              <h4 className="text-white font-bold text-sm uppercase tracking-wide mb-4 opacity-90">Finances</h4>
               <div className="space-y-4">
-                <div className="bg-gray-800/50 p-4 rounded-lg">
+                <div className="bg-neutral-900/50 rounded-lg p-4">
                   <div className="flex justify-between items-center">
-                    <span className="text-gray-400">Bank Account:</span>
+                    <span className="text-neutral-300 font-bold">Bank Account:</span>
                     <span className="text-green-400 font-bold text-lg">
                       {formatMoney(selectedCharacter.money.bank)}
                     </span>
                   </div>
                 </div>
-                <div className="bg-gray-800/50 p-4 rounded-lg">
+                <div className="bg-neutral-900/50 rounded-lg p-4">
                   <div className="flex justify-between items-center">
-                    <span className="text-gray-400">Cash on Hand:</span>
-                    <span className="text-yellow-400 font-bold text-lg">
+                    <span className="text-neutral-300 font-bold">Cash on Hand:</span>
+                    <span className="text-green-400 font-bold text-lg">
                       {formatMoney(selectedCharacter.money.cash)}
                     </span>
                   </div>
                 </div>
-                <div className="bg-gray-800/50 p-4 rounded-lg">
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-400">Cryptocurrency:</span>
-                    <span className="text-blue-400 font-bold text-lg">
-                      {formatMoney(selectedCharacter.money.crypto)}
-                    </span>
-                  </div>
-                </div>
-                <Separator className="bg-gray-600" />
-                <div className="bg-[#EA9449]/10 p-4 rounded-lg border border-[#EA9449]/30">
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-300 font-medium">Total Worth:</span>
-                    <span className="text-[#EA9449] font-bold text-xl">
-                      {formatMoney(selectedCharacter.money.bank + selectedCharacter.money.cash + selectedCharacter.money.crypto)}
-                    </span>
-                  </div>
-                </div>
               </div>
-            </CardContent>
-          </Card>
+            </div>
 
-          {/* Job & Licenses */}
-          <Card className="bg-gray-900/80 backdrop-blur-sm border-gray-700 shadow-2xl md:col-span-2 xl:col-span-1">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-white">
-                <Briefcase className="w-5 h-5" />
-                Employment & Licenses
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-6">
-              {/* Job Information */}
-              <div>
-                <h4 className="text-white font-medium mb-3 flex items-center gap-2">
-                  <Briefcase className="w-4 h-4 text-[#EA9449]" />
-                  Current Job
-                </h4>
-                <div className="bg-gray-800/50 p-4 rounded-lg space-y-2">
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-400">Position:</span>
-                    <span className="text-white font-medium">{selectedCharacter.job.label}</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-400">Grade:</span>
-                    <Badge className="bg-[#EA9449] text-white">
-                      {selectedCharacter.job.grade.name} (Level {selectedCharacter.job.grade.level})
-                    </Badge>
-                  </div>
-                </div>
-              </div>
+            <Separator className="bg-neutral-700 mb-6" />
 
-              {/* Licenses */}
-              <div>
-                <h4 className="text-white font-medium mb-3">Active Licenses</h4>
-                <div className="flex flex-wrap gap-2">
-                  {selectedCharacter.metadata.licences.driver && (
-                    <Badge variant="outline" className="border-green-500 text-green-400">
-                      <Car className="w-3 h-3 mr-1" />
-                      Driver&apos;s License
-                    </Badge>
-                  )}
-                  {selectedCharacter.metadata.licences.weapon && (
-                    <Badge variant="outline" className="border-red-500 text-red-400">
-                      <Zap className="w-3 h-3 mr-1" />
-                      Weapon License
-                    </Badge>
-                  )}
-                  {selectedCharacter.metadata.licences.business && (
-                    <Badge variant="outline" className="border-blue-500 text-blue-400">
-                      <Briefcase className="w-3 h-3 mr-1" />
-                      Business License
-                    </Badge>
-                  )}
-                  {!selectedCharacter.metadata.licences.driver && 
-                   !selectedCharacter.metadata.licences.weapon && 
-                   !selectedCharacter.metadata.licences.business && (
-                    <span className="text-gray-500 text-sm">No active licenses</span>
-                  )}
+            {/* Employment Section */}
+            <div>
+              <h4 className="text-white font-bold text-sm uppercase tracking-wide mb-4 opacity-90 flex items-center gap-2">
+                <Briefcase className="w-4 h-4" />
+                Current Job
+              </h4>
+              <div className="bg-neutral-900/50 rounded-lg p-4 space-y-3">
+                <div className="flex justify-between items-center">
+                  <span className="text-neutral-300 font-bold">Position:</span>
+                  <span className="text-white font-semibold">{selectedCharacter.job.label}</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-neutral-300 font-bold">Grade:</span>
+                  <Badge className="bg-neutral-700 text-white border-neutral-600">
+                    {selectedCharacter.job.grade.name} (Level {selectedCharacter.job.grade.level})
+                  </Badge>
                 </div>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
         </div>
       )}
     </div>
