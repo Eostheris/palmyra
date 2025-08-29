@@ -8,7 +8,7 @@ export function MainNavigation() {
     <header className="w-full fixed top-0 left-0 z-40 h-[88px] bg-black/70 backdrop-blur flex items-center justify-between px-4 sm:px-8 border-b border-neutral-800">
       <div className="flex items-center gap-8">
         <Link href="/" className="hover:opacity-80 transition-opacity flex items-center h-[56px]" aria-label="Palmyra RP">
-          <img src="/palmyravector.png" alt="Palmyra RP" className="object-contain" style={{width: '140px', height: '56px', maxWidth: '140px', maxHeight: '56px'}} />
+          <Image src="/palmyravector.png" alt="Palmyra RP" width={140} height={56} className="object-contain" style={{maxWidth: '140px', maxHeight: '56px'}} />
         </Link>
         
         <NavigationMenu>
@@ -56,7 +56,7 @@ export function MainNavigation() {
                       >
                         <div className="text-sm font-medium leading-none text-white">LSCSO</div>
                         <p className="line-clamp-2 text-sm leading-snug text-muted-foreground text-gray-300">
-                          Los Santos County Sheriff's Office
+                          Los Santos County Sheriff&apos;s Office
                         </p>
                       </Link>
                     </NavigationMenuLink>

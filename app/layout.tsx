@@ -6,7 +6,6 @@ import "./globals.css";
 import { MainNavigation } from "@/components/main-navigation";
 import { DynamicBackground } from "@/components/dynamic-background";
 import { MainWrapper } from "@/components/main-wrapper";
-import { AppSidebar } from "@/components/app-sidebar";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
