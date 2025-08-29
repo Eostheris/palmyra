@@ -191,6 +191,17 @@ export interface Character {
   };
 }
 
+// Raw database character interface (before JSON parsing)
+interface RawCharacter {
+  citizenid: string;
+  charinfo: string;
+  money: string;
+  job: string;
+  gang: string;
+  metadata: string;
+  [key: string]: unknown;
+}
+
 // Function to get all characters for a user
 export async function getCharactersByUserId(userId: number): Promise<Character[]> {
   try {
@@ -216,14 +227,14 @@ export async function getCharactersByUserId(userId: number): Promise<Character[]
       [license, license2]
     );
     
-    const characters = rows as Record<string, unknown>[];
-    return characters.map(character => ({
-      citizenid: character.citizenid as string,
-      charinfo: typeof character.charinfo === 'string' ? JSON.parse(character.charinfo as string) : character.charinfo,
-      money: typeof character.money === 'string' ? JSON.parse(character.money as string) : character.money,
-      job: typeof character.job === 'string' ? JSON.parse(character.job as string) : character.job,
-      gang: typeof character.gang === 'string' ? JSON.parse(character.gang as string) : character.gang,
-      metadata: typeof character.metadata === 'string' ? JSON.parse(character.metadata as string) : character.metadata,
+    const characters = rows as RawCharacter[];
+    return characters.map((character: RawCharacter) => ({
+      citizenid: character.citizenid,
+      charinfo: typeof character.charinfo === 'string' ? JSON.parse(character.charinfo) : character.charinfo,
+      money: typeof character.money === 'string' ? JSON.parse(character.money) : character.money,
+      job: typeof character.job === 'string' ? JSON.parse(character.job) : character.job,
+      gang: typeof character.gang === 'string' ? JSON.parse(character.gang) : character.gang,
+      metadata: typeof character.metadata === 'string' ? JSON.parse(character.metadata) : character.metadata,
     }));
   } catch (error) {
     console.error('Database error:', error);

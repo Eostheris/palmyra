@@ -17,7 +17,7 @@ interface FiveMAuthButtonProps {
   onSuccess?: (userData: FiveMUser) => void;
 }
 
-export default function FiveMAuthButton({ onSuccess: _ }: FiveMAuthButtonProps) {
+export default function FiveMAuthButton({}: FiveMAuthButtonProps) {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleFiveMConnect = async () => {

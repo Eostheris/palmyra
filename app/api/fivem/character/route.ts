@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { query } from '@/lib/database'
+import { getUserByDiscordId } from '@/lib/database'
 
 export async function GET(request: NextRequest) {
   try {
@@ -10,25 +10,20 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: 'Discord ID is required' }, { status: 400 })
     }
 
-    // Query the users table for the Discord ID
-    const results = await query(
-      'SELECT userId, username, license, license2, fivem, discord FROM users WHERE discord = ?',
-      [discordId]
-    )
+    // Get user by Discord ID using the typed function
+    const user = await getUserByDiscordId(discordId)
 
-    if (results.length === 0) {
+    if (!user) {
       return NextResponse.json({ character: null }, { status: 200 })
     }
-
-    const character = results[0]
     
     return NextResponse.json({ 
       character: {
-        userId: character.userId,
-        username: character.username,
-        license: character.license,
-        fivem: character.fivem,
-        discord: character.discord
+        userId: user.userId,
+        username: user.username,
+        license: user.license,
+        fivem: user.fivem,
+        discord: user.discord
       }
     })
 
