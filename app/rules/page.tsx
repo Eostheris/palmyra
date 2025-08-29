@@ -144,19 +144,15 @@ const rules = [
 export default function RulesPage() {
   return (
     <div className="min-h-screen w-full text-white relative">
-      <div 
-        className="fixed inset-0 w-full h-full bg-cover bg-center bg-no-repeat -z-10 opacity-70"
-        style={{ backgroundImage: 'url(/palmyrawide.png)' }}
-      />
-      <div className="flex flex-col items-center py-24 px-4 relative z-10">
-        <h1 className="text-5xl font-bold mb-10 text-center drop-shadow-lg">Palmyra Server Rules</h1>
-        <div className="w-full max-w-4xl flex flex-col gap-8">
+      <div className="flex flex-col items-center py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 relative z-10">
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-8 lg:mb-10 text-center drop-shadow-lg">Palmyra Server Rules</h1>
+        <div className="w-full max-w-5xl flex flex-col gap-6 lg:gap-8">
           {rules.map((section, idx) => (
-            <Card key={idx} className="bg-neutral-900/90 p-6 rounded-xl shadow-lg">
-              <h2 className="text-2xl font-semibold mb-4">{section.title}</h2>
-              <ul className="list-disc ml-6 space-y-2">
+            <Card key={idx} className="bg-neutral-900/90 p-4 sm:p-6 rounded-xl shadow-lg">
+              <h2 className="text-xl sm:text-2xl font-semibold mb-3 sm:mb-4">{section.title}</h2>
+              <ul className="list-disc ml-4 sm:ml-6 space-y-2 sm:space-y-3">
                 {section.items.map((item, i) => (
-                  <li key={i} className="text-base leading-relaxed">{item}</li>
+                  <li key={i} className="text-sm sm:text-base leading-relaxed">{item}</li>
                 ))}
               </ul>
             </Card>

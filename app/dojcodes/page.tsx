@@ -66,7 +66,7 @@ export default function DOJCodesPage() {
 
   return (
     <div className="min-h-screen w-full relative" style={{ background: 'linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url(/palmyrawide.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }}>
-      <div className="flex flex-col w-full px-6 py-8 relative z-10">
+      <div className="flex flex-col w-full px-6 pt-24 pb-8 relative z-10">
         {/* Header Section */}
         <div className="max-w-7xl mx-auto w-full mb-8">
           <h1 className="text-6xl font-bold mb-6 text-center drop-shadow-xl text-white">DOJ Penal Codes</h1>
