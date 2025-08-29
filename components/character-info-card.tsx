@@ -17,6 +17,7 @@ import {
   Fuel,
   Calendar
 } from 'lucide-react'
+import { getVehicleDisplayName, getVehicleCategory } from '@/lib/vehicle-lookup'
 
 interface Vehicle {
   id: number
@@ -232,12 +233,6 @@ export default function CharacterInfoCard({ discordId, selectedCharacterId, onCh
     } finally {
       setVehiclesLoading(false)
     }
-  }
-
-  // Helper function to get vehicle display name from hash
-  const getVehicleDisplayName = (vehicle: string) => {
-    // Convert vehicle model name to a more readable format
-    return vehicle.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())
   }
 
   // Helper function to get garage status
@@ -499,17 +494,23 @@ export default function CharacterInfoCard({ discordId, selectedCharacterId, onCh
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                   {vehicles.map((vehicle) => {
                     const statusInfo = getGarageStatus(vehicle.state)
+                    const vehicleDisplayName = getVehicleDisplayName(vehicle.vehicle)
+                    const vehicleCategory = getVehicleCategory(vehicle.vehicle)
+                    
                     return (
                       <Card key={vehicle.id} className="bg-neutral-900/50 border-neutral-700 hover:border-neutral-600 transition-colors">
                         <CardContent className="p-6">
                           <div className="space-y-4">
                             {/* Vehicle Header */}
                             <div className="flex items-start justify-between">
-                              <div className="flex items-center gap-2">
-                                <Car className="w-5 h-5 text-[#EA9449]" />
-                                <h4 className="text-white font-bold text-lg">
-                                  {getVehicleDisplayName(vehicle.vehicle)}
-                                </h4>
+                              <div>
+                                <div className="flex items-center gap-2 mb-1">
+                                  <Car className="w-5 h-5 text-[#EA9449]" />
+                                  <h4 className="text-white font-bold text-lg">
+                                    {vehicleDisplayName}
+                                  </h4>
+                                </div>
+                                <p className="text-neutral-400 text-sm">{vehicleCategory}</p>
                               </div>
                               <Badge className={`${statusInfo.color} font-semibold`}>
                                 {statusInfo.label}
