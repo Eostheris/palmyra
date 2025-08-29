@@ -238,10 +238,10 @@ export default function CharacterInfoCard({ discordId, selectedCharacterId, onCh
   // Helper function to get garage status
   const getGarageStatus = (state: number) => {
     switch (state) {
-      case 0: return { label: 'Garage', color: 'bg-green-600/20 text-green-400 border-green-600/40' }
-      case 1: return { label: 'Out', color: 'bg-blue-600/20 text-blue-400 border-blue-600/40' }
+      case 0: return { label: 'Out', color: 'bg-blue-600/20 text-blue-400 border-blue-600/40' }
+      case 1: return { label: 'Garage', color: 'bg-green-600/20 text-green-400 border-green-600/40' }
       case 2: return { label: 'Impound', color: 'bg-red-600/20 text-red-400 border-red-600/40' }
-      case 3: return { label: 'Scrapped', color: 'bg-gray-600/20 text-gray-400 border-gray-600/40' }
+      case 3: return { label: 'Seized', color: 'bg-gray-600/20 text-gray-400 border-gray-600/40' }
       default: return { label: 'Unknown', color: 'bg-gray-600/20 text-gray-400 border-gray-600/40' }
     }
   }
