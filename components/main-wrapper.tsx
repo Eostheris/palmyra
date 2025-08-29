@@ -1,9 +1,10 @@
 'use client';
 
+import { Suspense } from 'react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { AppSidebar } from './app-sidebar';
 
-export function MainWrapper({ children }: { children: React.ReactNode }) {
+function MainWrapperContent({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -36,5 +37,17 @@ export function MainWrapper({ children }: { children: React.ReactNode }) {
     <main className="pt-[88px]">
       {children}
     </main>
+  );
+}
+
+export function MainWrapper({ children }: { children: React.ReactNode }) {
+  return (
+    <Suspense fallback={
+      <main className="pt-[88px]">
+        {children}
+      </main>
+    }>
+      <MainWrapperContent>{children}</MainWrapperContent>
+    </Suspense>
   );
 }
