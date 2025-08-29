@@ -15,7 +15,7 @@ const departments = [
   {
     name: "Los Santos County Sheriff's Office",
     shortName: "LSCSO", 
-    image: "/lscso_badge.png",
+    image: "/lsco_badge2.png",
     description: "County-wide law enforcement protecting the greater Los Santos area. Serve with pride in the Sheriff's Office.",
     link: "/lscso",
     status: "Recruiting"

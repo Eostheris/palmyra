@@ -105,6 +105,41 @@ export async function updateUserLastSeen(discordId: string): Promise<void> {
   }
 }
 
+// Vehicle interface for the player_vehicles table
+export interface Vehicle {
+  id: number;
+  license: string;
+  citizenid: string;
+  vehicle: string;
+  hash: string;
+  mods: string;
+  plate: string;
+  fakeplate: string | null;
+  garage: string;
+  fuel: number;
+  engine: number;
+  body: number;
+  state: number;
+  depotprice: number;
+  drivingdistance: number | null;
+  status: string;
+  glovebox: string | null;
+  trunk: string | null;
+  nosColour: string | null;
+  traveldistance: number;
+  noslevel: number;
+  hasnitro: number;
+  evidence: string | null;
+  financed: number;
+  finance_data: string | null;
+  vinscratch: number;
+  parking: string | null;
+  balance: number;
+  paymentamount: number;
+  paymentsleft: number;
+  financetime: number;
+}
+
 // Character interface for the players table
 export interface Character {
   citizenid: string;
@@ -239,5 +274,24 @@ export async function getCharactersByUserId(userId: number): Promise<Character[]
   } catch (error) {
     console.error('Database error:', error);
     throw new Error('Failed to fetch characters from database');
+  }
+}
+
+// Function to get all vehicles for a character
+export async function getVehiclesByCharacterId(citizenId: string): Promise<Vehicle[]> {
+  try {
+    const pool = getPool();
+    
+    // Get all vehicles for this character from the player_vehicles table
+    const [rows] = await pool.execute(
+      'SELECT * FROM player_vehicles WHERE citizenid = ? ORDER BY id DESC',
+      [citizenId]
+    );
+    
+    const vehicles = rows as Vehicle[];
+    return vehicles;
+  } catch (error) {
+    console.error('Database error:', error);
+    throw new Error('Failed to fetch vehicles from database');
   }
 }
