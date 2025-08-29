@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import CharacterInfoCard from '@/components/character-info-card'
 import DiscordLoginButton from '@/components/discord-login-button'
+import ErrorBoundary from '@/components/error-boundary'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 
 interface DiscordUser {
@@ -78,7 +79,9 @@ export default function ProfilePage() {
           </div>
         ) : (
           <div className="grid gap-6 md:grid-cols-2">
-            <CharacterInfoCard discordId={user.id} />
+            <ErrorBoundary>
+              <CharacterInfoCard discordId={user.id} />
+            </ErrorBoundary>
             
             <Card className="bg-gray-800/50 border-gray-700">
               <CardHeader>

@@ -115,11 +115,13 @@ export default function CharacterInfoCard({ discordId }: CharacterInfoCardProps)
     const fetchCharacterData = async () => {
       try {
         setLoading(true)
+        setError(null)
         
         // First get the user data from Discord ID
         const userResponse = await fetch(`/api/fivem/user?discordId=${discordId}`)
         if (!userResponse.ok) {
-          throw new Error('User not found in FiveM database')
+          const errorData = await userResponse.json().catch(() => ({}))
+          throw new Error(errorData.error || 'User not found in FiveM database')
         }
         
         const userData = await userResponse.json()
@@ -127,10 +129,17 @@ export default function CharacterInfoCard({ discordId }: CharacterInfoCardProps)
         // Then get all characters for this user
         const charactersResponse = await fetch(`/api/fivem/characters?userId=${userData.userId}`)
         if (!charactersResponse.ok) {
-          throw new Error('Failed to fetch characters')
+          const errorData = await charactersResponse.json().catch(() => ({}))
+          throw new Error(errorData.error || 'Failed to fetch characters')
         }
         
         const charactersData = await charactersResponse.json()
+        
+        // Validate character data structure
+        if (!Array.isArray(charactersData)) {
+          throw new Error('Invalid characters data received')
+        }
+        
         setCharacters(charactersData)
         
         // Select first character by default
@@ -139,7 +148,8 @@ export default function CharacterInfoCard({ discordId }: CharacterInfoCardProps)
         }
         
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'Unknown error')
+        console.error('Character data fetch error:', err)
+        setError(err instanceof Error ? err.message : 'Unknown error occurred')
       } finally {
         setLoading(false)
       }
