@@ -1,32 +1,45 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { createClient } from '@/lib/supabase/client'
+import Image from 'next/image'
 import CharacterInfoCard from '@/components/character-info-card'
 import DiscordLoginButton from '@/components/discord-login-button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 
+interface DiscordUser {
+  id: string;
+  username: string;
+  discriminator: string;
+  avatar: string;
+}
+
 export default function ProfilePage() {
-  const [user, setUser] = useState<any>(null)
+  const [user, setUser] = useState<DiscordUser | null>(null)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    const supabase = createClient()
+    // Check URL params for Discord user data
+    const urlParams = new URLSearchParams(window.location.search)
+    const discordUserParam = urlParams.get('discord_user')
     
-    const getUser = async () => {
-      const { data: { user } } = await supabase.auth.getUser()
-      setUser(user)
-      setLoading(false)
+    if (discordUserParam) {
+      try {
+        const discordUser = JSON.parse(decodeURIComponent(discordUserParam))
+        setUser(discordUser)
+        // Store in localStorage for persistence
+        localStorage.setItem('discord_user', JSON.stringify(discordUser))
+      } catch (error) {
+        console.error('Error parsing Discord user data:', error)
+      }
+    } else {
+      // Check localStorage for existing user
+      const savedUser = localStorage.getItem('discord_user')
+      if (savedUser) {
+        setUser(JSON.parse(savedUser))
+      }
     }
-
-    getUser()
-
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
-      setUser(session?.user || null)
-      setLoading(false)
-    })
-
-    return () => subscription.unsubscribe()
+    
+    setLoading(false)
   }, [])
 
   if (loading) {
@@ -65,7 +78,7 @@ export default function ProfilePage() {
           </div>
         ) : (
           <div className="grid gap-6 md:grid-cols-2">
-            <CharacterInfoCard />
+            <CharacterInfoCard discordId={user.id} />
             
             <Card className="bg-gray-800/50 border-gray-700">
               <CardHeader>
@@ -75,30 +88,22 @@ export default function ProfilePage() {
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div>
-                  <label className="text-sm font-medium text-gray-400">Display Name</label>
-                  <p className="text-white">{user.user_metadata?.full_name || 'N/A'}</p>
-                </div>
-                
-                <div>
-                  <label className="text-sm font-medium text-gray-400">Username</label>
-                  <p className="text-white">{user.user_metadata?.preferred_username || 'N/A'}</p>
-                </div>
-                
-                <div>
-                  <label className="text-sm font-medium text-gray-400">Discord ID</label>
-                  <p className="text-sm text-gray-300 font-mono">{user.user_metadata?.provider_id || 'N/A'}</p>
-                </div>
-                
-                <div>
-                  <label className="text-sm font-medium text-gray-400">Email</label>
-                  <p className="text-white">{user.email || 'N/A'}</p>
-                </div>
-                
-                <div className="pt-4 border-t border-gray-600">
-                  <p className="text-xs text-gray-500">
-                    Connected since: {new Date(user.created_at).toLocaleDateString()}
-                  </p>
+                <div className="flex items-center space-x-4 mb-4">
+                  {user.avatar && (
+                    <Image
+                      src={`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`}
+                      alt="Discord Avatar"
+                      width={64}
+                      height={64}
+                      className="w-16 h-16 rounded-full"
+                    />
+                  )}
+                  <div>
+                    <h3 className="text-xl font-semibold text-white">
+                      {user.username}#{user.discriminator}
+                    </h3>
+                    <p className="text-gray-300">Discord ID: {user.id}</p>
+                  </div>
                 </div>
               </CardContent>
             </Card>

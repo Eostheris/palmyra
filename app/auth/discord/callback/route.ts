@@ -53,12 +53,15 @@ export async function GET(request: NextRequest) {
 
     const discordUser = await userResponse.json()
 
+    // Format Discord ID to match database format: discord:123456789
+    const formattedDiscordId = `discord:${discordUser.id}`;
+
     // Store user info in a way that can be accessed by the client
-    // For now, we'll redirect with user data as URL params (not ideal for production)
+    // For now, we'll redirect with user data as URL params
     const userParam = encodeURIComponent(JSON.stringify({
-      id: discordUser.id,
+      id: formattedDiscordId,
       username: discordUser.username,
-      discriminator: discordUser.discriminator,
+      discriminator: discordUser.discriminator || '0000',
       avatar: discordUser.avatar
     }))
 

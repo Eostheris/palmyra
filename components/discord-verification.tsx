@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 import { createClient } from '@/lib/supabase/client';
 import { User } from '@supabase/supabase-js';
 
@@ -118,9 +119,11 @@ export function DiscordVerification({ user }: DiscordVerificationProps) {
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center">
             {discordProfile.avatar ? (
-              <img 
+              <Image 
                 src={`https://cdn.discordapp.com/avatars/${discordProfile.id}/${discordProfile.avatar}.png`}
                 alt={discordProfile.username}
+                width={40}
+                height={40}
                 className="w-10 h-10 rounded-full"
               />
             ) : (

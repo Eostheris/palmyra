@@ -3,60 +3,40 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
-import { createClient } from '@/lib/supabase/client';
 
-interface FiveMAuthButtonProps {
-  onSuccess?: (userData: any) => void;
+interface FiveMUser {
+  userId: number;
+  username: string;
+  license: string;
+  license2: string;
+  fivem: string;
+  discord: string;
 }
 
-export default function FiveMAuthButton({ onSuccess }: FiveMAuthButtonProps) {
-  const [isLoading, setIsLoading] = useState(false);
-  const supabase = createClient();
+interface FiveMAuthButtonProps {
+  onSuccess?: (userData: FiveMUser) => void;
+}
 
-  const handleFiveMAuth = async () => {
+export default function FiveMAuthButton({ onSuccess: _ }: FiveMAuthButtonProps) {
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleFiveMConnect = async () => {
     try {
       setIsLoading(true);
-
-      // First, check if user is authenticated with Discord
-      const { data: { user }, error: authError } = await supabase.auth.getUser();
       
-      if (authError || !user) {
-        toast.error('Please sign in with Discord first');
-        return;
-      }
-
-      // Get Discord user data
-      const discordId = user.user_metadata?.provider_id || user.user_metadata?.sub;
+      // Since this is just a "Connect to FiveM" button that opens the game,
+      // we'll just provide a link or instruction to connect
       
-      if (!discordId) {
-        toast.error('Unable to find your Discord ID. Please sign in again.');
-        return;
-      }
-
-      // Verify FiveM connection
-      const response = await fetch('/api/fivem/verify', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ discordId }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        toast.error(data.message || 'Unable to verify FiveM connection');
-        return;
-      }
-
-      toast.success(`Welcome back, ${data.user.username}!`);
-
-      if (onSuccess) {
-        onSuccess(data.user);
-      }
-
+      toast.success('Opening FiveM connection instructions...');
+      
+      // You can replace this with actual FiveM connection logic
+      // For now, we'll just show a message
+      setTimeout(() => {
+        toast.info('To connect to FiveM: Press F8 in game and type "connect 69.197.129.90:30120"');
+      }, 1000);
+      
     } catch (error) {
-      console.error('FiveM auth error:', error);
+      console.error('FiveM connection error:', error);
       toast.error('Failed to connect to FiveM server');
     } finally {
       setIsLoading(false);
@@ -64,24 +44,32 @@ export default function FiveMAuthButton({ onSuccess }: FiveMAuthButtonProps) {
   };
 
   return (
-    <Button
-      onClick={handleFiveMAuth}
-      disabled={isLoading}
-      className="bg-gradient-to-r from-[#EA9449] to-[#29C1B0] hover:from-[#EA9449]/90 hover:to-[#29C1B0]/90 text-white font-semibold"
-    >
-      {isLoading ? (
-        <div className="flex items-center">
-          <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2"></div>
-          Connecting...
-        </div>
-      ) : (
-        <div className="flex items-center">
-          <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"/>
-          </svg>
-          Connect to FiveM
-        </div>
-      )}
-    </Button>
+    <div className="space-y-4">
+      <Button 
+        onClick={handleFiveMConnect}
+        disabled={isLoading}
+        className="w-full bg-gradient-to-r from-[#EA9449] to-[#29C1B0] hover:from-[#EA9449]/90 hover:to-[#29C1B0]/90 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 shadow-lg"
+      >
+        {isLoading ? (
+          <div className="flex items-center gap-2">
+            <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+            Connecting...
+          </div>
+        ) : (
+          <div className="flex items-center gap-2">
+            🎮 Connect to FiveM Server
+          </div>
+        )}
+      </Button>
+      
+      <div className="text-center">
+        <p className="text-sm text-gray-600 dark:text-gray-400">
+          Server IP: 69.197.129.90:30120
+        </p>
+        <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
+          Make sure you have FiveM installed and running
+        </p>
+      </div>
+    </div>
   );
 }

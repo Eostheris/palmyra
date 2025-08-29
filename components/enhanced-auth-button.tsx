@@ -30,7 +30,7 @@ export async function EnhancedAuthButton() {
         
         <div className="pt-2 border-t border-white/10">
           <p className="text-white/80 text-sm">
-            🎮 Ready to join the action? Make sure you're verified above!
+            🎮 Ready to join the action? Make sure you&apos;re verified above!
           </p>
         </div>
       </div>

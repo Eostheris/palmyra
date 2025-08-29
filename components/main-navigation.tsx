@@ -5,7 +5,6 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import DiscordLoginButton from "./discord-login-button";
-import { Button } from "@/components/ui/button";
 
 export function MainNavigation() {
 

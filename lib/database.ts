@@ -43,11 +43,11 @@ export interface FiveMPlayer {
 }
 
 // Generic query function for custom SQL queries
-export async function query(sql: string, params: any[] = []): Promise<any[]> {
+export async function query(sql: string, params: unknown[] = []): Promise<unknown[]> {
   try {
     const pool = getPool();
     const [rows] = await pool.execute(sql, params);
-    return rows as any[];
+    return rows as unknown[];
   } catch (error) {
     console.error('Database query error:', error);
     throw new Error('Database query failed');
@@ -97,11 +97,136 @@ export async function getAllUsers(): Promise<FiveMUser[]> {
 // Function to update user's last login or other info
 export async function updateUserLastSeen(discordId: string): Promise<void> {
   try {
-    const pool = getPool();
     // Assuming you might want to add a last_login field later
     // For now, this is a placeholder for future functionality
     console.log(`User ${discordId} accessed the website`);
   } catch (error) {
     console.error('Error updating user last seen:', error);
+  }
+}
+
+// Character interface for the players table
+export interface Character {
+  citizenid: string;
+  charinfo: {
+    firstname: string;
+    lastname: string;
+    birthdate: string;
+    gender: string;
+    nationality: string;
+    phone: string;
+  };
+  money: {
+    bank: number;
+    cash: number;
+    crypto: number;
+  };
+  job: {
+    name: string;
+    label: string;
+    grade: {
+      name: string;
+      level: number;
+    };
+    onduty: boolean;
+  };
+  gang: {
+    name: string;
+    label: string;
+    grade: {
+      name: string;
+      level: number;
+    };
+  };
+  metadata: {
+    health: number;
+    armor: number;
+    hunger: number;
+    thirst: number;
+    stress: number;
+    isdead: boolean;
+    inlaststand: boolean;
+    ishandcuffed: boolean;
+    tracker: boolean;
+    injail: number;
+    jailitems: unknown[];
+    status: unknown[];
+    phone: unknown[];
+    fitbit: unknown[];
+    commandbinds: unknown[];
+    bloodtype: string;
+    dealerrep: number;
+    craftingrep: number;
+    attachmentcraftingrep: number;
+    currentapartment: string | null;
+    jobrep: {
+      tow: number;
+      trucker: number;
+      taxi: number;
+      hotdog: number;
+    };
+    callsign: string;
+    fingerprint: string;
+    walletid: string;
+    criminalrecord: {
+      hasRecord: boolean;
+      date: string | null;
+    };
+    licences: {
+      driver: boolean;
+      business: boolean;
+      weapon: boolean;
+    };
+    inside: {
+      house: string | null;
+      apartment: {
+        apartmentType: string | null;
+        apartmentId: number | null;
+      };
+    };
+    phonedata: {
+      SerialNumber: string;
+      InstalledApps: unknown[];
+    };
+  };
+}
+
+// Function to get all characters for a user
+export async function getCharactersByUserId(userId: number): Promise<Character[]> {
+  try {
+    const pool = getPool();
+    
+    // First get the user's license identifiers
+    const [userRows] = await pool.execute(
+      'SELECT license, license2 FROM users WHERE userId = ?',
+      [userId]
+    );
+    
+    const users = userRows as { license: string; license2: string }[];
+    if (users.length === 0) {
+      return [];
+    }
+    
+    const { license, license2 } = users[0];
+    
+    // Get all characters for this user from the players table
+    // QBCore typically stores characters with license2 as the primary identifier
+    const [rows] = await pool.execute(
+      'SELECT * FROM players WHERE license = ? OR license = ?',
+      [license, license2]
+    );
+    
+    const characters = rows as Record<string, unknown>[];
+    return characters.map(character => ({
+      citizenid: character.citizenid as string,
+      charinfo: typeof character.charinfo === 'string' ? JSON.parse(character.charinfo as string) : character.charinfo,
+      money: typeof character.money === 'string' ? JSON.parse(character.money as string) : character.money,
+      job: typeof character.job === 'string' ? JSON.parse(character.job as string) : character.job,
+      gang: typeof character.gang === 'string' ? JSON.parse(character.gang as string) : character.gang,
+      metadata: typeof character.metadata === 'string' ? JSON.parse(character.metadata as string) : character.metadata,
+    }));
+  } catch (error) {
+    console.error('Database error:', error);
+    throw new Error('Failed to fetch characters from database');
   }
 }
