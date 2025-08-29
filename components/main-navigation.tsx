@@ -5,8 +5,17 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import DiscordLoginButton from "./discord-login-button";
+import UserDashboard from "./user-dashboard";
+import { useState, useEffect } from "react";
 
 export function MainNavigation() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+  useEffect(() => {
+    // Check if user is logged in
+    const savedUser = localStorage.getItem('discord_user')
+    setIsLoggedIn(!!savedUser)
+  }, [])
 
   return (
     <header className="w-full fixed top-0 left-0 z-40 h-[88px] bg-black/70 backdrop-blur flex items-center justify-between px-4 sm:px-8 border-b border-neutral-800">
@@ -175,7 +184,7 @@ export function MainNavigation() {
       </div>
       
       <div className="flex items-center gap-4">
-        <DiscordLoginButton />
+        {isLoggedIn ? <UserDashboard /> : <DiscordLoginButton />}
         <a href="https://cfx.re/join/lgv9do" className="inline-flex items-center justify-center gap-3 whitespace-nowrap rounded-lg text-sm font-semibold ring-offset-background transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-gradient-to-r from-orange-500 to-orange-600 text-white hover:from-orange-600 hover:to-orange-700 shadow-lg hover:shadow-xl transform hover:scale-105 h-12 px-6">
           <Image src="/fivemlogo.png" alt="FiveM" width={24} height={24} className="brightness-0 invert" />
           Connect to Server
