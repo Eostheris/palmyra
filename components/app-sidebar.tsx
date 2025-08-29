@@ -1,7 +1,6 @@
 import { 
   HelpCircle, 
   Gamepad2, 
-  FileText, 
   Briefcase, 
   Building, 
   Users, 
@@ -9,9 +8,7 @@ import {
   Car,
   MapPin,
   Phone,
-  ChevronDown,
-  BookOpen,
-  Settings
+  ChevronDown
 } from "lucide-react"
 
 import {
@@ -23,9 +20,6 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-  SidebarMenuSub,
-  SidebarMenuSubButton,
-  SidebarMenuSubItem,
 } from "@/components/ui/sidebar"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
 
@@ -77,7 +71,7 @@ export function AppSidebar({ activeCategory, onCategoryChange }: AppSidebarProps
           </SidebarGroupLabel>
         </SidebarGroup>
         
-        {menuGroups.map((group, groupIndex) => (
+        {menuGroups.map((group) => (
           <Collapsible key={group.title} defaultOpen className="group/collapsible">
             <SidebarGroup>
               <SidebarGroupLabel asChild>

@@ -2,11 +2,10 @@
 
 import { useState } from "react";
 import { Card } from "../../components/ui/card";
-import { Button } from "../../components/ui/button";
 import { Badge } from "../../components/ui/badge";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../../components/ui/accordion";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../components/ui/tabs";
-import { SidebarProvider, SidebarInset } from "../../components/ui/sidebar";
+import { SidebarProvider } from "../../components/ui/sidebar";
 import { AppSidebar } from "../../components/app-sidebar";
 
 const faqData = [
