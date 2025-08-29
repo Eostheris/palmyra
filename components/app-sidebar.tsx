@@ -10,18 +10,7 @@ import {
   Phone,
   ChevronDown
 } from "lucide-react"
-
-import {
-  Sidebar,
-  SidebarContent,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarGroupLabel,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-} from "@/components/ui/sidebar"
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
+import { useState } from "react"
 
 // Menu items grouped by category
 const menuGroups = [
@@ -62,51 +51,69 @@ interface AppSidebarProps {
 }
 
 export function AppSidebar({ activeCategory, onCategoryChange }: AppSidebarProps) {
+  const [openSections, setOpenSections] = useState<Set<string>>(
+    new Set(menuGroups.map(group => group.title)) // All sections open by default
+  );
+
+  const toggleSection = (sectionTitle: string) => {
+    const newOpenSections = new Set(openSections);
+    if (newOpenSections.has(sectionTitle)) {
+      newOpenSections.delete(sectionTitle);
+    } else {
+      newOpenSections.add(sectionTitle);
+    }
+    setOpenSections(newOpenSections);
+  };
+
   return (
-    <Sidebar className="border-r border-white/10 bg-transparent fixed top-20 left-0 h-[calc(100vh-5rem)] z-20">
-      <SidebarContent className="bg-transparent">
-        <SidebarGroup>
-          <SidebarGroupLabel className="text-white text-xl font-bold mb-4 px-2 bg-black/20 backdrop-blur-sm rounded-lg py-2">
-            Player Resources
-          </SidebarGroupLabel>
-        </SidebarGroup>
-        
-        {menuGroups.map((group) => (
-          <Collapsible key={group.title} defaultOpen className="group/collapsible">
-            <SidebarGroup>
-              <SidebarGroupLabel asChild>
-                <CollapsibleTrigger className="flex w-full items-center justify-between text-white/90 hover:text-white text-base font-semibold py-2 px-2 bg-black/20 backdrop-blur-sm rounded-lg mb-2">
-                  {group.title}
-                  <ChevronDown className="ml-auto h-4 w-4 transition-transform group-data-[state=open]/collapsible:rotate-180" />
-                </CollapsibleTrigger>
-              </SidebarGroupLabel>
-              <CollapsibleContent>
-                <SidebarGroupContent>
-                  <SidebarMenu>
-                    {group.items.map((item) => (
-                      <SidebarMenuItem key={item.title}>
-                        <SidebarMenuButton 
-                          asChild
-                          isActive={activeCategory === item.url.substring(1)}
-                          className="text-white/70 hover:text-white hover:bg-white/10 data-[active=true]:bg-transparent data-[active=true]:text-white py-3 rounded-md mx-1"
-                        >
-                          <button
-                            onClick={() => onCategoryChange?.(item.url.substring(1))}
-                            className="w-full flex items-center gap-3 px-3 py-2 text-left"
-                          >
-                            <item.icon size={18} />
-                            <span className="text-sm font-medium">{item.title}</span>
-                          </button>
-                        </SidebarMenuButton>
-                      </SidebarMenuItem>
-                    ))}
-                  </SidebarMenu>
-                </SidebarGroupContent>
-              </CollapsibleContent>
-            </SidebarGroup>
-          </Collapsible>
-        ))}
-      </SidebarContent>
-    </Sidebar>
+  <div className="border-r border-white/10 bg-black/60 shadow-lg backdrop-blur-md fixed" style={{top:'var(--header-h)', left:0, width:256, height:`calc(100vh - var(--header-h))`, zIndex:20, overflowY:'auto'}}>
+      <div className="bg-transparent p-4 space-y-6">
+        {/* Header */}
+        <div className="text-white text-xl font-bold mb-6 px-3 py-3 bg-black/30 backdrop-blur-sm rounded-lg border border-white/10">
+          Player Resources
+        </div>
+
+        {/* Menu Groups */}
+        {menuGroups.map((group) => {
+          const isOpen = openSections.has(group.title);
+          return (
+            <div key={group.title} className="space-y-2">
+              {/* Section Header */}
+              <button 
+                onClick={() => toggleSection(group.title)}
+                className="flex w-full items-center justify-between text-white/90 hover:text-white text-base font-semibold py-3 px-3 bg-black/20 backdrop-blur-sm rounded-lg transition-all duration-200 hover:bg-black/30 border border-white/5"
+              >
+                <span>{group.title}</span>
+                <ChevronDown 
+                  className={`h-4 w-4 transition-transform duration-200 ${
+                    isOpen ? 'rotate-180' : ''
+                  }`} 
+                />
+              </button>
+              
+              {/* Section Items */}
+              {isOpen && (
+                <div className="space-y-1 ml-2">
+                  {group.items.map((item) => (
+                    <button
+                      key={item.title}
+                      onClick={() => onCategoryChange?.(item.url.substring(1))}
+                      className={`w-full flex items-center gap-3 px-3 py-2.5 text-left rounded-md transition-all duration-200 ${
+                        activeCategory === item.url.substring(1) 
+                          ? 'bg-white/10 text-white border border-white/20' 
+                          : 'text-white/70 hover:text-white hover:bg-white/5 border border-transparent'
+                      }`}
+                    >
+                      <item.icon size={16} className="flex-shrink-0" />
+                      <span className="text-sm font-medium">{item.title}</span>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </div>
   )
 }

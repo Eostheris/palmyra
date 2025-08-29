@@ -1,12 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { Card } from "../../components/ui/card";
 import { Badge } from "../../components/ui/badge";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../../components/ui/accordion";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../components/ui/tabs";
-import { SidebarProvider } from "../../components/ui/sidebar";
-import { AppSidebar } from "../../components/app-sidebar";
 
 const faqData = [
   {
@@ -124,7 +123,8 @@ const controlsData = [
 ];
 
 export default function ResourcesPage() {
-  const [activeCategory, setActiveCategory] = useState("faq");
+  const searchParams = useSearchParams();
+  const activeCategory = searchParams.get('category') || 'faq';
 
   const renderContent = () => {
     switch (activeCategory) {
@@ -133,15 +133,15 @@ export default function ResourcesPage() {
           <div className="space-y-8">
             <div>
               <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
-              <p className="text-white/80 mb-8 text-lg leading-relaxed">Common questions about Palmyra RP and how to get started.</p>
+        <p className="text-white mb-8 text-lg leading-relaxed">Common questions about Palmyra RP and how to get started.</p>
             </div>
             <Accordion type="single" collapsible className="w-full space-y-4">
               {faqData.map((faq, index) => (
                 <AccordionItem key={index} value={`item-${index}`} className="border-white/20 border-2 rounded-lg px-4">
-                  <AccordionTrigger className="text-left hover:text-white/80 text-lg py-4 font-semibold">
+          <AccordionTrigger className="text-left text-white hover:text-white text-lg py-4 font-semibold">
                     {faq.question}
                   </AccordionTrigger>
-                  <AccordionContent className="text-white/80 text-base leading-relaxed pt-2 pb-6 px-2">
+          <AccordionContent className="text-white text-base leading-relaxed pt-2 pb-6 px-2">
                     {faq.answer}
                   </AccordionContent>
                 </AccordionItem>
@@ -155,7 +155,7 @@ export default function ResourcesPage() {
           <div className="space-y-8">
             <div>
               <h2 className="text-3xl font-bold mb-6">Controls & Keybinds</h2>
-              <p className="text-white/80 mb-8 text-lg leading-relaxed">Essential keybinds for navigating Palmyra RP.</p>
+              <p className="text-white mb-8 text-lg leading-relaxed">Essential keybinds for navigating Palmyra RP.</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
               {controlsData.map((category, index) => (
@@ -164,7 +164,7 @@ export default function ResourcesPage() {
                   <div className="space-y-3">
                     {category.binds.map((bind, bindIndex) => (
                       <div key={bindIndex} className="flex justify-between items-center py-2">
-                        <span className="text-white/80 text-lg">{bind.action}</span>
+                        <span className="text-white text-lg">{bind.action}</span>
                         <Badge variant="outline" className="font-mono text-base px-4 py-2 bg-neutral-700 border-white/20">{bind.key}</Badge>
                       </div>
                     ))}
@@ -297,32 +297,24 @@ export default function ResourcesPage() {
   };
 
   return (
-    <SidebarProvider defaultOpen={true}>
-      <div className="min-h-screen pt-20 pb-16 bg-transparent">
-        <AppSidebar 
-          activeCategory={activeCategory} 
-          onCategoryChange={setActiveCategory} 
-        />
-        <div className="ml-64 flex-1">
-          <div className="max-w-none mx-auto px-4 lg:px-8">
-            <div className="mb-8 text-center">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-white drop-shadow-lg">
-                Player Resources
-              </h1>
-              <p className="text-xl text-white/80 max-w-6xl mx-auto leading-relaxed">
-                Everything you need to know to succeed in Palmyra RP. Guides, tutorials, and essential information for players.
-              </p>
-            </div>
+    <div className="min-h-screen pb-16 bg-transparent">
+      <div className="max-w-none mx-auto px-4 lg:px-8 mt-8">
+        <div className="mb-8 text-center">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-white drop-shadow-lg">
+            Player Resources
+          </h1>
+          <p className="text-xl text-white/80 max-w-6xl mx-auto leading-relaxed">
+            Everything you need to know to succeed in Palmyra RP. Guides, tutorials, and essential information for players.
+          </p>
+        </div>
 
-            {/* Main Content */}
-            <div className="w-full">
-              <Card className="bg-neutral-900/90 backdrop-blur-md border border-white/10 p-6 lg:p-8 text-white">
-                {renderContent()}
-              </Card>
-            </div>
-          </div>
+        {/* Main Content */}
+        <div className="w-full">
+          <Card className="bg-neutral-900/90 backdrop-blur-md border border-white/10 p-6 lg:p-8 text-white">
+            {renderContent()}
+          </Card>
         </div>
       </div>
-    </SidebarProvider>
+    </div>
   );
 }

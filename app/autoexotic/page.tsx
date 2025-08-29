@@ -1,9 +1,12 @@
 import Image from "next/image";
+import { Car, Wrench, DollarSign, Shield, Clock, MapPin, Phone, Calendar, Star } from "lucide-react";
 
 export default function AutoExoticShell() {
   return (
     <div className="min-h-screen w-full flex items-center justify-center overflow-hidden relative px-4 py-8 sm:px-6 lg:px-8">
-      <Image src="/autoexoticcshall.png" alt="Auto Exotic" fill={true} className="object-cover absolute inset-0 -z-10 opacity-80" />
+  <Image src="/autoexoticcshall.png" alt="Auto Exotic" fill={true} className="object-cover absolute inset-0 -z-10 opacity-80" />
+  {/* Readability overlay */}
+  <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black/60 via-black/40 to-black/80" />
       <div className="relative z-10 w-full max-w-7xl mx-auto">
         <div className="bg-black/80 backdrop-blur-lg rounded-2xl p-6 sm:p-8 lg:p-12 shadow-2xl border border-white/10">
           {/* Mobile: Stack vertically, Desktop: Side by side */}
@@ -55,6 +58,75 @@ export default function AutoExoticShell() {
               </div>
             </div>
             
+          </div>
+        </div>
+
+        {/* Services */}
+        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+          {[{
+            title: "Vehicle Sales",
+            desc: "Top-tier sports and luxury imports.",
+            Icon: Car
+          }, {
+            title: "Custom Mods",
+            desc: "Performance, visuals, and tuning.",
+            Icon: Wrench
+          }, {
+            title: "Fair Pricing",
+            desc: "Honest deals and trade-ins.",
+            Icon: DollarSign
+          }, {
+            title: "Warranty Care",
+            desc: "We stand behind our work.",
+            Icon: Shield
+          }].map(({ title, desc, Icon }, i) => (
+            <div key={i} className="bg-neutral-900/80 border border-white/10 rounded-xl p-5 flex items-start gap-4">
+              <div className="p-3 rounded-lg bg-blue-500/20 border border-blue-400/30 text-blue-200">
+                <Icon className="w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-white flex items-center gap-2">
+                  {title}
+                </h3>
+                <p className="text-white/90 text-sm leading-relaxed">{desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Hours & Location */}
+        <div className="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6">
+          <div className="bg-neutral-900/80 border border-white/10 rounded-xl p-6">
+            <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2"><Clock className="w-5 h-5 text-blue-300" /> Hours</h3>
+            <ul className="text-white/90 space-y-2">
+              <li className="flex justify-between border-b border-white/10 pb-2"><span>Mon - Fri</span><span>5 PM – 11 PM</span></li>
+              <li className="flex justify-between border-b border-white/10 pb-2"><span>Saturday</span><span>3 PM – 12 AM</span></li>
+              <li className="flex justify-between"><span>Sunday</span><span>3 PM – 10 PM</span></li>
+            </ul>
+            <p className="text-xs text-white/60 mt-3">Times are server-time and may vary during events.</p>
+          </div>
+
+          <div className="bg-neutral-900/80 border border-white/10 rounded-xl p-6">
+            <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2"><MapPin className="w-5 h-5 text-blue-300" /> Location</h3>
+            <p className="text-white/90">Auto Exotic Showroom</p>
+            <p className="text-white/70">Morningwood Blvd, Los Santos</p>
+            <div className="mt-4 grid grid-cols-2 gap-3">
+              <a href="#" className="inline-flex items-center justify-center gap-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg py-2.5 font-medium transition-colors">
+                <Calendar className="w-4 h-4" /> Visit
+              </a>
+              <a href="https://tally.so/r/wMWLEg" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white rounded-lg py-2.5 font-medium transition-colors">
+                <Star className="w-4 h-4" /> Apply
+              </a>
+            </div>
+          </div>
+
+          <div className="bg-neutral-900/80 border border-white/10 rounded-xl p-6">
+            <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2"><Phone className="w-5 h-5 text-blue-300" /> Contact</h3>
+            <p className="text-white/90">Questions or fleet orders?</p>
+            <p className="text-white/70">Reach out to management on Discord.</p>
+            <a href="/resources?category=faq" className="mt-4 inline-flex items-center gap-2 text-blue-300 hover:text-blue-200 font-medium">
+              Learn more in Player Resources
+            </a>
           </div>
         </div>
       </div>

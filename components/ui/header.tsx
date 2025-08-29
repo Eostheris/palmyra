@@ -4,10 +4,10 @@ import Link from "next/link";
 
 export function Header() {
   return (
-    <header className="w-full fixed top-0 left-0 z-30 bg-black/70 backdrop-blur flex items-center justify-between px-8 py-4 border-b border-neutral-800">
+  <header className="w-full fixed top-0 left-0 z-40 h-[88px] bg-black/70 backdrop-blur flex items-center justify-between px-4 sm:px-8 border-b border-neutral-800">
       <div className="flex items-center gap-8">
-        <Link href="/" className="hover:opacity-80 transition-opacity">
-          <Image src="/palmyravector.png" alt="Palmyra RP" width={120} height={40} className="object-contain" />
+        <Link href="/" className="hover:opacity-80 transition-opacity flex items-center h-[56px]" aria-label="Palmyra RP">
+          <img src="/palmyravector.png" alt="Palmyra RP" className="object-contain" style={{width: '140px', height: '56px', maxWidth: '140px', maxHeight: '56px'}} />
         </Link>
         <nav className="flex gap-6">
           {/* City Services Dropdown */}

@@ -3,9 +3,10 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import "./globals.css";
-import { Header } from "@/components/ui/header";
+import { MainNavigation } from "@/components/main-navigation";
 import { DynamicBackground } from "@/components/dynamic-background";
 import { MainWrapper } from "@/components/main-wrapper";
+import { AppSidebar } from "@/components/app-sidebar";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -39,7 +40,7 @@ export default function RootLayout({
         >
           <div className="relative min-h-screen w-full">
             <DynamicBackground />
-            <Header />
+            <MainNavigation />
             <MainWrapper>
               {children}
             </MainWrapper>
