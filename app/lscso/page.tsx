@@ -11,7 +11,7 @@ export default function LSCSOPage() {
           {/* Left Side - Image and Badge */}
           <div className="flex flex-col items-center space-y-6">
             <div className="relative">
-              <Image src="/lscso_badge.png" alt="LSCSO" width={400} height={300} className="rounded-2xl object-contain bg-white/10 p-8 backdrop-blur-sm border border-white/20" />
+              <Image src="/lsco_badge2.png" alt="LSCSO" width={400} height={300} className="rounded-2xl object-contain bg-white/10 p-8 backdrop-blur-sm border border-white/20" />
               <Badge className="absolute -top-3 -right-3 bg-yellow-600 text-white text-sm px-3 py-1">NOW HIRING</Badge>
             </div>
           </div>

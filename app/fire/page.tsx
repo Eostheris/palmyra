@@ -20,7 +20,7 @@ export default function FirePage() {
           <Card className="bg-neutral-900/95 backdrop-blur-md p-12 rounded-2xl shadow-2xl border border-white/10">
             <div className="space-y-8">
               <div>
-                <h1 className="text-4xl font-bold mb-2 text-white">Palmyra Fire Department</h1>
+                <h1 className="text-4xl font-bold mb-2 text-white">San Andreas Fire Department</h1>
                 <p className="text-red-300 text-lg font-semibold">Courage, Honor, Dedication</p>
               </div>
               

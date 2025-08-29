@@ -68,15 +68,27 @@ export default function DOJCodesPage() {
     <div className="min-h-screen w-full relative" style={{ background: 'linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url(/palmyrawide.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }}>
       <div className="flex flex-col w-full px-6 pt-24 pb-8 relative z-10">
         {/* Header Section */}
-        <div className="max-w-7xl mx-auto w-full mb-8">
-          <h1 className="text-6xl font-bold mb-6 text-center drop-shadow-xl text-white">DOJ Penal Codes</h1>
-          <p className="text-xl text-center text-white/80 mb-8 max-w-3xl mx-auto">
-            Complete reference guide for Los Santos Department of Justice penal codes and statutes
-          </p>
+        <div className="max-w-7xl mx-auto w-full mb-12">
+          <div className="text-center space-y-6">
+            <div className="space-y-4">
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#EA9449] via-[#29C1B0] to-[#EA9449] drop-shadow-2xl">
+                DOJ Penal Codes
+              </h1>
+              <div className="w-32 h-1 bg-gradient-to-r from-[#EA9449] to-[#29C1B0] mx-auto rounded-full"></div>
+            </div>
+            <div className="bg-black/60 backdrop-blur-lg rounded-2xl p-6 sm:p-8 border border-[#29C1B0]/30 shadow-2xl max-w-4xl mx-auto">
+              <p className="text-xl sm:text-2xl text-white font-medium leading-relaxed">
+                Complete reference guide for Los Santos Department of Justice penal codes and statutes
+              </p>
+              <p className="text-lg text-[#29C1B0] mt-4 font-light">
+                Search, filter, and reference all criminal codes used by law enforcement
+              </p>
+            </div>
+          </div>
         </div>
 
         {/* Search and Filter Section */}
-        <div className="max-w-7xl mx-auto w-full mb-8">
+        <div className="max-w-full mx-auto w-full mb-8 px-4">
           <Card className="bg-neutral-900/95 backdrop-blur-md p-6 rounded-2xl shadow-2xl border border-white/10">
             <div className="flex flex-col md:flex-row gap-4">
               <div className="flex-1">
@@ -108,7 +120,7 @@ export default function DOJCodesPage() {
         </div>
 
         {/* Results Section */}
-        <div className="max-w-7xl mx-auto w-full">
+        <div className="max-w-full mx-auto w-full px-4">
           {filteredCategories.length === 0 ? (
             <Card className="bg-neutral-900/95 backdrop-blur-md p-12 rounded-2xl shadow-2xl border border-white/10 text-center">
               <h3 className="text-2xl font-bold text-white mb-4">No Results Found</h3>
@@ -127,17 +139,17 @@ export default function DOJCodesPage() {
                     {Object.entries(category.Statutes).map(([key, statute]: [string, Statute]) => (
                       <Card key={key} className="bg-neutral-900/90 backdrop-blur-sm p-6 rounded-xl shadow-xl border border-white/10 hover:bg-neutral-800/90 transition-all duration-300 hover:scale-105">
                         <div className="space-y-4">
-                          <div className="flex justify-between items-start">
-                            <div className="flex-1">
-                              <h3 className="text-lg font-bold text-white leading-tight">{statute.title}</h3>
-                              <p className="text-sm text-blue-300 font-mono mt-1">{statute.id}</p>
+                          <div className="flex flex-col items-center text-center">
+                            <div className="flex-1 w-full">
+                              <h3 className="text-lg font-bold text-white leading-tight text-center">{statute.title}</h3>
+                              <p className="text-sm text-blue-300 font-mono mt-1 text-center">{statute.id}</p>
                             </div>
-                            <Badge className={`${getClassColor(statute.class)} ml-2 text-xs font-bold`}>
+                            <Badge className={`${getClassColor(statute.class)} mt-2 text-xs font-bold`}>
                               {statute.class}
                             </Badge>
                           </div>
                           
-                          <p className="text-sm text-white/90 leading-relaxed line-clamp-4">
+                          <p className="text-sm text-white/90 leading-relaxed line-clamp-4 text-center">
                             {statute.description}
                           </p>
                           

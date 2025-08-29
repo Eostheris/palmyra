@@ -1,11 +1,14 @@
 'use client';
 
+import { Suspense } from 'react';
 import { usePathname } from 'next/navigation';
 
-export function DynamicBackground() {
+function DynamicBackgroundContent() {
   const pathname = usePathname();
   const palmyraPages = ["/", "/rules", "/penalcode", "/departments", "/lspd", "/lscso", "/ems", "/fire", "/resources", "/dojcodes"];
-  const isBusinessPage = pathname.startsWith("/autoexotic");
+  const isAutoExoticPage = pathname.startsWith("/autoexotic");
+  const isVanillaUnicornPage = pathname.startsWith("/vanilla-unicorn");
+  const isBusinessPage = isAutoExoticPage || isVanillaUnicornPage;
   const isPalmyraBg = palmyraPages.some((p) => pathname.startsWith(p));
 
   if (isPalmyraBg && !isBusinessPage) {
@@ -24,4 +27,12 @@ export function DynamicBackground() {
   }
 
   return null;
+}
+
+export function DynamicBackground() {
+  return (
+    <Suspense fallback={null}>
+      <DynamicBackgroundContent />
+    </Suspense>
+  );
 }

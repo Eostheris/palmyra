@@ -227,10 +227,23 @@ export default function RulesPage() {
       <div className="min-h-screen w-full text-white relative">
         <div className="ml-64 pl-6 flex flex-col items-center py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-10 relative z-10">
           <div className="w-full max-w-[90rem]">{/* wider container */}
-            <div className="text-center mb-8 lg:mb-10">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 drop-shadow-lg">Palmyra Server Rules</h1>
-            <p className="text-white/90 text-lg sm:text-xl max-w-4xl mx-auto">Please read carefully. These rules exist to keep roleplay fair and immersive for everyone. Violations may result in warnings, suspensions, or permanent removal.</p>
-            <p className="text-white/60 text-xs mt-2">Last updated: Aug 28, 2025</p>
+            <div className="text-center mb-12 lg:mb-16">
+              <div className="space-y-6">
+                <div className="space-y-4">
+                  <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#EA9449] via-[#29C1B0] to-[#EA9449] drop-shadow-2xl">
+                    Palmyra Server Rules
+                  </h1>
+                  <div className="w-32 h-1 bg-gradient-to-r from-[#EA9449] to-[#29C1B0] mx-auto rounded-full"></div>
+                </div>
+                <div className="bg-black/60 backdrop-blur-lg rounded-2xl p-6 sm:p-8 border border-[#29C1B0]/30 shadow-2xl max-w-4xl mx-auto">
+                  <p className="text-xl sm:text-2xl text-white font-medium leading-relaxed mb-4">
+                    Please read carefully. These rules exist to keep roleplay fair and immersive for everyone. Violations may result in warnings, suspensions, or permanent removal.
+                  </p>
+                  <p className="text-lg text-[#EA9449] font-light">
+                    Last updated: Aug 28, 2025
+                  </p>
+                </div>
+              </div>
             </div>
 
             {/* Content */}
@@ -242,12 +255,19 @@ export default function RulesPage() {
                   const Icon = iconFor(section.title);
                   return (
                     <Card key={idx} id={slug} className="bg-neutral-900/90 p-6 sm:p-8 rounded-xl shadow-lg border border-white/10" style={{scrollMarginTop:'var(--header-h)'}}>
-                      <div className="flex items-center justify-between mb-3 sm:mb-4">
-                        <div className="flex items-center gap-3">
-                          <span className="p-2 rounded-lg bg-blue-500/20 border border-blue-400/30 text-blue-200"><Icon className="w-5 h-5" /></span>
-                          <h2 className="text-2xl sm:text-3xl font-semibold">{section.title}</h2>
+                      <div className="flex items-center justify-between mb-6 sm:mb-8">
+                        <div className="flex items-center gap-4">
+                          <span className="p-3 rounded-xl bg-gradient-to-br from-[#EA9449]/20 to-[#29C1B0]/20 border border-[#29C1B0]/40 text-[#29C1B0] shadow-lg">
+                            <Icon className="w-6 h-6" />
+                          </span>
+                          <div className="flex flex-col">
+                            <h2 className="text-2xl sm:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#EA9449] to-[#29C1B0]">
+                              {section.title}
+                            </h2>
+                            <div className="w-16 h-0.5 bg-gradient-to-r from-[#EA9449] to-[#29C1B0] mt-1 rounded-full"></div>
+                          </div>
                         </div>
-                        <button onClick={() => copySectionLink(slug)} className="text-white/60 hover:text-white flex items-center gap-2 text-sm">
+                        <button onClick={() => copySectionLink(slug)} className="text-white/60 hover:text-[#29C1B0] flex items-center gap-2 text-sm transition-colors duration-200">
                           {copied === slug ? <Check className="w-4 h-4 text-green-400" /> : <LinkIcon className="w-4 h-4" />}
                           <span className="hidden sm:inline">{copied === slug ? "Copied" : "Copy link"}</span>
                         </button>
