@@ -73,10 +73,25 @@ export async function POST(req: NextRequest) {
       footer: { text: `Submitted via Palmyra RP ${dept.slug} form` },
     };
 
+    // Create a short name for the department/business
+    const shortNames: Record<string, string> = {
+      "lspd": "LSPD",
+      "lscso": "LSCSO", 
+      "ems": "EMS",
+      "fire": "FIRE",
+      "doj": "DOJ",
+      "autoexotic": "Auto Exotic",
+      "vanilla-unicorn": "Vanilla Unicorn"
+    };
+
+    const shortName = shortNames[dept.slug] || dept.slug.toUpperCase();
+    const characterName = answers.characterName || `User-${cleanDiscordId}`;
+    
     const payload = {
       content: `🆕 **New Application for ${dept.name}** from <@${cleanDiscordId}>`,
       embeds: [embed],
       allowed_mentions: { parse: ["users"] },
+      thread_name: `${characterName} - ${shortName}`,
     };
 
     console.log('Sending webhook payload:', JSON.stringify(payload, null, 2));

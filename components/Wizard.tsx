@@ -24,6 +24,63 @@ export default function Wizard({ dept, logoUrl }: Props) {
     fetchDiscordUser().then((u) => setDiscordId(u?.id ?? null));
   }, []);
 
+  // Department/Business specific styling
+  const getDepartmentStyling = (slug: string) => {
+    const styles = {
+      lspd: {
+        backgroundImage: "/lspdvectorizeai.png",
+        primaryColor: "#1E3A8A",
+        accentColor: "#60A5FA",
+        overlayColor: "rgba(30, 58, 138, 0.85)"
+      },
+      lscso: {
+        backgroundImage: "/lsco_badge2.png", 
+        primaryColor: "#059669",
+        accentColor: "#34D399",
+        overlayColor: "rgba(5, 150, 105, 0.85)"
+      },
+      ems: {
+        backgroundImage: "/SAFR.png",
+        primaryColor: "#DC2626",
+        accentColor: "#FCA5A5", 
+        overlayColor: "rgba(220, 38, 38, 0.85)"
+      },
+      fire: {
+        backgroundImage: "/SAFR.png",
+        primaryColor: "#B91C1C",
+        accentColor: "#FEF08A",
+        overlayColor: "rgba(185, 28, 28, 0.85)"
+      },
+      doj: {
+        backgroundImage: "/doj2.png",
+        primaryColor: "#7C2D12", 
+        accentColor: "#FED7AA",
+        overlayColor: "rgba(124, 45, 18, 0.85)"
+      },
+      autoexotic: {
+        backgroundImage: "/autoexoticcshall.png",
+        primaryColor: "#1E40AF",
+        accentColor: "#60A5FA",
+        overlayColor: "rgba(30, 64, 175, 0.85)"
+      },
+      "vanilla-unicorn": {
+        backgroundImage: "/unicornclubload.png",
+        primaryColor: "#EC4899",
+        accentColor: "#F472B6", 
+        overlayColor: "rgba(236, 72, 153, 0.85)"
+      }
+    };
+    
+    return styles[slug as keyof typeof styles] || {
+      backgroundImage: "/palmyrawide.png",
+      primaryColor: "#1E3A8A",
+      accentColor: "#60A5FA", 
+      overlayColor: "rgba(30, 58, 138, 0.85)"
+    };
+  };
+
+  const styling = getDepartmentStyling(dept.slug);
+
   const q = dept.questions[idx];
 
   const isValid = useMemo(() => {
@@ -70,36 +127,86 @@ export default function Wizard({ dept, logoUrl }: Props) {
     }
   }
 
-  // Theming
-  const style: React.CSSProperties = {
-    // background can be your site background; using gradient for demo
-    background: `linear-gradient(180deg, ${dept.theme.primary} 0%, ${dept.theme.accent} 100%)`,
-    color: dept.theme.foreground,
-  };
-
   if (success) {
     return (
-      <div className="flex min-h-[70vh] flex-col items-center justify-center gap-4 text-center" style={style}>
-        {logoUrl ? (
-          <Image src={logoUrl} alt="Logo" width={64} height={64} className="opacity-90" />
-        ) : null}
-        <h1 className="text-3xl font-bold">Application submitted successfully!</h1>
-        <p className="text-lg">Thanks for your interest. Your responses have been sent to the department for review.</p>
-        <p className="text-sm opacity-80">You should receive a response within 24-48 hours.</p>
+      <div 
+        className="min-h-screen relative flex flex-col items-center justify-center gap-6 text-center"
+        style={{
+          backgroundImage: `url('${styling.backgroundImage}')`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundAttachment: "fixed"
+        }}
+      >
+        {/* Background overlay with department colors */}
+        <div 
+          className="absolute inset-0 backdrop-blur-sm"
+          style={{ backgroundColor: styling.overlayColor }}
+        ></div>
+        
+        {/* Success content */}
+        <div className="relative z-10 max-w-2xl mx-auto p-8">
+          <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 shadow-2xl">
+            {logoUrl ? (
+              <Image src={logoUrl} alt="Logo" width={80} height={80} className="mx-auto mb-6 opacity-90" />
+            ) : null}
+            <h1 
+              className="text-4xl font-bold text-white mb-4 bg-clip-text text-transparent"
+              style={{ 
+                background: `linear-gradient(to right, ${styling.accentColor}, white)`
+              }}
+            >
+              Application Submitted Successfully!
+            </h1>
+            <p className="text-xl text-white/90 mb-4">
+              Thanks for your interest in joining {dept.name}. Your application has been sent for review.
+            </p>
+            <p className="text-white/70">
+              You should receive a response within 24-48 hours.
+            </p>
+            <div 
+              className="mt-6 p-4 rounded-xl border border-green-400/30"
+              style={{ backgroundColor: `${styling.primaryColor}40` }}
+            >
+              <p className="text-green-200 font-medium">✅ Application received and processed</p>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="flex min-h-[70vh] flex-col items-center justify-center px-4" style={style}>
-      <div className="w-full max-w-2xl rounded-3xl bg-white/10 p-6 backdrop-blur-md" style={{ color: dept.theme.foreground }}>
+    <div 
+      className="min-h-screen relative flex items-center justify-center px-4"
+      style={{
+        backgroundImage: `url('${styling.backgroundImage}')`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundAttachment: "fixed"
+      }}
+    >
+      {/* Background overlay with department colors */}
+      <div 
+        className="absolute inset-0 backdrop-blur-sm"
+        style={{ backgroundColor: styling.overlayColor }}
+      ></div>
+      
+      <div className="relative z-10 w-full max-w-2xl rounded-3xl bg-white/10 p-6 backdrop-blur-md border border-white/20" style={{ color: dept.theme.foreground }}>
         <div className="mb-6 flex items-center justify-between">
           <div className="flex items-center gap-3">
             {logoUrl ? (
               <Image src={logoUrl} alt="Logo" width={40} height={40} />
             ) : null}
             <div>
-              <h2 className="text-xl font-bold">{dept.name} Application</h2>
+              <h2 
+                className="text-xl font-bold bg-clip-text text-transparent"
+                style={{ 
+                  background: `linear-gradient(to right, ${styling.accentColor}, white)`
+                }}
+              >
+                {dept.name} Application
+              </h2>
               <p className="text-sm opacity-80">Question {idx + 1} of {dept.questions.length}</p>
             </div>
           </div>
@@ -107,7 +214,13 @@ export default function Wizard({ dept, logoUrl }: Props) {
         </div>
 
         {/* Question card */}
-        <div className="rounded-2xl bg-white/5 p-5">
+        <div 
+          className="rounded-2xl p-5 border"
+          style={{ 
+            backgroundColor: `${styling.primaryColor}20`,
+            borderColor: `${styling.accentColor}60`
+          }}
+        >
           <Question q={q} value={answers[q.id]} onChange={onChange} />
         </div>
 
