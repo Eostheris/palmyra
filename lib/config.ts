@@ -12,7 +12,7 @@ export const appConfig: AppConfig = {
       },
       target: {
         type: "webhook",
-        webhookUrl: process.env.LSPD_WEBHOOK_URL || "https://discord.com/api/webhooks/REPLACE_ME", 
+        webhookUrl: process.env.LSPD_WEBHOOK_URL || "https://discord.com/api/webhooks/1412868159244992532/osRNwmGMgYI6T79F7uEWLTraZz-Fz0O8C8JRLrZwJkqlpGHuWk35MqOuDqqDnf6dNtj8", 
       },
       questions: [
         {

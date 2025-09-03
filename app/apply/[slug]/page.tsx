@@ -3,11 +3,12 @@ import Wizard from "@/components/Wizard";
 import { appConfig } from "@/lib/config";
 
 interface Props {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
-export default function ApplyPage({ params }: Props) {
-  const dept = appConfig.departments.find((d) => d.slug === params.slug);
+export default async function ApplyPage({ params }: Props) {
+  const { slug } = await params;
+  const dept = appConfig.departments.find((d) => d.slug === slug);
   if (!dept) return notFound();
   
   return (
