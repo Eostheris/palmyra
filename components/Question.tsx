@@ -24,9 +24,15 @@ export default function Question({ q, value, onChange }: Props) {
     const loadCharacters = async () => {
       try {
         const discordUser = await fetchDiscordUser();
+        console.log('Discord user from localStorage:', discordUser);
+        
         if (discordUser?.id) {
+          console.log('Fetching characters for Discord ID:', discordUser.id);
           const userCharacters = await fetchUserCharacters(discordUser.id);
+          console.log('Received characters:', userCharacters);
           setCharacters(userCharacters);
+        } else {
+          console.error('No Discord user ID found');
         }
       } catch (error) {
         console.error('Error loading characters:', error);
