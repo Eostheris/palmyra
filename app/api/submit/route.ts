@@ -24,7 +24,11 @@ async function postToWebhook(url: string, payload: Record<string, unknown>) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
   });
-  if (!res.ok) throw new Error(`Webhook failed: ${res.status}`);
+  if (!res.ok) {
+    const errorText = await res.text();
+    console.error(`Webhook failed: ${res.status}`, errorText);
+    throw new Error(`Webhook failed: ${res.status} - ${errorText}`);
+  }
 }
 
 async function postToChannel(channelId: string, payload: Record<string, unknown>) {
@@ -50,6 +54,11 @@ export async function POST(req: NextRequest) {
     if (!slug || typeof slug !== "string") return NextResponse.json({ error: "Missing slug" }, { status: 400 });
     if (!discordId || typeof discordId !== "string") return NextResponse.json({ error: "Missing discordId" }, { status: 400 });
 
+    // Clean Discord ID - remove 'discord:' prefix if present for webhook mentions
+    const cleanDiscordId = discordId.replace(/^discord:/, '');
+    console.log('Original Discord ID:', discordId);
+    console.log('Cleaned Discord ID:', cleanDiscordId);
+
     const dept = findDept(slug);
     if (!dept) return NextResponse.json({ error: "Unknown department" }, { status: 404 });
 
@@ -57,7 +66,7 @@ export async function POST(req: NextRequest) {
 
     const embed = {
       title: `${dept.name} Application`,
-      description: `**Applicant:** <@${discordId}> (ID: ${discordId})`,
+      description: `**Applicant:** <@${cleanDiscordId}> (ID: ${cleanDiscordId})`,
       color: 0x2b2d31, // Discord embed color
       fields,
       timestamp: new Date().toISOString(),
@@ -65,10 +74,14 @@ export async function POST(req: NextRequest) {
     };
 
     const payload = {
-      content: `🆕 **New Application for ${dept.name}** from <@${discordId}>`,
+      content: `🆕 **New Application for ${dept.name}** from <@${cleanDiscordId}>`,
       embeds: [embed],
       allowed_mentions: { parse: ["users"] },
     };
+
+    console.log('Sending webhook payload:', JSON.stringify(payload, null, 2));
+
+    console.log('Sending webhook payload:', JSON.stringify(payload, null, 2));
 
     if (dept.target.type === "webhook") {
       await postToWebhook(dept.target.webhookUrl, payload);
