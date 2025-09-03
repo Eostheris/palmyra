@@ -150,7 +150,7 @@ export function MainNavigation() {
                         href="/bennys"
                         className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground hover:bg-neutral-800"
                       >
-                        <div className="text-sm font-medium leading-none text-white">Benny's Motor Works</div>
+                        <div className="text-sm font-medium leading-none text-white">Benny&apos;s Motor Works</div>
                         <p className="line-clamp-2 text-sm leading-snug text-muted-foreground text-gray-300">
                           Custom automotive garage
                         </p>

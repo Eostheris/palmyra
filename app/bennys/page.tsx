@@ -17,10 +17,10 @@ export default function BennysPage() {
             {/* Content Section */}
             <div className="flex-1 flex flex-col justify-center text-center lg:text-left">
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-4 lg:mb-6 text-white drop-shadow-xl">
-                Benny's Original Motor Works
+                Benny&apos;s Original Motor Works
               </h1>
               <p className="text-lg sm:text-xl mb-6 text-white drop-shadow-lg leading-relaxed">
-                Welcome to <span className="font-bold text-red-300">Benny's Original Motor Works</span>, Palmyra's premier custom garage.<br className="hidden sm:block" />
+                Welcome to <span className="font-bold text-red-300">Benny&apos;s Original Motor Works</span>, Palmyra&apos;s premier custom garage.<br className="hidden sm:block" />
                 We specialize in high-performance modifications, custom builds, and expert mechanical services!
               </p>
               
