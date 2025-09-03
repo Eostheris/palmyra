@@ -1,6 +1,7 @@
 import { Card } from "./ui/card";
 import { Button } from "./ui/button";
 import Image from "next/image";
+import Link from "next/link";
 
 interface DepartmentPageProps {
   title: string;
@@ -17,7 +18,7 @@ export default function DepartmentPage({
   imageSrc,
   imageAlt,
   buttonColor,
-  applyLink = "https://tally.so/r/wMWLEg"
+  applyLink = "/apply"
 }: DepartmentPageProps) {
   return (
     <div className="min-h-screen w-full text-white relative">
@@ -31,7 +32,7 @@ export default function DepartmentPage({
           <h1 className="text-3xl font-bold mb-4 text-center">{title}</h1>
           <p className="mb-6 text-lg text-center">{description}</p>
           <Button asChild className={`w-full ${buttonColor} text-white font-semibold`}>
-            <a href={applyLink} target="_blank" rel="noopener noreferrer">Apply Now</a>
+            <Link href={applyLink}>Apply Now</Link>
           </Button>
         </Card>
       </div>

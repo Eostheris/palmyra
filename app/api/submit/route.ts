@@ -18,7 +18,7 @@ function answersToFields(answers: Record<string, unknown>, dept: DepartmentConfi
   });
 }
 
-async function postToWebhook(url: string, payload: any) {
+async function postToWebhook(url: string, payload: Record<string, unknown>) {
   const res = await fetch(url, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -27,7 +27,7 @@ async function postToWebhook(url: string, payload: any) {
   if (!res.ok) throw new Error(`Webhook failed: ${res.status}`);
 }
 
-async function postToChannel(channelId: string, payload: any) {
+async function postToChannel(channelId: string, payload: Record<string, unknown>) {
   const token = process.env.DISCORD_BOT_TOKEN;
   if (!token) throw new Error("DISCORD_BOT_TOKEN is required for channel target");
   const res = await fetch(`https://discord.com/api/v10/channels/${channelId}/messages`, {
@@ -77,8 +77,9 @@ export async function POST(req: NextRequest) {
     }
 
     return NextResponse.json({ ok: true });
-  } catch (e: any) {
+  } catch (e: unknown) {
     console.error('Application submission error:', e);
-    return NextResponse.json({ error: e?.message || "Submit error" }, { status: 500 });
+    const errorMessage = e instanceof Error ? e.message : "Submit error";
+    return NextResponse.json({ error: errorMessage }, { status: 500 });
   }
 }

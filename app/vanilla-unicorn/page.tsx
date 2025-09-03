@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Sparkles, Clock, MapPin, Phone, Calendar, Star, Heart, Music } from "lucide-react";
 
 export default function VanillaUnicorn() {
@@ -71,11 +72,11 @@ export default function VanillaUnicorn() {
               </div>
 
               <div className="text-center">
-                <a href="https://tally.so/r/wMWLEg" target="_blank" rel="noopener noreferrer" className="inline-block">
+                <Link href="/apply/vanilla-unicorn" className="inline-block">
                   <button className="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-bold py-4 px-8 rounded-lg shadow-lg transition-all duration-200 transform hover:scale-105 text-lg">
                     Apply Now
                   </button>
-                </a>
+                </Link>
                 <p className="text-pink-200 mt-3 text-sm">
                   Competitive pay • Flexible schedules • Professional environment
                 </p>
@@ -146,9 +147,9 @@ export default function VanillaUnicorn() {
               <a href="#" className="inline-flex items-center justify-center gap-2 bg-pink-500 hover:bg-pink-600 text-white rounded-lg py-2.5 font-medium transition-colors">
                 <Calendar className="w-4 h-4" /> Visit Tonight
               </a>
-              <a href="https://tally.so/r/wMWLEg" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 bg-purple-500 hover:bg-purple-600 text-white rounded-lg py-2.5 font-medium transition-colors">
+              <Link href="/apply/vanilla-unicorn" className="inline-flex items-center justify-center gap-2 bg-purple-500 hover:bg-purple-600 text-white rounded-lg py-2.5 font-medium transition-colors">
                 <Star className="w-4 h-4" /> Apply for Job
-              </a>
+              </Link>
             </div>
           </div>
 

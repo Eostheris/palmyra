@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Car, Wrench, DollarSign, Shield, Clock, MapPin, Phone, Calendar, Star } from "lucide-react";
 
 export default function AutoExoticShell() {
@@ -29,11 +30,11 @@ export default function AutoExoticShell() {
                 </p>
               </div>
               
-              <a href="https://tally.so/r/wMWLEg" target="_blank" rel="noopener noreferrer" className="inline-block w-full">
+              <Link href="/apply/autoexotic" className="inline-block w-full">
                 <button className="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 sm:py-4 rounded-lg shadow-lg transition-colors text-base sm:text-lg">
                   Apply Now
                 </button>
-              </a>
+              </Link>
             </div>
             
             {/* Image and Owner Section */}
@@ -114,9 +115,9 @@ export default function AutoExoticShell() {
               <a href="#" className="inline-flex items-center justify-center gap-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg py-2.5 font-medium transition-colors">
                 <Calendar className="w-4 h-4" /> Visit
               </a>
-              <a href="https://tally.so/r/wMWLEg" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white rounded-lg py-2.5 font-medium transition-colors">
+              <Link href="/apply/autoexotic" className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white rounded-lg py-2.5 font-medium transition-colors">
                 <Star className="w-4 h-4" /> Apply
-              </a>
+              </Link>
             </div>
           </div>
 

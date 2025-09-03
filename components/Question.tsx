@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import type { Question } from "@/lib/types";
+import type { Question, ShortTextQuestion, LongTextQuestion, SelectQuestion, MultiSelectQuestion, NumberQuestion, DateQuestion } from "@/lib/types";
 
 interface Props {
   q: Question;
@@ -22,6 +22,7 @@ export default function Question({ q, value, onChange }: Props) {
   switch (q.type) {
     case "shortText": {
       const v = (value as string) ?? "";
+      const shortTextQ = q as ShortTextQuestion;
       return (
         <div>
           {commonLabel}
@@ -29,8 +30,8 @@ export default function Question({ q, value, onChange }: Props) {
           <input
             type="text"
             className="w-full rounded-xl border border-white/20 bg-white/10 px-4 py-3 text-base outline-none focus:border-white/40 focus:bg-white/20 transition-colors"
-            placeholder={(q as any).placeholder ?? ""}
-            maxLength={(q as any).maxLength}
+            placeholder={shortTextQ.placeholder ?? ""}
+            maxLength={shortTextQ.maxLength}
             value={v}
             onChange={(e) => onChange(e.target.value)}
           />
@@ -39,14 +40,15 @@ export default function Question({ q, value, onChange }: Props) {
     }
     case "longText": {
       const v = (value as string) ?? "";
+      const longTextQ = q as LongTextQuestion;
       return (
         <div>
           {commonLabel}
           {help}
           <textarea
             className="min-h-[140px] w-full rounded-xl border border-white/20 bg-white/10 px-4 py-3 text-base outline-none focus:border-white/40 focus:bg-white/20 transition-colors resize-none"
-            placeholder={(q as any).placeholder ?? ""}
-            maxLength={(q as any).maxLength}
+            placeholder={longTextQ.placeholder ?? ""}
+            maxLength={longTextQ.maxLength}
             value={v}
             onChange={(e) => onChange(e.target.value)}
           />
@@ -54,7 +56,8 @@ export default function Question({ q, value, onChange }: Props) {
       );
     }
     case "select": {
-      const opts = (q as any).options as string[];
+      const selectQ = q as SelectQuestion;
+      const opts = selectQ.options;
       const v = (value as string) ?? "";
       return (
         <div>
@@ -78,11 +81,12 @@ export default function Question({ q, value, onChange }: Props) {
       );
     }
     case "multiSelect": {
-      const opts = (q as any).options as string[];
+      const multiSelectQ = q as MultiSelectQuestion;
+      const opts = multiSelectQ.options;
       const v = (Array.isArray(value) ? (value as string[]) : []) ?? [];
       const toggle = (o: string) => {
         const next = v.includes(o) ? v.filter((x) => x !== o) : [...v, o];
-        const max = (q as any).maxChoices as number | undefined;
+        const max = multiSelectQ.maxChoices;
         if (max && next.length > max) return; // ignore over-select
         onChange(next);
       };
@@ -142,7 +146,8 @@ export default function Question({ q, value, onChange }: Props) {
     }
     case "number": {
       const v = typeof value === "number" ? (value as number) : (value ? Number(value) : "");
-      const { min, max, step } = q as any;
+      const numberQ = q as NumberQuestion;
+      const { min, max, step } = numberQ;
       return (
         <div>
           {commonLabel}
@@ -161,7 +166,8 @@ export default function Question({ q, value, onChange }: Props) {
     }
     case "date": {
       const v = (value as string) ?? "";
-      const { min, max } = q as any;
+      const dateQ = q as DateQuestion;
+      const { min, max } = dateQ;
       return (
         <div>
           {commonLabel}

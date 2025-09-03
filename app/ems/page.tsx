@@ -2,6 +2,7 @@ import { Card } from "../../components/ui/card";
 import { Button } from "../../components/ui/button";
 import Image from "next/image";
 import { Badge } from "../../components/ui/badge";
+import Link from "next/link";
 
 export default function EMSPage() {
   return (
@@ -53,9 +54,9 @@ export default function EMSPage() {
               
               <div className="pt-4">
                 <Button asChild className="w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-semibold text-base lg:text-lg py-4 lg:py-6 rounded-xl shadow-lg transform hover:scale-105 transition-all duration-200">
-                  <a href="https://tally.so/r/wMWLEg" target="_blank" rel="noopener noreferrer">
+                  <Link href="/apply/ems">
                     Join EMS Today
-                  </a>
+                  </Link>
                 </Button>
                 <p className="text-center text-white/60 text-xs sm:text-sm mt-3">
                   Answer the call to save lives

@@ -2,6 +2,7 @@ import { Card } from "../../components/ui/card";
 import Image from "next/image";
 import { Button } from "../../components/ui/button";
 import { Badge } from "../../components/ui/badge";
+import Link from "next/link";
 
 const departments = [
   {
@@ -116,7 +117,7 @@ export default function DepartmentsPage() {
               All departments are actively recruiting qualified candidates. Applications are reviewed regularly.
             </p>
             <Button asChild className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-semibold text-lg px-8 py-3">
-              <a href="/apply">Start Your Application</a>
+              <Link href="/apply">Start Your Application</Link>
             </Button>
           </Card>
         </div>

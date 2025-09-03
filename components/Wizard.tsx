@@ -62,8 +62,9 @@ export default function Wizard({ dept, logoUrl }: Props) {
         throw new Error(data?.error || `Submit failed (${res.status}).`);
       }
       setSuccess(true);
-    } catch (e: any) {
-      setError(e.message || "Unknown error.");
+    } catch (e: unknown) {
+      const errorMessage = e instanceof Error ? e.message : "Unknown error.";
+      setError(errorMessage);
     } finally {
       setSubmitting(false);
     }

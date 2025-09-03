@@ -2,6 +2,7 @@ import { Card } from "../../components/ui/card";
 import Image from "next/image";
 import { Button } from "../../components/ui/button";
 import { Badge } from "../../components/ui/badge";
+import Link from "next/link";
 
 export default function LSCSOPage() {
   return (
@@ -53,9 +54,9 @@ export default function LSCSOPage() {
               
               <div className="pt-4">
                 <Button asChild className="w-full bg-gradient-to-r from-yellow-600 to-yellow-700 hover:from-yellow-700 hover:to-yellow-800 text-white font-semibold text-lg py-6 rounded-xl shadow-lg transform hover:scale-105 transition-all duration-200">
-                  <a href="https://tally.so/r/wMWLEg" target="_blank" rel="noopener noreferrer">
+                  <Link href="/apply/lscso">
                     Join LSCSO Today
-                  </a>
+                  </Link>
                 </Button>
                 <p className="text-center text-white/60 text-sm mt-3">
                   Serving Los Santos County with pride

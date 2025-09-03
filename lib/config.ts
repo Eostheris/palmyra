@@ -271,5 +271,127 @@ export const appConfig: AppConfig = {
         },
       ],
     },
+    {
+      name: "Auto Exotic Dealership",
+      slug: "autoexotic",
+      theme: {
+        primary: "#1E40AF", // Blue
+        accent: "#60A5FA", // Light blue
+        foreground: "#FFFFFF",
+      },
+      target: {
+        type: "webhook",
+        webhookUrl: process.env.AUTOEXOTIC_WEBHOOK_URL || "https://discord.com/api/webhooks/REPLACE_ME",
+      },
+      questions: [
+        {
+          id: "legalName",
+          type: "shortText",
+          label: "Your legal name",
+          required: true,
+          placeholder: "John Doe",
+          maxLength: 80,
+        },
+        {
+          id: "age",
+          type: "number",
+          label: "Your age",
+          required: true,
+          min: 18,
+          max: 80,
+        },
+        {
+          id: "experience",
+          type: "longText",
+          label: "Describe your sales or automotive experience",
+          required: true,
+          maxLength: 1000,
+          placeholder: "Tell us about any experience you have in sales, automotive industry, or customer service...",
+        },
+        {
+          id: "preferredRole",
+          type: "select",
+          label: "Position of interest",
+          options: ["Sales Associate", "Finance Manager", "Lot Attendant", "Service Advisor"],
+          required: true,
+        },
+        {
+          id: "availability",
+          type: "multiSelect",
+          label: "When are you available to work?",
+          options: ["Weekdays", "Weekends", "Mornings", "Afternoons", "Evenings"],
+          required: true,
+          maxChoices: 3,
+        },
+        {
+          id: "whyJoin",
+          type: "longText",
+          label: "Why do you want to work at Auto Exotic?",
+          required: true,
+          maxLength: 500,
+        },
+      ],
+    },
+    {
+      name: "Vanilla Unicorn",
+      slug: "vanilla-unicorn",
+      theme: {
+        primary: "#EC4899", // Pink
+        accent: "#F472B6", // Light pink
+        foreground: "#FFFFFF",
+      },
+      target: {
+        type: "webhook",
+        webhookUrl: process.env.VANILLA_UNICORN_WEBHOOK_URL || "https://discord.com/api/webhooks/REPLACE_ME",
+      },
+      questions: [
+        {
+          id: "legalName",
+          type: "shortText",
+          label: "Your legal name",
+          required: true,
+          placeholder: "John Doe",
+          maxLength: 80,
+        },
+        {
+          id: "age",
+          type: "number",
+          label: "Your age",
+          required: true,
+          min: 18,
+          max: 80,
+        },
+        {
+          id: "experience",
+          type: "longText",
+          label: "Describe your hospitality or entertainment experience",
+          required: true,
+          maxLength: 1000,
+          placeholder: "Tell us about any experience you have in hospitality, entertainment, or customer service...",
+        },
+        {
+          id: "preferredRole",
+          type: "select",
+          label: "Position of interest",
+          options: ["Bartender", "Security", "DJ", "Dancer", "Host/Hostess", "Manager"],
+          required: true,
+        },
+        {
+          id: "availability",
+          type: "multiSelect",
+          label: "When are you available to work?",
+          options: ["Weekdays", "Weekends", "Evenings", "Late Night"],
+          required: true,
+          maxChoices: 3,
+        },
+        {
+          id: "whyJoin",
+          type: "longText",
+          label: "Why do you want to work at Vanilla Unicorn?",
+          required: true,
+          maxLength: 500,
+        },
+      ],
+    },
   ],
 };
