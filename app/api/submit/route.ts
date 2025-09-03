@@ -77,11 +77,11 @@ export async function POST(req: NextRequest) {
     const shortNames: Record<string, string> = {
       "lspd": "LSPD",
       "lscso": "LSCSO", 
-      "ems": "EMS",
-      "fire": "FIRE",
+      "safr": "SAFR",
       "doj": "DOJ",
       "autoexotic": "Auto Exotic",
-      "vanilla-unicorn": "Vanilla Unicorn"
+      "vanilla-unicorn": "Vanilla Unicorn",
+      "bennys": "Benny's"
     };
 
     const shortName = shortNames[dept.slug] || dept.slug.toUpperCase();

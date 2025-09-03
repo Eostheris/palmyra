@@ -76,7 +76,7 @@ export const appConfig: AppConfig = {
       },
       target: {
         type: "webhook",
-        webhookUrl: process.env.LSCSO_WEBHOOK_URL || "https://discord.com/api/webhooks/REPLACE_ME",
+        webhookUrl: process.env.LSCSO_WEBHOOK_URL || "https://discord.com/api/webhooks/1412891622756323398/VqpZdtlm5M361JOypaUitXKGgsM6s7it-wzPKWV3e1YOLE2xWb-aMOeEN7askryVbZOB",
       },
       questions: [
         {
@@ -117,66 +117,16 @@ export const appConfig: AppConfig = {
       ],
     },
     {
-      name: "Emergency Medical Services",
-      slug: "ems",
+      name: "San Andreas Fire & Rescue",
+      slug: "safr",
       theme: {
         primary: "#DC2626", // Red
-        accent: "#FCA5A5", // Light red
-        foreground: "#FFFFFF",
-      },
-      target: {
-        type: "webhook",
-        webhookUrl: process.env.EMS_WEBHOOK_URL || "https://discord.com/api/webhooks/REPLACE_ME",
-      },
-      questions: [
-        {
-          id: "characterName",
-          type: "characterSelect",
-          label: "Select your character",
-          required: true,
-          helpText: "Choose which character you are applying with",
-        },
-        {
-          id: "emtCert",
-          type: "select",
-          label: "Medical Certification Level",
-          options: ["EMT-B", "EMT-I", "Paramedic", "RN", "MD", "None"],
-          required: true,
-        },
-        {
-          id: "medicalExperience",
-          type: "longText",
-          label: "Describe your medical experience",
-          required: true,
-          maxLength: 1000,
-        },
-        {
-          id: "stressful",
-          type: "longText",
-          label: "How do you handle stressful medical situations?",
-          required: true,
-          maxLength: 500,
-        },
-        {
-          id: "why",
-          type: "longText",
-          label: "Why do you want to join EMS?",
-          required: true,
-          maxLength: 500,
-        },
-      ],
-    },
-    {
-      name: "Fire Department",
-      slug: "fire",
-      theme: {
-        primary: "#B91C1C", // Dark red
         accent: "#FEF08A", // Yellow
         foreground: "#FFFFFF",
       },
       target: {
         type: "webhook",
-        webhookUrl: process.env.FIRE_WEBHOOK_URL || "https://discord.com/api/webhooks/REPLACE_ME",
+        webhookUrl: process.env.SAFR_WEBHOOK_URL || "https://discord.com/api/webhooks/1412891761046589461/7GdKylmShZj7_T5jnJeSzURxSV5iOC4pXEMU8IQgxDJMmDRAprdrmsBaFSowJlQxrGmd",
       },
       questions: [
         {
@@ -189,37 +139,61 @@ export const appConfig: AppConfig = {
         {
           id: "age",
           type: "number",
-          label: "Age",
+          label: "Your age",
           required: true,
           min: 18,
           max: 65,
         },
         {
-          id: "certification",
+          id: "preferredRole",
           type: "select",
-          label: "Fire/Rescue Certification",
-          options: ["Firefighter I", "Firefighter II", "Fire Officer", "Rescue Technician", "None"],
+          label: "Primary area of interest",
+          options: ["Firefighter", "EMT/Paramedic", "Rescue Technician", "Fire/EMS Officer", "Both Fire & EMS"],
+          required: true,
+        },
+        {
+          id: "certifications",
+          type: "multiSelect",
+          label: "Current certifications (select all that apply)",
+          options: ["Firefighter I", "Firefighter II", "Fire Officer", "EMT-B", "EMT-I", "Paramedic", "RN", "MD", "Rescue Technician", "None"],
           required: true,
         },
         {
           id: "experience",
           type: "longText",
-          label: "Fire service or emergency response experience",
+          label: "Describe your fire service, EMS, or emergency response experience",
           required: true,
           maxLength: 1000,
+          placeholder: "Tell us about any experience you have in firefighting, emergency medical services, rescue operations, or related fields...",
         },
         {
           id: "physical",
           type: "yesNo",
-          label: "Are you physically able to perform demanding firefighting tasks?",
+          label: "Are you physically able to perform demanding firefighting and emergency medical tasks?",
+          required: true,
+        },
+        {
+          id: "stressHandling",
+          type: "longText",
+          label: "How do you handle high-stress emergency situations?",
+          required: true,
+          maxLength: 500,
+          placeholder: "Describe your approach to managing stress during critical incidents...",
+        },
+        {
+          id: "availability",
+          type: "multiSelect",
+          label: "When are you available for shifts?",
+          options: ["Morning (6AM-12PM)", "Afternoon (12PM-6PM)", "Evening (6PM-12AM)", "Night (12AM-6AM)"],
           required: true,
         },
         {
           id: "motivation",
           type: "longText",
-          label: "What motivates you to serve as a firefighter?",
+          label: "Why do you want to serve with San Andreas Fire & Rescue?",
           required: true,
           maxLength: 500,
+          placeholder: "What motivates you to serve the community in emergency services?",
         },
       ],
     },
@@ -233,7 +207,7 @@ export const appConfig: AppConfig = {
       },
       target: {
         type: "webhook",
-        webhookUrl: process.env.DOJ_WEBHOOK_URL || "https://discord.com/api/webhooks/REPLACE_ME",
+        webhookUrl: process.env.DOJ_WEBHOOK_URL || "https://discord.com/api/webhooks/1412893008327868458/JXHIM1spZ-PnQvtktlXyDIGnxSjTVQOn1umZR3ayWlMXRrEFTuNpH-KMAsl0S0U_F7Le",
       },
       questions: [
         {
@@ -283,7 +257,7 @@ export const appConfig: AppConfig = {
       },
       target: {
         type: "webhook",
-        webhookUrl: process.env.AUTOEXOTIC_WEBHOOK_URL || "https://discord.com/api/webhooks/REPLACE_ME",
+        webhookUrl: process.env.AUTOEXOTIC_WEBHOOK_URL || "https://discord.com/api/webhooks/1412891056277557471/EmVnsKXvezufPaIhF55Fcg5o4bqRGuDjYNy5_xG9iEijzwXeebAghfOMJAXmRyxFN_Ck",
       },
       questions: [
         {
@@ -343,7 +317,7 @@ export const appConfig: AppConfig = {
       },
       target: {
         type: "webhook",
-        webhookUrl: process.env.VANILLA_UNICORN_WEBHOOK_URL || "https://discord.com/api/webhooks/REPLACE_ME",
+        webhookUrl: process.env.VANILLA_UNICORN_WEBHOOK_URL || "https://discord.com/api/webhooks/1412892647349162014/SIk4vH_d-5C8VN6xXeBxAB_eOouq8zfRU1Ww1S4pHV9v1sntE91pZ9qopA2zNd1UBaI-",
       },
       questions: [
         {
@@ -390,6 +364,80 @@ export const appConfig: AppConfig = {
           label: "Why do you want to work at Vanilla Unicorn?",
           required: true,
           maxLength: 500,
+        },
+      ],
+    },
+    {
+      name: "Benny's Original Motor Works",
+      slug: "bennys",
+      theme: {
+        primary: "#DC2626", // Red
+        accent: "#FEF08A", // Yellow
+        foreground: "#FFFFFF",
+      },
+      target: {
+        type: "webhook",
+        webhookUrl: process.env.BENNYS_WEBHOOK_URL || "https://discord.com/api/webhooks/1412892835958755431/QGPwLLFmwBBh4UdkWOF-TH1qJphO3FDgF-ngHpEB_65Vou0hy5Afcyqk076swyY82oty",
+      },
+      questions: [
+        {
+          id: "characterName",
+          type: "characterSelect",
+          label: "Select your character",
+          required: true,
+          helpText: "Choose which character you are applying with",
+        },
+        {
+          id: "age",
+          type: "number",
+          label: "Your age",
+          required: true,
+          min: 18,
+          max: 65,
+        },
+        {
+          id: "position",
+          type: "select",
+          label: "What position are you applying for?",
+          options: ["Mechanic", "Tuner Specialist", "Parts Specialist", "Manager", "Salesperson"],
+          required: true,
+        },
+        {
+          id: "experience",
+          type: "longText",
+          label: "Describe your automotive experience",
+          required: true,
+          maxLength: 1000,
+          placeholder: "Tell us about your experience with cars, mechanics, tuning, or related fields...",
+        },
+        {
+          id: "specialty",
+          type: "multiSelect",
+          label: "What are your automotive specialties? (select all that apply)",
+          options: ["Engine Work", "Transmission", "Suspension", "Brakes", "Electrical", "Body Work", "Paint", "Tuning", "Performance Mods"],
+          required: true,
+          maxChoices: 5,
+        },
+        {
+          id: "tools",
+          type: "yesNo",
+          label: "Do you have your own tools?",
+          required: true,
+        },
+        {
+          id: "availability",
+          type: "multiSelect",
+          label: "When are you available to work?",
+          options: ["Morning (6AM-12PM)", "Afternoon (12PM-6PM)", "Evening (6PM-12AM)", "Night (12AM-6AM)"],
+          required: true,
+        },
+        {
+          id: "whyBennys",
+          type: "longText",
+          label: "Why do you want to work at Benny's?",
+          required: true,
+          maxLength: 500,
+          placeholder: "What attracts you to working at Benny's Original Motor Works?",
         },
       ],
     },

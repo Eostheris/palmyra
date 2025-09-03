@@ -5,10 +5,11 @@ import { usePathname } from 'next/navigation';
 
 function DynamicBackgroundContent() {
   const pathname = usePathname();
-  const palmyraPages = ["/", "/rules", "/penalcode", "/departments", "/lspd", "/lscso", "/ems", "/fire", "/resources", "/dojcodes"];
+  const palmyraPages = ["/", "/rules", "/penalcode", "/departments", "/lspd", "/lscso", "/safr", "/resources", "/dojcodes"];
   const isAutoExoticPage = pathname.startsWith("/autoexotic");
   const isVanillaUnicornPage = pathname.startsWith("/vanilla-unicorn");
-  const isBusinessPage = isAutoExoticPage || isVanillaUnicornPage;
+  const isBennysPage = pathname.startsWith("/bennys");
+  const isBusinessPage = isAutoExoticPage || isVanillaUnicornPage || isBennysPage;
   const isPalmyraBg = palmyraPages.some((p) => pathname.startsWith(p));
 
   if (isPalmyraBg && !isBusinessPage) {

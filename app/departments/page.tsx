@@ -30,19 +30,11 @@ const departments = [
     status: "Coming Soon"
   },
   {
-    name: "Emergency Medical Services",
-    shortName: "EMS",
+    name: "San Andreas Fire & Rescue",
+    shortName: "SAFR",
     image: "/SAFR.png",
-    description: "Life-saving medical professionals responding to emergencies across the city. Be the difference between life and death.",
-    link: "/ems",
-    status: "Recruiting"
-  },
-  {
-    name: "Los Santos Fire Department",
-    shortName: "LSFD",
-    image: "/SAFR.png",
-    description: "First responders handling fires, rescues, and emergency situations. Run towards danger to save lives.",
-    link: "/fire",
+    description: "Emergency response team handling fires, medical emergencies, rescues, and life-threatening situations. Be the difference between life and death.",
+    link: "/safr",
     status: "Recruiting"
   }
 ];

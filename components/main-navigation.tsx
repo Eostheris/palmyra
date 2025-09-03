@@ -88,25 +88,12 @@ export function MainNavigation() {
                   <li>
                     <NavigationMenuLink asChild>
                       <Link
-                        href="/ems"
+                        href="/safr"
                         className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground hover:bg-neutral-800"
                       >
-                        <div className="text-sm font-medium leading-none text-white">EMS</div>
+                        <div className="text-sm font-medium leading-none text-white">SAFR</div>
                         <p className="line-clamp-2 text-sm leading-snug text-muted-foreground text-gray-300">
-                          Emergency Medical Services
-                        </p>
-                      </Link>
-                    </NavigationMenuLink>
-                  </li>
-                  <li>
-                    <NavigationMenuLink asChild>
-                      <Link
-                        href="/fire"
-                        className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground hover:bg-neutral-800"
-                      >
-                        <div className="text-sm font-medium leading-none text-white">Fire</div>
-                        <p className="line-clamp-2 text-sm leading-snug text-muted-foreground text-gray-300">
-                          Fire Department
+                          San Andreas Fire & Rescue
                         </p>
                       </Link>
                     </NavigationMenuLink>
@@ -153,6 +140,19 @@ export function MainNavigation() {
                         <div className="text-sm font-medium leading-none text-white">Vanilla Unicorn</div>
                         <p className="line-clamp-2 text-sm leading-snug text-muted-foreground text-gray-300">
                           Adult entertainment venue
+                        </p>
+                      </Link>
+                    </NavigationMenuLink>
+                  </li>
+                  <li>
+                    <NavigationMenuLink asChild>
+                      <Link
+                        href="/bennys"
+                        className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground hover:bg-neutral-800"
+                      >
+                        <div className="text-sm font-medium leading-none text-white">Benny's Motor Works</div>
+                        <p className="line-clamp-2 text-sm leading-snug text-muted-foreground text-gray-300">
+                          Custom automotive garage
                         </p>
                       </Link>
                     </NavigationMenuLink>

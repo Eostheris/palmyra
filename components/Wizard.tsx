@@ -31,7 +31,7 @@ export default function Wizard({ dept, logoUrl }: Props) {
         backgroundImage: "/lspdvectorizeai.png",
         primaryColor: "#1E3A8A",
         accentColor: "#60A5FA",
-        overlayColor: "rgba(30, 58, 138, 0.85)"
+        overlayColor: "rgba(30, 58, 138, 0.65)"
       },
       lscso: {
         backgroundImage: "/lsco_badge2.png", 
@@ -39,17 +39,11 @@ export default function Wizard({ dept, logoUrl }: Props) {
         accentColor: "#34D399",
         overlayColor: "rgba(5, 150, 105, 0.85)"
       },
-      ems: {
+      safr: {
         backgroundImage: "/SAFR.png",
         primaryColor: "#DC2626",
-        accentColor: "#FCA5A5", 
-        overlayColor: "rgba(220, 38, 38, 0.85)"
-      },
-      fire: {
-        backgroundImage: "/SAFR.png",
-        primaryColor: "#B91C1C",
-        accentColor: "#FEF08A",
-        overlayColor: "rgba(185, 28, 28, 0.85)"
+        accentColor: "#FEF08A", 
+        overlayColor: "rgba(220, 38, 38, 0.75)"
       },
       doj: {
         backgroundImage: "/doj2.png",
@@ -65,9 +59,15 @@ export default function Wizard({ dept, logoUrl }: Props) {
       },
       "vanilla-unicorn": {
         backgroundImage: "/unicornclubload.png",
-        primaryColor: "#EC4899",
+        primaryColor: "#7C2D12",
         accentColor: "#F472B6", 
-        overlayColor: "rgba(236, 72, 153, 0.85)"
+        overlayColor: "rgba(124, 45, 18, 0.75)"
+      },
+      bennys: {
+        backgroundImage: "/bennys.png",
+        primaryColor: "#DC2626",
+        accentColor: "#FEF08A",
+        overlayColor: "rgba(220, 38, 38, 0.75)"
       }
     };
     
@@ -192,7 +192,7 @@ export default function Wizard({ dept, logoUrl }: Props) {
         style={{ backgroundColor: styling.overlayColor }}
       ></div>
       
-      <div className="relative z-10 w-full max-w-2xl rounded-3xl bg-white/10 p-6 backdrop-blur-md border border-white/20" style={{ color: dept.theme.foreground }}>
+      <div className="relative z-10 w-full max-w-2xl rounded-3xl bg-white/15 p-6 backdrop-blur-md border border-white/30 shadow-2xl" style={{ color: dept.theme.foreground }}>
         <div className="mb-6 flex items-center justify-between">
           <div className="flex items-center gap-3">
             {logoUrl ? (
@@ -215,9 +215,9 @@ export default function Wizard({ dept, logoUrl }: Props) {
 
         {/* Question card */}
         <div 
-          className="rounded-2xl p-5 border"
+          className="rounded-2xl p-5 border bg-white/10 backdrop-blur-sm"
           style={{ 
-            backgroundColor: `${styling.primaryColor}20`,
+            backgroundColor: `rgba(255, 255, 255, 0.15)`,
             borderColor: `${styling.accentColor}60`
           }}
         >
@@ -233,8 +233,12 @@ export default function Wizard({ dept, logoUrl }: Props) {
             type="button"
             onClick={back}
             disabled={idx === 0}
-            className="rounded-2xl px-5 py-3 font-medium opacity-90 ring-1 ring-inset disabled:opacity-30"
-            style={{ borderColor: dept.theme.accent, color: dept.theme.foreground }}
+            className="rounded-2xl px-5 py-3 font-medium ring-1 ring-inset disabled:opacity-30 transition-all hover:scale-105 hover:shadow-lg"
+            style={{ 
+              borderColor: "#F97316", 
+              color: "#F97316",
+              backgroundColor: "rgba(249, 115, 22, 0.1)"
+            }}
           >
             Back
           </button>
@@ -243,14 +247,24 @@ export default function Wizard({ dept, logoUrl }: Props) {
             <ArrowButton
               onClick={next}
               disabled={!isValid}
-              style={{ backgroundColor: dept.theme.accent, color: dept.theme.primary }}
+              className="hover:scale-105 transition-all"
+              style={{ 
+                backgroundColor: "#F97316", 
+                color: "white",
+                boxShadow: "0 10px 25px rgba(249, 115, 22, 0.3)"
+              }}
             />
           ) : (
             <ArrowButton
               label={submitting ? "Submitting..." : "Submit"}
               onClick={onSubmit}
               disabled={!isValid || submitting}
-              style={{ backgroundColor: dept.theme.accent, color: dept.theme.primary }}
+              className="hover:scale-105 transition-all"
+              style={{ 
+                backgroundColor: "#F97316", 
+                color: "white",
+                boxShadow: "0 10px 25px rgba(249, 115, 22, 0.3)"
+              }}
             />
           )}
         </div>
