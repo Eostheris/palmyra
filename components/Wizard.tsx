@@ -28,19 +28,19 @@ export default function Wizard({ dept, logoUrl }: Props) {
   const getDepartmentStyling = (slug: string) => {
     const styles = {
       lspd: {
-        backgroundImage: "/lspdvectorizeai.png",
+        backgroundImage: "/lspdbackground.png",
         primaryColor: "#1E3A8A",
         accentColor: "#60A5FA",
         overlayColor: "rgba(30, 58, 138, 0.65)"
       },
       lscso: {
-        backgroundImage: "/lsco_badge2.png", 
+        backgroundImage: "/lscsobackground.png", 
         primaryColor: "#059669",
         accentColor: "#34D399",
         overlayColor: "rgba(5, 150, 105, 0.85)"
       },
       safr: {
-        backgroundImage: "/SAFR.png",
+        backgroundImage: "/SAFRbackground.png",
         primaryColor: "#DC2626",
         accentColor: "#FEF08A", 
         overlayColor: "rgba(220, 38, 38, 0.75)"
@@ -64,7 +64,7 @@ export default function Wizard({ dept, logoUrl }: Props) {
         overlayColor: "rgba(124, 45, 18, 0.75)"
       },
       bennys: {
-        backgroundImage: "/bennys.png",
+        backgroundImage: "/bennysbackground.png",
         primaryColor: "#DC2626",
         accentColor: "#FEF08A",
         overlayColor: "rgba(220, 38, 38, 0.75)"
@@ -72,7 +72,7 @@ export default function Wizard({ dept, logoUrl }: Props) {
     };
     
     return styles[slug as keyof typeof styles] || {
-      backgroundImage: "/palmyrawide.png",
+      backgroundImage: "/wallpaper.png",
       primaryColor: "#1E3A8A",
       accentColor: "#60A5FA", 
       overlayColor: "rgba(30, 58, 138, 0.85)"
@@ -138,37 +138,28 @@ export default function Wizard({ dept, logoUrl }: Props) {
           backgroundAttachment: "fixed"
         }}
       >
-        {/* Background overlay with department colors */}
-        <div 
-          className="absolute inset-0 backdrop-blur-sm"
-          style={{ backgroundColor: styling.overlayColor }}
-        ></div>
         
         {/* Success content */}
         <div className="relative z-10 max-w-2xl mx-auto p-8">
-          <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 shadow-2xl">
+          <div className="bg-gray-900/95 backdrop-blur-md rounded-3xl p-8 border border-gray-700 shadow-2xl">
             {logoUrl ? (
-              <Image src={logoUrl} alt="Logo" width={80} height={80} className="mx-auto mb-6 opacity-90" />
+              <Image src={logoUrl} alt="Logo" width={80} height={80} className="mx-auto mb-6" />
             ) : null}
             <h1 
-              className="text-4xl font-bold text-white mb-4 bg-clip-text text-transparent"
-              style={{ 
-                background: `linear-gradient(to right, ${styling.accentColor}, white)`
-              }}
+              className="text-4xl font-bold text-white mb-4 text-center"
             >
               Application Submitted Successfully!
             </h1>
-            <p className="text-xl text-white/90 mb-4">
+            <p className="text-xl text-gray-300 mb-4 text-center">
               Thanks for your interest in joining {dept.name}. Your application has been sent for review.
             </p>
-            <p className="text-white/70">
+            <p className="text-gray-400 text-center">
               You should receive a response within 24-48 hours.
             </p>
             <div 
-              className="mt-6 p-4 rounded-xl border border-green-400/30"
-              style={{ backgroundColor: `${styling.primaryColor}40` }}
+              className="mt-6 p-4 rounded-xl border border-green-500/30 bg-green-900/20"
             >
-              <p className="text-green-200 font-medium">✅ Application received and processed</p>
+              <p className="text-green-400 font-medium text-center">✅ Application received and processed</p>
             </div>
           </div>
         </div>
@@ -181,18 +172,14 @@ export default function Wizard({ dept, logoUrl }: Props) {
       className="min-h-screen relative flex items-center justify-center px-4"
       style={{
         backgroundImage: `url('${styling.backgroundImage}')`,
-        backgroundSize: "cover",
+        backgroundSize: "100% 100%",
         backgroundPosition: "center",
-        backgroundAttachment: "fixed"
+        backgroundAttachment: "fixed",
+        backgroundRepeat: "no-repeat"
       }}
     >
-      {/* Background overlay with department colors */}
-      <div 
-        className="absolute inset-0 backdrop-blur-sm"
-        style={{ backgroundColor: styling.overlayColor }}
-      ></div>
       
-      <div className="relative z-10 w-full max-w-2xl rounded-3xl bg-white/15 p-6 backdrop-blur-md border border-white/30 shadow-2xl" style={{ color: dept.theme.foreground }}>
+      <div className="relative z-10 w-full max-w-2xl rounded-3xl bg-gray-900/95 p-8 border border-gray-700 shadow-2xl">
         <div className="mb-6 flex items-center justify-between">
           <div className="flex items-center gap-3">
             {logoUrl ? (
@@ -200,14 +187,11 @@ export default function Wizard({ dept, logoUrl }: Props) {
             ) : null}
             <div>
               <h2 
-                className="text-xl font-bold bg-clip-text text-transparent"
-                style={{ 
-                  background: `linear-gradient(to right, ${styling.accentColor}, white)`
-                }}
+                className="text-xl font-bold text-white"
               >
                 {dept.name} Application
               </h2>
-              <p className="text-sm opacity-80">Question {idx + 1} of {dept.questions.length}</p>
+              <p className="text-sm text-gray-400">Question {idx + 1} of {dept.questions.length}</p>
             </div>
           </div>
           <ProgressDots total={dept.questions.length} current={idx} accent={dept.theme.accent} />
@@ -215,11 +199,7 @@ export default function Wizard({ dept, logoUrl }: Props) {
 
         {/* Question card */}
         <div 
-          className="rounded-2xl p-5 border bg-white/10 backdrop-blur-sm"
-          style={{ 
-            backgroundColor: `rgba(255, 255, 255, 0.15)`,
-            borderColor: `${styling.accentColor}60`
-          }}
+          className="rounded-2xl p-6 border border-gray-600 bg-gray-800/80"
         >
           <Question q={q} value={answers[q.id]} onChange={onChange} />
         </div>

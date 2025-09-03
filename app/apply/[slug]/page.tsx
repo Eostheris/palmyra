@@ -12,9 +12,7 @@ export default async function ApplyPage({ params }: Props) {
   if (!dept) return notFound();
   
   return (
-    <div className="min-h-screen">
-      <Wizard dept={dept} logoUrl="/palmyravector.png" />
-    </div>
+    <Wizard dept={dept} logoUrl="/palmyravector.png" />
   );
 }
 

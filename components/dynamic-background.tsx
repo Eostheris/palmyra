@@ -9,8 +9,14 @@ function DynamicBackgroundContent() {
   const isAutoExoticPage = pathname.startsWith("/autoexotic");
   const isVanillaUnicornPage = pathname.startsWith("/vanilla-unicorn");
   const isBennysPage = pathname.startsWith("/bennys");
+  const isApplicationPage = pathname.startsWith("/apply/");
   const isBusinessPage = isAutoExoticPage || isVanillaUnicornPage || isBennysPage;
   const isPalmyraBg = palmyraPages.some((p) => pathname.startsWith(p));
+
+  // Don't show background on application pages - they handle their own backgrounds
+  if (isApplicationPage) {
+    return null;
+  }
 
   if (isPalmyraBg && !isBusinessPage) {
     return (
