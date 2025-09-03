@@ -5,7 +5,7 @@ import { Wrench, Car, Clock, MapPin, Phone, Calendar, Star, Settings } from "luc
 export default function BennysPage() {
   return (
     <div className="min-h-screen w-full flex items-center justify-center overflow-hidden relative px-4 py-8 sm:px-6 lg:px-8">
-      <Image src="/bennys.png" alt="Benny's Original Motor Works" fill={true} className="object-cover absolute inset-0 -z-10 opacity-80" />
+      <Image src="/bennysbackground.png" alt="Benny's Original Motor Works" fill={true} className="object-contain absolute inset-0 -z-10 opacity-80" />
       {/* Readability overlay */}
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black/60 via-black/40 to-black/80" />
       

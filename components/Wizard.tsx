@@ -141,7 +141,7 @@ export default function Wizard({ dept, logoUrl }: Props) {
         
         {/* Success content */}
         <div className="relative z-10 max-w-2xl mx-auto p-8">
-          <div className="bg-gray-900/95 backdrop-blur-md rounded-3xl p-8 border border-gray-700 shadow-2xl">
+          <div className="bg-gray-900 rounded-lg p-8 border border-gray-700 shadow-2xl">
             {logoUrl ? (
               <Image src={logoUrl} alt="Logo" width={80} height={80} className="mx-auto mb-6" />
             ) : null}
@@ -172,14 +172,14 @@ export default function Wizard({ dept, logoUrl }: Props) {
       className="min-h-screen relative flex items-center justify-center px-4"
       style={{
         backgroundImage: `url('${styling.backgroundImage}')`,
-        backgroundSize: "100% 100%",
+        backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundAttachment: "fixed",
         backgroundRepeat: "no-repeat"
       }}
     >
       
-      <div className="relative z-10 w-full max-w-2xl rounded-3xl bg-gray-900/95 p-8 border border-gray-700 shadow-2xl">
+      <div className="relative z-10 w-full max-w-2xl rounded-lg bg-gray-900 p-8 border border-gray-700 shadow-2xl">
         <div className="mb-6 flex items-center justify-between">
           <div className="flex items-center gap-3">
             {logoUrl ? (
@@ -199,7 +199,7 @@ export default function Wizard({ dept, logoUrl }: Props) {
 
         {/* Question card */}
         <div 
-          className="rounded-2xl p-6 border border-gray-600 bg-gray-800/80"
+          className="rounded-lg p-6 border border-gray-600 bg-gray-800"
         >
           <Question q={q} value={answers[q.id]} onChange={onChange} />
         </div>
@@ -213,11 +213,11 @@ export default function Wizard({ dept, logoUrl }: Props) {
             type="button"
             onClick={back}
             disabled={idx === 0}
-            className="rounded-2xl px-5 py-3 font-medium ring-1 ring-inset disabled:opacity-30 transition-all hover:scale-105 hover:shadow-lg"
+            className="rounded-lg px-5 py-3 font-medium border disabled:opacity-30 transition-all hover:bg-gray-700"
             style={{ 
-              borderColor: "#F97316", 
-              color: "#F97316",
-              backgroundColor: "rgba(249, 115, 22, 0.1)"
+              borderColor: "#6B7280", 
+              color: "#D1D5DB",
+              backgroundColor: "#374151"
             }}
           >
             Back
@@ -227,11 +227,11 @@ export default function Wizard({ dept, logoUrl }: Props) {
             <ArrowButton
               onClick={next}
               disabled={!isValid}
-              className="hover:scale-105 transition-all"
+              className="hover:bg-blue-600 transition-all rounded-lg"
               style={{ 
-                backgroundColor: "#F97316", 
+                backgroundColor: "#3B82F6", 
                 color: "white",
-                boxShadow: "0 10px 25px rgba(249, 115, 22, 0.3)"
+                border: "1px solid #2563EB"
               }}
             />
           ) : (
@@ -239,11 +239,11 @@ export default function Wizard({ dept, logoUrl }: Props) {
               label={submitting ? "Submitting..." : "Submit"}
               onClick={onSubmit}
               disabled={!isValid || submitting}
-              className="hover:scale-105 transition-all"
+              className="hover:bg-blue-600 transition-all rounded-lg"
               style={{ 
-                backgroundColor: "#F97316", 
+                backgroundColor: "#3B82F6", 
                 color: "white",
-                boxShadow: "0 10px 25px rgba(249, 115, 22, 0.3)"
+                border: "1px solid #2563EB"
               }}
             />
           )}
