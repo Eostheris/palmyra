@@ -5,7 +5,8 @@ export type QuestionType =
   | "multiSelect"
   | "yesNo"
   | "number"
-  | "date";
+  | "date"
+  | "characterSelect";
 
 export interface QuestionBase {
   id: string; // unique key
@@ -54,6 +55,10 @@ export interface DateQuestion extends QuestionBase {
   max?: string; // YYYY-MM-DD
 }
 
+export interface CharacterSelectQuestion extends QuestionBase {
+  type: "characterSelect";
+}
+
 export type Question =
   | ShortTextQuestion
   | LongTextQuestion
@@ -61,7 +66,8 @@ export type Question =
   | MultiSelectQuestion
   | YesNoQuestion
   | NumberQuestion
-  | DateQuestion;
+  | DateQuestion
+  | CharacterSelectQuestion;
 
 export type Answers = Record<string, unknown>;
 

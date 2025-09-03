@@ -1,6 +1,9 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import type { Question, ShortTextQuestion, LongTextQuestion, SelectQuestion, MultiSelectQuestion, NumberQuestion, DateQuestion } from "@/lib/types";
+import { fetchDiscordUser } from "@/lib/getDiscordUser";
+import { fetchUserCharacters } from "@/lib/getCharacters";
+import type { Character } from "@/lib/database";
 
 interface Props {
   q: Question;
@@ -9,6 +12,32 @@ interface Props {
 }
 
 export default function Question({ q, value, onChange }: Props) {
+  // Move hooks to the top level
+  const [characters, setCharacters] = useState<Character[]>([]);
+  const [loading, setLoading] = useState(false);
+
+  // Only run character loading effect when question type is characterSelect
+  useEffect(() => {
+    if (q.type !== "characterSelect") return;
+
+    setLoading(true);
+    const loadCharacters = async () => {
+      try {
+        const discordUser = await fetchDiscordUser();
+        if (discordUser?.id) {
+          const userCharacters = await fetchUserCharacters(discordUser.id);
+          setCharacters(userCharacters);
+        }
+      } catch (error) {
+        console.error('Error loading characters:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadCharacters();
+  }, [q.type]);
+
   const commonLabel = (
     <label className="mb-2 block text-lg font-semibold">
       {q.label} {q.required ? <span className="opacity-70">(required)</span> : null}
@@ -180,6 +209,58 @@ export default function Question({ q, value, onChange }: Props) {
             value={v}
             onChange={(e) => onChange(e.target.value)}
           />
+        </div>
+      );
+    }
+    case "characterSelect": {
+      const v = (value as string) ?? "";
+
+      if (loading) {
+        return (
+          <div>
+            {commonLabel}
+            {help}
+            <div className="w-full rounded-xl border border-white/20 bg-white/10 px-4 py-3 text-base text-white/60">
+              Loading your characters...
+            </div>
+          </div>
+        );
+      }
+
+      if (characters.length === 0) {
+        return (
+          <div>
+            {commonLabel}
+            {help}
+            <div className="w-full rounded-xl border border-red-500/20 bg-red-500/10 px-4 py-3 text-base text-red-300">
+              No characters found. Please create a character in FiveM first.
+            </div>
+          </div>
+        );
+      }
+
+      return (
+        <div>
+          {commonLabel}
+          {help}
+          <select
+            className="w-full rounded-xl border border-white/20 bg-white/10 px-4 py-3 text-base outline-none focus:border-white/40 focus:bg-white/20 transition-colors"
+            value={v}
+            onChange={(e) => onChange(e.target.value)}
+          >
+            <option value="" disabled>
+              Select your character
+            </option>
+            {characters.map((char) => (
+              <option 
+                key={char.citizenid} 
+                value={`${char.charinfo.firstname} ${char.charinfo.lastname}`} 
+                className="bg-gray-800 text-white"
+              >
+                {char.charinfo.firstname} {char.charinfo.lastname}
+              </option>
+            ))}
+          </select>
         </div>
       );
     }

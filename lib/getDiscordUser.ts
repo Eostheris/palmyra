@@ -7,10 +7,20 @@ export interface DiscordUser {
 
 export async function fetchDiscordUser(): Promise<DiscordUser | null> {
   try {
-    const res = await fetch("/api/me", { cache: "no-store" });
-    if (!res.ok) return null;
-    const data = await res.json();
-    if (data && typeof data.id === "string") return data as DiscordUser;
+    // Check if we're in a browser environment
+    if (typeof window === 'undefined') return null;
+    
+    // Get user from localStorage (this matches the Discord login flow)
+    const savedUser = localStorage.getItem('discord_user');
+    if (!savedUser) return null;
+    
+    const user = JSON.parse(savedUser);
+    
+    // Ensure the user has the required id field
+    if (user && typeof user.id === "string") {
+      return user as DiscordUser;
+    }
+    
     return null;
   } catch {
     return null;

@@ -16,12 +16,11 @@ export const appConfig: AppConfig = {
       },
       questions: [
         {
-          id: "legalName",
-          type: "shortText",
-          label: "Your legal name",
+          id: "characterName",
+          type: "characterSelect",
+          label: "Select your character",
           required: true,
-          placeholder: "John Doe",
-          maxLength: 80,
+          helpText: "Choose which character you are applying with",
         },
         {
           id: "age",
@@ -81,11 +80,11 @@ export const appConfig: AppConfig = {
       },
       questions: [
         {
-          id: "name",
-          type: "shortText",
-          label: "Full Name",
+          id: "characterName",
+          type: "characterSelect",
+          label: "Select your character",
           required: true,
-          maxLength: 80,
+          helpText: "Choose which character you are applying with",
         },
         {
           id: "age",
@@ -131,10 +130,11 @@ export const appConfig: AppConfig = {
       },
       questions: [
         {
-          id: "name",
-          type: "shortText",
-          label: "Full Name",
+          id: "characterName",
+          type: "characterSelect",
+          label: "Select your character",
           required: true,
+          helpText: "Choose which character you are applying with",
         },
         {
           id: "emtCert",
@@ -180,10 +180,11 @@ export const appConfig: AppConfig = {
       },
       questions: [
         {
-          id: "name",
-          type: "shortText",
-          label: "Full Name",
+          id: "characterName",
+          type: "characterSelect",
+          label: "Select your character",
           required: true,
+          helpText: "Choose which character you are applying with",
         },
         {
           id: "age",
@@ -236,10 +237,11 @@ export const appConfig: AppConfig = {
       },
       questions: [
         {
-          id: "name",
-          type: "shortText",
-          label: "Full Name",
+          id: "characterName",
+          type: "characterSelect",
+          label: "Select your character",
           required: true,
+          helpText: "Choose which character you are applying with",
         },
         {
           id: "position",
@@ -285,12 +287,11 @@ export const appConfig: AppConfig = {
       },
       questions: [
         {
-          id: "legalName",
-          type: "shortText",
-          label: "Your legal name",
+          id: "characterName",
+          type: "characterSelect",
+          label: "Select your character",
           required: true,
-          placeholder: "John Doe",
-          maxLength: 80,
+          helpText: "Choose which character you are applying with",
         },
         {
           id: "age",
@@ -346,12 +347,11 @@ export const appConfig: AppConfig = {
       },
       questions: [
         {
-          id: "legalName",
-          type: "shortText",
-          label: "Your legal name",
+          id: "characterName",
+          type: "characterSelect",
+          label: "Select your character",
           required: true,
-          placeholder: "John Doe",
-          maxLength: 80,
+          helpText: "Choose which character you are applying with",
         },
         {
           id: "age",
