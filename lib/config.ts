@@ -270,6 +270,22 @@ export const appConfig: AppConfig = {
           required: true,
           maxLength: 500,
         },
+        {
+          id: "mechanicExperience",
+          type: "longText",
+          label: "Any previous mechanic experience?",
+          required: false,
+          maxLength: 500,
+          placeholder: "Describe any automotive repair, maintenance, or mechanical work experience you have...",
+        },
+        {
+          id: "favoriteCar",
+          type: "shortText",
+          label: "Favorite car",
+          required: false,
+          maxLength: 100,
+          placeholder: "What's your favorite car and why?",
+        },
       ],
     },
     {

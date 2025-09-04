@@ -121,20 +121,6 @@ export async function POST(req: NextRequest) {
       footer: { text: `Submitted via Palmyra RP ${dept.slug} form` },
     };
 
-    // Create a short name for the department/business
-    const shortNames: Record<string, string> = {
-      "lspd": "LSPD",
-      "lscso": "LSCSO", 
-      "safr": "SAFR",
-      "doj": "DOJ",
-      "autoexotic": "Auto Exotic",
-      "vanilla-unicorn": "Vanilla Unicorn",
-      "bennys": "Benny's",
-      "gun-license": "Gun License"
-    };
-
-    const shortName = shortNames[dept.slug] || dept.slug.toUpperCase();
-    
     // Use character info if available, otherwise fall back to Discord user
     let threadName;
     if (character && character.name && character.citizenid) {
