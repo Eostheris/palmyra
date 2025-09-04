@@ -137,7 +137,7 @@ export default function Wizard({ dept, logoUrl }: Props) {
 
   const styling = getDepartmentStyling(dept.slug);
 
-  const q = dept.questions[idx - 1]; // Offset by 1 since we added character selection as step 0
+  const q = idx === 0 ? null : dept.questions[idx - 1]; // idx 0 = character select, idx 1+ = questions
 
   const isValid = useMemo(() => {
     // Character selection step (idx = 0)

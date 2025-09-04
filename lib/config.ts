@@ -16,13 +16,6 @@ export const appConfig: AppConfig = {
       },
       questions: [
         {
-          id: "characterName",
-          type: "characterSelect",
-          label: "Select your character",
-          required: true,
-          helpText: "Choose which character you are applying with",
-        },
-        {
           id: "age",
           type: "number",
           label: "Your age",
@@ -80,13 +73,6 @@ export const appConfig: AppConfig = {
       },
       questions: [
         {
-          id: "characterName",
-          type: "characterSelect",
-          label: "Select your character",
-          required: true,
-          helpText: "Choose which character you are applying with",
-        },
-        {
           id: "age",
           type: "number",
           label: "Age",
@@ -129,13 +115,6 @@ export const appConfig: AppConfig = {
         webhookUrl: process.env.SAFR_WEBHOOK_URL || "https://discord.com/api/webhooks/1412891761046589461/7GdKylmShZj7_T5jnJeSzURxSV5iOC4pXEMU8IQgxDJMmDRAprdrmsBaFSowJlQxrGmd",
       },
       questions: [
-        {
-          id: "characterName",
-          type: "characterSelect",
-          label: "Select your character",
-          required: true,
-          helpText: "Choose which character you are applying with",
-        },
         {
           id: "age",
           type: "number",
@@ -211,13 +190,6 @@ export const appConfig: AppConfig = {
       },
       questions: [
         {
-          id: "characterName",
-          type: "characterSelect",
-          label: "Select your character",
-          required: true,
-          helpText: "Choose which character you are applying with",
-        },
-        {
           id: "position",
           type: "select",
           label: "Position applying for",
@@ -260,13 +232,6 @@ export const appConfig: AppConfig = {
         webhookUrl: process.env.AUTOEXOTIC_WEBHOOK_URL || "https://discord.com/api/webhooks/1412891056277557471/EmVnsKXvezufPaIhF55Fcg5o4bqRGuDjYNy5_xG9iEijzwXeebAghfOMJAXmRyxFN_Ck",
       },
       questions: [
-        {
-          id: "characterName",
-          type: "characterSelect",
-          label: "Select your character",
-          required: true,
-          helpText: "Choose which character you are applying with",
-        },
         {
           id: "age",
           type: "number",
@@ -321,13 +286,6 @@ export const appConfig: AppConfig = {
       },
       questions: [
         {
-          id: "characterName",
-          type: "characterSelect",
-          label: "Select your character",
-          required: true,
-          helpText: "Choose which character you are applying with",
-        },
-        {
           id: "age",
           type: "number",
           label: "Your age",
@@ -380,13 +338,6 @@ export const appConfig: AppConfig = {
         webhookUrl: process.env.BENNYS_WEBHOOK_URL || "https://discord.com/api/webhooks/1412892835958755431/QGPwLLFmwBBh4UdkWOF-TH1qJphO3FDgF-ngHpEB_65Vou0hy5Afcyqk076swyY82oty",
       },
       questions: [
-        {
-          id: "characterName",
-          type: "characterSelect",
-          label: "Select your character",
-          required: true,
-          helpText: "Choose which character you are applying with",
-        },
         {
           id: "age",
           type: "number",
@@ -454,13 +405,6 @@ export const appConfig: AppConfig = {
         webhookUrl: process.env.GUN_LICENSE_WEBHOOK_URL || "https://discord.com/api/webhooks/1412986436247883897/JiqnRPojWLGDMH3gbnmidD7L9uunWrQcXjRVsqwTEjtNQEe3sZHg-WC-2aK95JqzRORY",
       },
       questions: [
-        {
-          id: "characterName",
-          type: "characterSelect",
-          label: "Select your character",
-          required: true,
-          helpText: "Choose which character you are applying with",
-        },
         {
           id: "age",
           type: "number",
