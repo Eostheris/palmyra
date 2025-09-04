@@ -325,7 +325,7 @@ export default function Wizard({ dept, logoUrl }: Props) {
               </div>
             ) : characters.length === 0 ? (
               <div className="text-yellow-300 text-sm">
-                ⚠️ No characters found in the FiveM database. Make sure you've joined the server and created a character.
+                ⚠️ No characters found in the FiveM database. Make sure you&apos;ve joined the server and created a character.
               </div>
             ) : characters.length === 1 ? (
               <div className="text-green-300 text-sm">
