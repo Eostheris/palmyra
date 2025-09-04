@@ -7,6 +7,14 @@ import ProgressDots from "@/components/ProgressDots";
 import { fetchDiscordUser } from "@/lib/getDiscordUser";
 import Image from "next/image";
 
+interface Character {
+  citizenid: string;
+  charinfo: {
+    firstname: string;
+    lastname: string;
+  };
+}
+
 interface Props {
   dept: DepartmentConfig;
   logoUrl?: string; // optional site logo path
@@ -19,10 +27,52 @@ export default function Wizard({ dept, logoUrl }: Props) {
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
   const [discordId, setDiscordId] = useState<string | null>(null);
+  const [characters, setCharacters] = useState<Character[]>([]);
+  const [selectedCharacter, setSelectedCharacter] = useState<Character | null>(null);
+  const [loadingCharacters, setLoadingCharacters] = useState(false);
 
   useEffect(() => {
-    fetchDiscordUser().then((u) => setDiscordId(u?.id ?? null));
+    fetchDiscordUser().then((u) => {
+      setDiscordId(u?.id ?? null);
+      if (u?.id) {
+        fetchUserCharacters(u.id);
+      }
+    });
   }, []);
+
+  const fetchUserCharacters = async (discordId: string) => {
+    try {
+      setLoadingCharacters(true);
+      
+      // First get the user data from Discord ID
+      const userResponse = await fetch(`/api/fivem/user?discordId=${discordId}`);
+      if (!userResponse.ok) {
+        console.log('User not found in FiveM database');
+        return;
+      }
+      
+      const userData = await userResponse.json();
+      
+      // Then get all characters for this user
+      const charactersResponse = await fetch(`/api/fivem/characters?userId=${userData.userId}`);
+      if (!charactersResponse.ok) {
+        console.log('No characters found for user');
+        return;
+      }
+      
+      const charactersData = await charactersResponse.json();
+      setCharacters(charactersData);
+      
+      // Auto-select first character if only one exists
+      if (charactersData.length === 1) {
+        setSelectedCharacter(charactersData[0]);
+      }
+    } catch (error) {
+      console.error('Error fetching characters:', error);
+    } finally {
+      setLoadingCharacters(false);
+    }
+  };
 
   // Department/Business specific styling
   const getDepartmentStyling = (slug: string) => {
@@ -113,12 +163,24 @@ export default function Wizard({ dept, logoUrl }: Props) {
       setError("You must be logged in with Discord to submit.");
       return;
     }
+    if (!selectedCharacter) {
+      setError("Please select a character for this application.");
+      return;
+    }
     setSubmitting(true);
     try {
       const res = await fetch("/api/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ slug: dept.slug, discordId, answers }),
+        body: JSON.stringify({ 
+          slug: dept.slug, 
+          discordId, 
+          answers,
+          character: {
+            citizenid: selectedCharacter.citizenid,
+            name: `${selectedCharacter.charinfo.firstname} ${selectedCharacter.charinfo.lastname}`
+          }
+        }),
       });
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
@@ -161,6 +223,13 @@ export default function Wizard({ dept, logoUrl }: Props) {
                 <p className="text-xl text-gray-300 mb-4 text-center">
                   Your gun license application has been submitted for review.
                 </p>
+                {selectedCharacter && (
+                  <div className="mb-4 p-3 bg-blue-900/30 border border-blue-500/50 rounded-lg">
+                    <p className="text-blue-300 text-sm text-center">
+                      <strong>Applied for character:</strong> {selectedCharacter.charinfo.firstname} {selectedCharacter.charinfo.lastname} ({selectedCharacter.citizenid})
+                    </p>
+                  </div>
+                )}
                 <div className="text-gray-300 mb-6 space-y-3 text-left">
                   <p className="font-semibold text-yellow-400 text-center">⚠️ Important Next Steps:</p>
                   <ol className="list-decimal list-inside space-y-2 text-sm">
@@ -182,6 +251,13 @@ export default function Wizard({ dept, logoUrl }: Props) {
                 <p className="text-xl text-gray-300 mb-4 text-center">
                   Thanks for your interest in joining {dept.name}. Your application has been sent for review.
                 </p>
+                {selectedCharacter && (
+                  <div className="mb-4 p-3 bg-blue-900/30 border border-blue-500/50 rounded-lg">
+                    <p className="text-blue-300 text-sm text-center">
+                      <strong>Applied for character:</strong> {selectedCharacter.charinfo.firstname} {selectedCharacter.charinfo.lastname} ({selectedCharacter.citizenid})
+                    </p>
+                  </div>
+                )}
                 <p className="text-gray-400 text-center">
                   You should receive a response within 24-48 hours.
                 </p>
@@ -235,6 +311,50 @@ export default function Wizard({ dept, logoUrl }: Props) {
           <Question q={q} value={answers[q.id]} onChange={onChange} />
         </div>
 
+        {/* Character Selection - Show on last question */}
+        {idx === dept.questions.length - 1 && (
+          <div className="mt-4 rounded-lg p-6 border border-blue-600/50 bg-blue-900/20">
+            <h3 className="text-white font-semibold mb-4 flex items-center gap-2">
+              👤 Character Information
+            </h3>
+            
+            {loadingCharacters ? (
+              <div className="flex items-center gap-2 text-gray-300">
+                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-400"></div>
+                <span>Loading your characters...</span>
+              </div>
+            ) : characters.length === 0 ? (
+              <div className="text-yellow-300 text-sm">
+                ⚠️ No characters found in the FiveM database. Make sure you've joined the server and created a character.
+              </div>
+            ) : characters.length === 1 ? (
+              <div className="text-green-300 text-sm">
+                ✅ Application will be submitted for: <strong>{selectedCharacter?.charinfo.firstname} {selectedCharacter?.charinfo.lastname}</strong> ({selectedCharacter?.citizenid})
+              </div>
+            ) : (
+              <div className="space-y-3">
+                <label className="text-gray-300 text-sm font-medium">Select the character for this application:</label>
+                <select
+                  value={selectedCharacter?.citizenid || ''}
+                  onChange={(e) => {
+                    const character = characters.find(c => c.citizenid === e.target.value);
+                    setSelectedCharacter(character || null);
+                  }}
+                  className="w-full p-3 rounded-lg bg-gray-700 border border-gray-600 text-white focus:border-blue-500 focus:outline-none"
+                  required
+                >
+                  <option value="">-- Select a character --</option>
+                  {characters.map((character) => (
+                    <option key={character.citizenid} value={character.citizenid}>
+                      {character.charinfo.firstname} {character.charinfo.lastname} ({character.citizenid})
+                    </option>
+                  ))}
+                </select>
+              </div>
+            )}
+          </div>
+        )}
+
         {error ? (
           <p className="mt-4 rounded-xl bg-red-500/20 px-4 py-2 text-sm" role="alert">{error}</p>
         ) : null}
@@ -269,7 +389,7 @@ export default function Wizard({ dept, logoUrl }: Props) {
             <ArrowButton
               label={submitting ? "Submitting..." : "Submit"}
               onClick={onSubmit}
-              disabled={!isValid || submitting}
+              disabled={!isValid || submitting || (characters.length > 0 && !selectedCharacter)}
               className="hover:bg-blue-600 transition-all rounded-lg"
               style={{ 
                 backgroundColor: "#3B82F6", 

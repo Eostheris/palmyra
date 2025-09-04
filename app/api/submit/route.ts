@@ -50,7 +50,7 @@ async function postToChannel(channelId: string, payload: Record<string, unknown>
 
 export async function POST(req: NextRequest) {
   try {
-    const { slug, answers, discordId } = await req.json();
+    const { slug, answers, discordId, character } = await req.json();
     if (!slug || typeof slug !== "string") return NextResponse.json({ error: "Missing slug" }, { status: 400 });
     if (!discordId || typeof discordId !== "string") return NextResponse.json({ error: "Missing discordId" }, { status: 400 });
 
@@ -58,6 +58,7 @@ export async function POST(req: NextRequest) {
     const cleanDiscordId = discordId.replace(/^discord:/, '');
     console.log('Original Discord ID:', discordId);
     console.log('Cleaned Discord ID:', cleanDiscordId);
+    console.log('Character Info:', character);
 
     const dept = findDept(slug);
     if (!dept) return NextResponse.json({ error: "Unknown department" }, { status: 404 });
@@ -105,9 +106,15 @@ export async function POST(req: NextRequest) {
 
     const fields = answersToFields(answers ?? {}, dept);
 
+    // Create the description with character info if available
+    let description = `**Applicant:** <@${cleanDiscordId}> (ID: ${cleanDiscordId})`;
+    if (character && character.name && character.citizenid) {
+      description += `\n**Character:** ${character.name} (${character.citizenid})`;
+    }
+
     const embed = {
       title: `${dept.name} Application`,
-      description: `**Applicant:** <@${cleanDiscordId}> (ID: ${cleanDiscordId})`,
+      description,
       color: 0x2b2d31, // Discord embed color
       fields,
       timestamp: new Date().toISOString(),
