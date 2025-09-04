@@ -7,7 +7,6 @@ import {
   Shield,
   Car,
   MapPin,
-  Phone,
   ShieldCheck,
   ChevronDown
 } from "lucide-react"

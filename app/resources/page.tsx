@@ -2,6 +2,7 @@
 
 import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
+import Link from "next/link";
 import { Card } from "../../components/ui/card";
 import { Badge } from "../../components/ui/badge";
 import { Button } from "../../components/ui/button";
@@ -218,12 +219,12 @@ function ResourcesContent() {
               </Card>
             </div>
             <div className="mt-8 text-center space-y-4">
-              <a 
+              <Link 
                 href="/apply/gun-license" 
                 className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition-colors text-lg mr-4"
               >
                 Apply for Gun License
-              </a>
+              </Link>
               <a 
                 href="/penalcode" 
                 className="inline-block bg-gray-600 hover:bg-gray-700 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition-colors text-lg"

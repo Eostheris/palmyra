@@ -88,7 +88,7 @@ export async function POST(req: NextRequest) {
         storage: "In a locked gun safe" // Preferred storage method
       };
 
-      let failedQuestions = [];
+      const failedQuestions = [];
       for (const [questionId, correctAnswer] of Object.entries(correctAnswers)) {
         if (answers[questionId] !== correctAnswer) {
           failedQuestions.push(questionId);
