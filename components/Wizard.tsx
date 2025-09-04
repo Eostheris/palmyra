@@ -150,14 +150,14 @@ export default function Wizard({ dept, logoUrl }: Props) {
       return true;
     }
     
-    // Regular question steps
+    // Regular question steps (idx 1 to dept.questions.length)
     if (!q) return false;
     const v = answers[q.id];
     if (!q.required) return true;
     if (q.type === "yesNo") return typeof v === "boolean";
     if (q.type === "multiSelect") return Array.isArray(v) && v.length > 0;
     return v !== undefined && v !== null && `${v}`.trim() !== "";
-  }, [q, answers, idx, characters.length, selectedCharacter]);
+  }, [q, answers, idx, characters.length, selectedCharacter, dept.questions.length]);
 
   const next = () => {
     if (!isValid) return;
