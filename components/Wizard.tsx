@@ -137,25 +137,40 @@ export default function Wizard({ dept, logoUrl }: Props) {
 
   const styling = getDepartmentStyling(dept.slug);
 
-  const q = dept.questions[idx];
+  const q = dept.questions[idx - 1]; // Offset by 1 since we added character selection as step 0
 
   const isValid = useMemo(() => {
+    // Character selection step (idx = 0)
+    if (idx === 0) {
+      return characters.length === 0 || selectedCharacter !== null;
+    }
+    
+    // Confirmation step (last step)
+    if (idx === dept.questions.length + 1) {
+      return true;
+    }
+    
+    // Regular question steps
     if (!q) return false;
     const v = answers[q.id];
     if (!q.required) return true;
     if (q.type === "yesNo") return typeof v === "boolean";
     if (q.type === "multiSelect") return Array.isArray(v) && v.length > 0;
     return v !== undefined && v !== null && `${v}`.trim() !== "";
-  }, [q, answers]);
+  }, [q, answers, idx, characters.length, selectedCharacter]);
 
   const next = () => {
     if (!isValid) return;
-    setIdx((i) => Math.min(i + 1, dept.questions.length - 1));
+    setIdx((i) => Math.min(i + 1, dept.questions.length + 1)); // +1 for confirmation step
   };
 
   const back = () => setIdx((i) => Math.max(i - 1, 0));
 
-  const onChange = (val: unknown) => setAnswers((prev) => ({ ...prev, [q.id]: val }));
+  const onChange = (val: unknown) => {
+    if (q) {
+      setAnswers((prev) => ({ ...prev, [q.id]: val }));
+    }
+  };
 
   async function onSubmit() {
     setError(null);
@@ -298,62 +313,136 @@ export default function Wizard({ dept, logoUrl }: Props) {
               >
                 {dept.name} Application
               </h2>
-              <p className="text-sm text-gray-400">Question {idx + 1} of {dept.questions.length}</p>
+              <p className="text-sm text-gray-400">
+                Step {idx + 1} of {dept.questions.length + 2}
+                {idx === 0 ? " - Character Selection" : 
+                 idx === dept.questions.length + 1 ? " - Confirmation" : 
+                 ` - Question ${idx}`}
+              </p>
             </div>
           </div>
-          <ProgressDots total={dept.questions.length} current={idx} accent={dept.theme.accent} />
+          <ProgressDots total={dept.questions.length + 2} current={idx} accent={dept.theme.accent} />
         </div>
 
-        {/* Question card */}
-        <div 
-          className="rounded-lg p-6 border border-gray-600 bg-gray-800"
-        >
-          <Question q={q} value={answers[q.id]} onChange={onChange} />
+        {/* Content based on current step */}
+        <div className="rounded-lg p-6 border border-gray-600 bg-gray-800">
+          {idx === 0 ? (
+            // Character Selection Step
+            <div className="space-y-6">
+              <div>
+                <h3 className="text-white font-bold text-xl mb-4 flex items-center gap-2">
+                  👤 Select Character
+                </h3>
+                <p className="text-gray-300 mb-6">
+                  Choose which character you want to apply with for this {dept.name.toLowerCase()}.
+                </p>
+              </div>
+              
+              {loadingCharacters ? (
+                <div className="flex items-center gap-3 text-gray-300 justify-center py-8">
+                  <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-400"></div>
+                  <span>Loading your characters...</span>
+                </div>
+              ) : characters.length === 0 ? (
+                <div className="text-center py-8">
+                  <div className="text-yellow-300 text-lg mb-4">
+                    ⚠️ No Characters Found
+                  </div>
+                  <p className="text-gray-300 text-sm">
+                    No characters found in the FiveM database. Make sure you&apos;ve joined the server and created a character.
+                  </p>
+                </div>
+              ) : characters.length === 1 ? (
+                <div className="text-center py-6">
+                  <div className="bg-green-900/30 border border-green-500/50 rounded-lg p-6">
+                    <div className="text-green-300 text-lg mb-2">✅ Character Auto-Selected</div>
+                    <div className="text-white font-semibold text-xl">
+                      {characters[0].charinfo.firstname} {characters[0].charinfo.lastname}
+                    </div>
+                    <div className="text-gray-400 text-sm">
+                      Citizen ID: {characters[0].citizenid}
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div className="space-y-4">
+                  <label className="text-gray-300 text-sm font-medium">Select your character:</label>
+                  <select
+                    value={selectedCharacter?.citizenid || ''}
+                    onChange={(e) => {
+                      const character = characters.find(c => c.citizenid === e.target.value);
+                      setSelectedCharacter(character || null);
+                    }}
+                    className="w-full p-4 rounded-lg bg-gray-700 border border-gray-600 text-white focus:border-blue-500 focus:outline-none text-lg"
+                    required
+                  >
+                    <option value="">-- Select a character --</option>
+                    {characters.map((character) => (
+                      <option key={character.citizenid} value={character.citizenid}>
+                        {character.charinfo.firstname} {character.charinfo.lastname} ({character.citizenid})
+                      </option>
+                    ))}
+                  </select>
+                  
+                  {selectedCharacter && (
+                    <div className="mt-4 bg-blue-900/30 border border-blue-500/50 rounded-lg p-4">
+                      <div className="text-blue-300 text-sm mb-1">Selected Character:</div>
+                      <div className="text-white font-semibold">
+                        {selectedCharacter.charinfo.firstname} {selectedCharacter.charinfo.lastname}
+                      </div>
+                      <div className="text-gray-400 text-sm">
+                        Citizen ID: {selectedCharacter.citizenid}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+          ) : idx === dept.questions.length + 1 ? (
+            // Confirmation Step
+            <div className="space-y-6">
+              <div>
+                <h3 className="text-white font-bold text-xl mb-4 flex items-center gap-2">
+                  ✅ Confirm Application
+                </h3>
+                <p className="text-gray-300 mb-6">
+                  Please confirm you want to submit this application.
+                </p>
+              </div>
+              
+              {selectedCharacter && (
+                <div className="bg-blue-900/30 border border-blue-500/50 rounded-lg p-6">
+                  <div className="text-blue-300 text-sm mb-2">Applying as:</div>
+                  <div className="text-white font-bold text-xl mb-1">
+                    {selectedCharacter.charinfo.firstname} {selectedCharacter.charinfo.lastname}
+                  </div>
+                  <div className="text-gray-400">
+                    Citizen ID: {selectedCharacter.citizenid}
+                  </div>
+                </div>
+              )}
+              
+              <div className="bg-amber-900/30 border border-amber-500/50 rounded-lg p-4">
+                <div className="text-amber-300 font-medium mb-2">📋 Application Summary</div>
+                <div className="text-gray-300 text-sm">
+                  Department: <span className="text-white font-medium">{dept.name}</span>
+                </div>
+                <div className="text-gray-300 text-sm">
+                  Questions Answered: <span className="text-white font-medium">{dept.questions.length}</span>
+                </div>
+              </div>
+              
+              <div className="text-center">
+                <p className="text-gray-400 text-sm">
+                  By clicking submit, you confirm that all information provided is accurate and complete.
+                </p>
+              </div>
+            </div>
+          ) : (
+            // Regular Question Step
+            q && <Question q={q} value={answers[q.id]} onChange={onChange} />
+          )}
         </div>
-
-        {/* Character Selection - Show on last question */}
-        {idx === dept.questions.length - 1 && (
-          <div className="mt-4 rounded-lg p-6 border border-blue-600/50 bg-blue-900/20">
-            <h3 className="text-white font-semibold mb-4 flex items-center gap-2">
-              👤 Character Information
-            </h3>
-            
-            {loadingCharacters ? (
-              <div className="flex items-center gap-2 text-gray-300">
-                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-400"></div>
-                <span>Loading your characters...</span>
-              </div>
-            ) : characters.length === 0 ? (
-              <div className="text-yellow-300 text-sm">
-                ⚠️ No characters found in the FiveM database. Make sure you&apos;ve joined the server and created a character.
-              </div>
-            ) : characters.length === 1 ? (
-              <div className="text-green-300 text-sm">
-                ✅ Application will be submitted for: <strong>{selectedCharacter?.charinfo.firstname} {selectedCharacter?.charinfo.lastname}</strong> ({selectedCharacter?.citizenid})
-              </div>
-            ) : (
-              <div className="space-y-3">
-                <label className="text-gray-300 text-sm font-medium">Select the character for this application:</label>
-                <select
-                  value={selectedCharacter?.citizenid || ''}
-                  onChange={(e) => {
-                    const character = characters.find(c => c.citizenid === e.target.value);
-                    setSelectedCharacter(character || null);
-                  }}
-                  className="w-full p-3 rounded-lg bg-gray-700 border border-gray-600 text-white focus:border-blue-500 focus:outline-none"
-                  required
-                >
-                  <option value="">-- Select a character --</option>
-                  {characters.map((character) => (
-                    <option key={character.citizenid} value={character.citizenid}>
-                      {character.charinfo.firstname} {character.charinfo.lastname} ({character.citizenid})
-                    </option>
-                  ))}
-                </select>
-              </div>
-            )}
-          </div>
-        )}
 
         {error ? (
           <p className="mt-4 rounded-xl bg-red-500/20 px-4 py-2 text-sm" role="alert">{error}</p>
@@ -374,7 +463,7 @@ export default function Wizard({ dept, logoUrl }: Props) {
             Back
           </button>
 
-          {idx < dept.questions.length - 1 ? (
+          {idx < dept.questions.length + 1 ? (
             <ArrowButton
               onClick={next}
               disabled={!isValid}
@@ -387,9 +476,9 @@ export default function Wizard({ dept, logoUrl }: Props) {
             />
           ) : (
             <ArrowButton
-              label={submitting ? "Submitting..." : "Submit"}
+              label={submitting ? "Submitting..." : "Submit Application"}
               onClick={onSubmit}
-              disabled={!isValid || submitting || (characters.length > 0 && !selectedCharacter)}
+              disabled={!isValid || submitting || !selectedCharacter}
               className="hover:bg-blue-600 transition-all rounded-lg"
               style={{ 
                 backgroundColor: "#3B82F6", 
