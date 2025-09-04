@@ -441,5 +441,156 @@ export const appConfig: AppConfig = {
         },
       ],
     },
+    {
+      name: "Gun License Application",
+      slug: "gun-license",
+      theme: {
+        primary: "#1E40AF", // Deep blue
+        accent: "#3B82F6", // Blue
+        foreground: "#FFFFFF",
+      },
+      target: {
+        type: "webhook",
+        webhookUrl: process.env.GUN_LICENSE_WEBHOOK_URL || "https://discord.com/api/webhooks/1412986436247883897/JiqnRPojWLGDMH3gbnmidD7L9uunWrQcXjRVsqwTEjtNQEe3sZHg-WC-2aK95JqzRORY",
+      },
+      questions: [
+        {
+          id: "characterName",
+          type: "characterSelect",
+          label: "Select your character",
+          required: true,
+          helpText: "Choose which character you are applying with",
+        },
+        {
+          id: "age",
+          type: "number",
+          label: "Character age",
+          required: true,
+          min: 21,
+          max: 80,
+          helpText: "Must be 21 or older to apply for a gun license",
+        },
+        {
+          id: "criminalHistory",
+          type: "yesNo",
+          label: "Do you have any criminal history?",
+          required: true,
+        },
+        {
+          id: "felonies",
+          type: "yesNo",
+          label: "Have you ever been convicted of a felony?",
+          required: true,
+        },
+        {
+          id: "criminalExplanation",
+          type: "longText",
+          label: "If you answered yes to criminal history, please explain",
+          required: false,
+          maxLength: 500,
+          placeholder: "Provide details about your criminal history...",
+        },
+        {
+          id: "gunSafety1",
+          type: "select",
+          label: "What is the first rule of gun safety?",
+          options: [
+            "Always keep the gun pointed in a safe direction",
+            "Keep your finger on the trigger at all times",
+            "Always keep the gun loaded",
+            "Point the gun at what you want to destroy"
+          ],
+          required: true,
+        },
+        {
+          id: "gunSafety2",
+          type: "select",
+          label: "When should you keep your finger off the trigger?",
+          options: [
+            "Only when cleaning the gun",
+            "Until you are absolutely sure you want to shoot",
+            "Only when the gun is unloaded",
+            "Never, always keep it on the trigger"
+          ],
+          required: true,
+        },
+        {
+          id: "selfDefense1",
+          type: "select",
+          label: "When is it legal to use a firearm in self-defense?",
+          options: [
+            "Whenever you feel threatened",
+            "Only when your life is in immediate danger",
+            "When someone insults you",
+            "When protecting property only"
+          ],
+          required: true,
+        },
+        {
+          id: "selfDefense2",
+          type: "select",
+          label: "What should you do after using a firearm in self-defense?",
+          options: [
+            "Leave the scene immediately",
+            "Call 911 and remain at the scene",
+            "Hide the weapon",
+            "Continue about your day"
+          ],
+          required: true,
+        },
+        {
+          id: "trickQuestion1",
+          type: "yesNo",
+          label: "True or False: It's legal to carry a concealed weapon without a permit",
+          required: true,
+        },
+        {
+          id: "trickQuestion2",
+          type: "yesNo",
+          label: "True or False: You can shoot someone for trespassing on your property",
+          required: true,
+        },
+        {
+          id: "trickQuestion3",
+          type: "yesNo",
+          label: "True or False: Alcohol and firearms can be safely mixed",
+          required: true,
+        },
+        {
+          id: "purpose",
+          type: "select",
+          label: "What is your primary reason for wanting a gun license?",
+          options: [
+            "Personal protection",
+            "Sport/Recreation shooting",
+            "Hunting",
+            "Collection purposes",
+            "Business security"
+          ],
+          required: true,
+        },
+        {
+          id: "storage",
+          type: "select",
+          label: "How will you store your firearm when not in use?",
+          options: [
+            "In a locked gun safe",
+            "In a locked case with trigger lock",
+            "Hidden somewhere in my house",
+            "Under my pillow",
+            "In my car"
+          ],
+          required: true,
+        },
+        {
+          id: "training",
+          type: "longText",
+          label: "Describe any firearms training or experience you have",
+          required: true,
+          maxLength: 500,
+          placeholder: "Include any military, law enforcement, or civilian training...",
+        },
+      ],
+    },
   ],
 };

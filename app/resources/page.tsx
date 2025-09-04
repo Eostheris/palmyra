@@ -4,6 +4,7 @@ import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { Card } from "../../components/ui/card";
 import { Badge } from "../../components/ui/badge";
+import { Button } from "../../components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../../components/ui/accordion";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../components/ui/tabs";
 
@@ -147,6 +148,13 @@ function ResourcesContent() {
                 </AccordionItem>
               ))}
             </Accordion>
+            <div className="mt-8 text-center">
+              <Button asChild className="bg-red-600 hover:bg-red-700">
+                <a href="/penalcode">
+                  📋 View Penal Code
+                </a>
+              </Button>
+            </div>
           </div>
         );
 
@@ -187,48 +195,139 @@ function ResourcesContent() {
                 <h3 className="text-2xl font-semibold mb-6">Requirements</h3>
                 <ul className="space-y-4 text-white/80 text-lg">
                   <li>• Must be 21+ years old in character</li>
-                  <li>• Clean criminal record</li>
-                  <li>• Pass written exam</li>
-                  <li>• Pass practical shooting test</li>
-                  <li>• Pay licensing fee ($500)</li>
+                  <li>• Clean criminal record (no felonies - automatic disqualification)</li>
+                  <li>• Must be a citizen in good standing</li>
+                  <li>• Demonstrate understanding of self-defense laws</li>
+                  <li>• Demonstrate understanding of gun safety laws</li>
                 </ul>
               </Card>
               <Card className="bg-neutral-800/50 p-8 border border-white/10">
                 <h3 className="text-2xl font-semibold mb-6">Process</h3>
                 <ol className="space-y-4 text-white/80 text-lg">
-                  <li>1. Visit the Gun Store</li>
-                  <li>2. Request license application</li>
-                  <li>3. Complete written exam</li>
-                  <li>4. Schedule practical test</li>
-                  <li>5. Receive license if passed</li>
+                  <li>1. Submit online application below</li>
+                  <li>2. Wait 24-48 hours for review</li>
+                  <li>3. Visit any police station</li>
+                  <li>4. Speak with an officer about results</li>
+                  <li>5. Complete final interview and processing</li>
+                  <li>6. Bring valid identification</li>
+                  <li>7. Pay $5,000 licensing fee</li>
+                  <li>8. Receive your firearms license</li>
+                  <li>9. Always carry your license when armed</li>
+                  <li>10. Follow the laws to maintain gun license</li>
                 </ol>
               </Card>
+            </div>
+            <div className="mt-8 text-center space-y-4">
+              <a 
+                href="/apply/gun-license" 
+                className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition-colors text-lg mr-4"
+              >
+                Apply for Gun License
+              </a>
+              <a 
+                href="/penalcode" 
+                className="inline-block bg-gray-600 hover:bg-gray-700 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition-colors text-lg"
+              >
+                View Penal Code
+              </a>
             </div>
           </div>
         );
 
       case "jobs":
         return (
-          <div className="space-y-6">
+          <div className="space-y-8">
             <div>
-              <h2 className="text-2xl font-bold mb-4">Available Jobs</h2>
-              <p className="text-white/80 mb-6">Civilian employment opportunities in Los Santos.</p>
+              <h2 className="text-3xl font-bold mb-6">Employment Opportunities</h2>
+              <p className="text-white/80 mb-8 text-lg leading-relaxed">Join the workforce in Los Santos with various civilian and government positions.</p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {[
-                { name: "Taxi Driver", pay: "$50-100/hour", requirements: "Valid license" },
-                { name: "Delivery Driver", pay: "$40-80/hour", requirements: "Vehicle required" },
-                { name: "Store Clerk", pay: "$30-60/hour", requirements: "Basic math skills" },
-                { name: "Mechanic", pay: "$75-150/hour", requirements: "Technical knowledge" },
-                { name: "Real Estate Agent", pay: "$100-300/sale", requirements: "People skills" },
-                { name: "Lawyer", pay: "$200-500/case", requirements: "Law degree RP" }
-              ].map((job, index) => (
-                <Card key={index} className="bg-neutral-800/50 p-4">
-                  <h3 className="font-semibold mb-2">{job.name}</h3>
-                  <p className="text-green-400 text-sm mb-1">{job.pay}</p>
-                  <p className="text-white/60 text-xs">{job.requirements}</p>
-                </Card>
-              ))}
+            
+            {/* Civilian Jobs */}
+            <div className="mb-8">
+              <h3 className="text-2xl font-semibold mb-4 text-blue-400">Civilian Jobs</h3>
+              <p className="text-white/70 mb-6">Open positions available to all citizens - no application required.</p>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {[
+                  { name: "Trucker", requirements: "CDL License" },
+                  { name: "Bus Driver", requirements: "Valid license" },
+                  { name: "Garbage Collector", requirements: "No criminal record" },
+                  { name: "Fishing", requirements: "Fishing license" },
+                  { name: "Recycling", requirements: "None" },
+                  { name: "Hunting", requirements: "Hunting license" },
+                  { name: "Taxi Driver", requirements: "Valid license" },
+                  { name: "Delivery Driver", requirements: "Vehicle required" },
+                  { name: "More Coming Soon", requirements: "Stay tuned!" }
+                ].map((job, index) => (
+                  <Card key={index} className="bg-neutral-800/50 p-4 border border-white/10">
+                    <h4 className="font-semibold mb-2 text-white">{job.name}</h4>
+                    <p className="text-white/60 text-sm">{job.requirements}</p>
+                  </Card>
+                ))}
+              </div>
+            </div>
+
+            {/* Whitelisted Jobs */}
+            <div>
+              <h3 className="text-2xl font-semibold mb-4 text-yellow-400">Whitelisted Positions</h3>
+              <p className="text-white/70 mb-6">Premium positions requiring applications and approval process.</p>
+              
+              {/* Government */}
+              <div className="mb-6">
+                <h4 className="text-xl font-medium mb-3 text-blue-300">Government & Law Enforcement</h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {[
+                    { name: "LSPD Officer", dept: "Los Santos Police Department", link: "/apply/lspd" },
+                    { name: "LSCSO Deputy", dept: "Los Santos County Sheriff's Office", link: "/apply/lscso" },
+                    { name: "SAFR Firefighter", dept: "San Andreas Fire & Rescue", link: "/apply/safr" },
+                    { name: "DOJ Employee", dept: "Department of Justice", link: "/apply/doj" }
+                  ].map((job, index) => (
+                    <Card key={index} className="bg-blue-900/30 p-4 border border-blue-500/30">
+                      <h5 className="font-semibold mb-1 text-white">{job.name}</h5>
+                      <p className="text-blue-300 text-sm mb-2">{job.dept}</p>
+                      <Button 
+                        asChild 
+                        variant="default"
+                        size="sm" 
+                        className="mt-2 w-full"
+                      >
+                        <a href={job.link}>
+                          Apply Now
+                        </a>
+                      </Button>
+                    </Card>
+                  ))}
+                </div>
+              </div>
+
+              {/* Businesses */}
+              <div>
+                <h4 className="text-xl font-medium mb-3 text-green-300">Businesses</h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                  {[
+                    { name: "Real Estate Agent", company: "Real Estate", link: "/departments" },
+                    { name: "Mechanic", company: "Auto Exotic", link: "/apply/autoexotic" },
+                    { name: "Mechanic", company: "Benny's Motor Works", link: "/apply/bennys" },
+                    { name: "Entertainer", company: "Vanilla Unicorn", link: "/apply/vanilla-unicorn" },
+                    { name: "Cook/Server", company: "Burger Shot", link: "/departments" },
+                    { name: "Bartender", company: "Horny's Bar", link: "/departments" }
+                  ].map((job, index) => (
+                    <Card key={index} className="bg-green-900/30 p-4 border border-green-500/30">
+                      <h5 className="font-semibold mb-1 text-white">{job.name}</h5>
+                      <p className="text-green-300 text-sm mb-2">{job.company}</p>
+                      <Button 
+                        asChild 
+                        variant={job.link.startsWith('/apply/') ? 'default' : 'outline'}
+                        size="sm" 
+                        className="mt-2 w-full"
+                      >
+                        <a href={job.link}>
+                          {job.link.startsWith('/apply/') ? 'Apply Now' : 'Learn More'}
+                        </a>
+                      </Button>
+                    </Card>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         );
@@ -249,38 +348,46 @@ function ResourcesContent() {
               <TabsContent value="overview" className="space-y-4">
                 <Card className="bg-neutral-800/50 p-6">
                   <h3 className="text-lg font-semibold mb-4">Business Requirements</h3>
-                  <ul className="space-y-2 text-white/80">
-                    <li>• Minimum $50,000 starting capital</li>
-                    <li>• Clean criminal record</li>
-                    <li>• Detailed business plan</li>
-                    <li>• Active roleplay commitment</li>
-                  </ul>
+                  <p className="text-white/80 text-center text-lg">Coming Soon</p>
                 </Card>
               </TabsContent>
               <TabsContent value="types" className="space-y-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                   {[
-                    "Restaurant/Bar", "Clothing Store", "Auto Dealership", 
+                    "Restaurant/Bar", "Auto Dealership", 
                     "Mechanic Shop", "Legal Firm", "Security Company"
                   ].map((type, index) => (
                     <Card key={index} className="bg-neutral-800/50 p-4">
-                      <h4 className="font-semibold">{type}</h4>
+                      <h4 className="font-semibold mb-2">{type}</h4>
+                      <p className="text-white/60 text-center">Coming Soon</p>
                     </Card>
                   ))}
                 </div>
               </TabsContent>
               <TabsContent value="process" className="space-y-4">
                 <Card className="bg-neutral-800/50 p-6">
-                  <ol className="space-y-3 text-white/80">
-                    <li>1. Contact business development team</li>
-                    <li>2. Submit business proposal</li>
-                    <li>3. Interview process</li>
-                    <li>4. Location assignment</li>
-                    <li>5. Setup and grand opening</li>
-                  </ol>
+                  <h3 className="text-lg font-semibold mb-4">Application Process</h3>
+                  <p className="text-white/80 text-center text-lg">Coming Soon</p>
                 </Card>
               </TabsContent>
             </Tabs>
+          </div>
+        );
+
+      case "contacts":
+        return (
+          <div className="space-y-8">
+            <div className="text-center">
+              <h2 className="text-3xl font-bold mb-6">Penal Code</h2>
+              <p className="text-white/80 mb-8 text-lg leading-relaxed">
+                Access the complete Los Santos legal code and regulations.
+              </p>
+              <Button asChild size="lg" className="bg-red-600 hover:bg-red-700 text-white">
+                <a href="/penalcode">
+                  📋 View Penal Code
+                </a>
+              </Button>
+            </div>
           </div>
         );
 

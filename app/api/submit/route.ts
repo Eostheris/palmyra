@@ -62,6 +62,47 @@ export async function POST(req: NextRequest) {
     const dept = findDept(slug);
     if (!dept) return NextResponse.json({ error: "Unknown department" }, { status: 404 });
 
+    // Special validation for gun license applications
+    if (slug === "gun-license") {
+      // Check for automatic disqualifications
+      const age = answers.age;
+      const hasFelonies = answers.felonies;
+      
+      if (age < 21) {
+        return NextResponse.json({ error: "You must be 21 or older to apply for a gun license." }, { status: 400 });
+      }
+      
+      if (hasFelonies === true) {
+        return NextResponse.json({ error: "Applicants with felony convictions are not eligible for gun licenses." }, { status: 400 });
+      }
+
+      // Check for correct answers to safety questions
+      const correctAnswers = {
+        gunSafety1: "Always keep the gun pointed in a safe direction",
+        gunSafety2: "Until you are absolutely sure you want to shoot", 
+        selfDefense1: "Only when your life is in immediate danger",
+        selfDefense2: "Call 911 and remain at the scene",
+        trickQuestion1: false, // It's NOT legal to carry concealed without permit
+        trickQuestion2: false, // You CAN'T shoot for just trespassing
+        trickQuestion3: false, // Alcohol and firearms should NOT be mixed
+        storage: "In a locked gun safe" // Preferred storage method
+      };
+
+      let failedQuestions = [];
+      for (const [questionId, correctAnswer] of Object.entries(correctAnswers)) {
+        if (answers[questionId] !== correctAnswer) {
+          failedQuestions.push(questionId);
+        }
+      }
+
+      // Allow some leeway - fail only if they get more than 2 wrong
+      if (failedQuestions.length > 2) {
+        return NextResponse.json({ 
+          error: "You did not pass the required safety examination. Please study gun safety and try again." 
+        }, { status: 400 });
+      }
+    }
+
     const fields = answersToFields(answers ?? {}, dept);
 
     const embed = {
@@ -81,7 +122,8 @@ export async function POST(req: NextRequest) {
       "doj": "DOJ",
       "autoexotic": "Auto Exotic",
       "vanilla-unicorn": "Vanilla Unicorn",
-      "bennys": "Benny's"
+      "bennys": "Benny's",
+      "gun-license": "Gun License"
     };
 
     const shortName = shortNames[dept.slug] || dept.slug.toUpperCase();

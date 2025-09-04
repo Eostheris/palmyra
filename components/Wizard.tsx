@@ -68,6 +68,12 @@ export default function Wizard({ dept, logoUrl }: Props) {
         primaryColor: "#DC2626",
         accentColor: "#FEF08A",
         overlayColor: "rgba(220, 38, 38, 0.75)"
+      },
+      "gun-license": {
+        backgroundImage: "/palmyrawide.png",
+        primaryColor: "#1E40AF",
+        accentColor: "#3B82F6",
+        overlayColor: "rgba(30, 64, 175, 0.75)"
       }
     };
     
@@ -148,14 +154,39 @@ export default function Wizard({ dept, logoUrl }: Props) {
             <h1 
               className="text-4xl font-bold text-white mb-4 text-center"
             >
-              Application Submitted Successfully!
+              {dept.slug === 'gun-license' ? 'Gun License Application Submitted!' : 'Application Submitted Successfully!'}
             </h1>
-            <p className="text-xl text-gray-300 mb-4 text-center">
-              Thanks for your interest in joining {dept.name}. Your application has been sent for review.
-            </p>
-            <p className="text-gray-400 text-center">
-              You should receive a response within 24-48 hours.
-            </p>
+            {dept.slug === 'gun-license' ? (
+              <>
+                <p className="text-xl text-gray-300 mb-4 text-center">
+                  Your gun license application has been submitted for review.
+                </p>
+                <div className="text-gray-300 mb-6 space-y-3 text-left">
+                  <p className="font-semibold text-yellow-400 text-center">⚠️ Important Next Steps:</p>
+                  <ol className="list-decimal list-inside space-y-2 text-sm">
+                    <li>Wait 24-48 hours for initial application review</li>
+                    <li>Visit any police station to speak with an officer about your results</li>
+                    <li>Bring valid identification for processing</li>
+                    <li>Complete final interview and background verification</li>
+                  </ol>
+                </div>
+                <div className="bg-red-900/30 border border-red-500/50 rounded-lg p-4 mb-4">
+                  <p className="text-red-300 font-medium text-sm">
+                    <strong>Requirements:</strong> No felonies (automatic disqualification), must be a citizen in good standing, 
+                    and demonstrate understanding of self-defense and gun laws.
+                  </p>
+                </div>
+              </>
+            ) : (
+              <>
+                <p className="text-xl text-gray-300 mb-4 text-center">
+                  Thanks for your interest in joining {dept.name}. Your application has been sent for review.
+                </p>
+                <p className="text-gray-400 text-center">
+                  You should receive a response within 24-48 hours.
+                </p>
+              </>
+            )}
             <div 
               className="mt-6 p-4 rounded-xl border border-green-500/30 bg-green-900/20"
             >

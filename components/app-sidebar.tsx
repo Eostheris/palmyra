@@ -8,6 +8,7 @@ import {
   Car,
   MapPin,
   Phone,
+  ShieldCheck,
   ChevronDown
 } from "lucide-react"
 import { useState } from "react"
@@ -25,7 +26,7 @@ const menuGroups = [
     title: "Legal & Safety",
     items: [
       { title: "Gun License", url: "#licenses", icon: Shield },
-      { title: "Emergency Contacts", url: "#contacts", icon: Phone },
+      { title: "Public Safety", url: "#contacts", icon: ShieldCheck },
     ]
   },
   {
