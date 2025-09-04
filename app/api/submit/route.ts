@@ -134,13 +134,20 @@ export async function POST(req: NextRequest) {
     };
 
     const shortName = shortNames[dept.slug] || dept.slug.toUpperCase();
-    const characterName = answers.characterName || `User-${cleanDiscordId}`;
+    
+    // Use character info if available, otherwise fall back to Discord user
+    let threadName;
+    if (character && character.name && character.citizenid) {
+      threadName = `${character.name} (${character.citizenid})`;
+    } else {
+      threadName = `User-${cleanDiscordId}`;
+    }
     
     const payload = {
       content: `🆕 **New Application for ${dept.name}** from <@${cleanDiscordId}>`,
       embeds: [embed],
       allowed_mentions: { parse: ["users"] },
-      thread_name: `${characterName} - ${shortName}`,
+      thread_name: threadName,
     };
 
     console.log('Sending webhook payload:', JSON.stringify(payload, null, 2));
