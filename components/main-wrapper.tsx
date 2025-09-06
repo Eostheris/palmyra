@@ -22,11 +22,11 @@ function MainWrapperContent({ children }: { children: React.ReactNode }) {
   if (showSidebar) {
     return (
       <>
-    <AppSidebar 
+        <AppSidebar 
           activeCategory={activeCategory} 
           onCategoryChange={handleCategoryChange} 
         />
-  <main className="pt-[88px] ml-64 pl-6">
+        <main className="pt-[64px] sm:pt-[88px] lg:ml-64 lg:pl-6">
           {children}
         </main>
       </>
@@ -34,7 +34,7 @@ function MainWrapperContent({ children }: { children: React.ReactNode }) {
   }
   
   return (
-    <main className="pt-[88px]">
+    <main className="pt-[64px] sm:pt-[88px]">
       {children}
     </main>
   );
@@ -43,7 +43,7 @@ function MainWrapperContent({ children }: { children: React.ReactNode }) {
 export function MainWrapper({ children }: { children: React.ReactNode }) {
   return (
     <Suspense fallback={
-      <main className="pt-[88px]">
+      <main className="pt-[64px] sm:pt-[88px]">
         {children}
       </main>
     }>

@@ -66,10 +66,10 @@ export function AppSidebar({ activeCategory, onCategoryChange }: AppSidebarProps
   };
 
   return (
-  <div className="border-r border-white/10 bg-black/60 shadow-lg backdrop-blur-md fixed" style={{top:'var(--header-h)', left:0, width:256, height:`calc(100vh - var(--header-h))`, zIndex:20, overflowY:'auto'}}>
-      <div className="bg-transparent p-4 space-y-6">
+    <div className="border-r border-white/10 bg-black/60 shadow-lg backdrop-blur-md fixed lg:block hidden" style={{top:'var(--header-h)', left:0, width:256, height:`calc(100vh - var(--header-h))`, zIndex:20, overflowY:'auto'}}>
+      <div className="bg-transparent p-3 sm:p-4 space-y-4 sm:space-y-6">
         {/* Header */}
-        <div className="text-white text-xl font-bold mb-6 px-3 py-3 bg-black/30 backdrop-blur-sm rounded-lg border border-white/10">
+        <div className="text-white text-lg sm:text-xl font-bold mb-4 sm:mb-6 px-2 sm:px-3 py-2 sm:py-3 bg-black/30 backdrop-blur-sm rounded-lg border border-white/10">
           Player Resources
         </div>
 
@@ -77,35 +77,35 @@ export function AppSidebar({ activeCategory, onCategoryChange }: AppSidebarProps
         {menuGroups.map((group) => {
           const isOpen = openSections.has(group.title);
           return (
-            <div key={group.title} className="space-y-2">
+            <div key={group.title} className="space-y-1 sm:space-y-2">
               {/* Section Header */}
               <button 
                 onClick={() => toggleSection(group.title)}
-                className="flex w-full items-center justify-between text-white/90 hover:text-white text-base font-semibold py-3 px-3 bg-black/20 backdrop-blur-sm rounded-lg transition-all duration-200 hover:bg-black/30 border border-white/5"
+                className="flex w-full items-center justify-between text-white/90 hover:text-white text-sm sm:text-base font-semibold py-2 sm:py-3 px-2 sm:px-3 bg-black/20 backdrop-blur-sm rounded-lg transition-all duration-200 hover:bg-black/30 border border-white/5"
               >
                 <span>{group.title}</span>
                 <ChevronDown 
-                  className={`h-4 w-4 transition-transform duration-200 ${
+                  className={`h-3 w-3 sm:h-4 sm:w-4 transition-transform duration-200 ${
                     isOpen ? 'rotate-180' : ''
                   }`} 
                 />
               </button>
-              
+
               {/* Section Items */}
               {isOpen && (
-                <div className="space-y-1 ml-2">
+                <div className="space-y-1 ml-1 sm:ml-2">
                   {group.items.map((item) => (
                     <button
                       key={item.title}
                       onClick={() => onCategoryChange?.(item.url.substring(1))}
-                      className={`w-full flex items-center gap-3 px-3 py-2.5 text-left rounded-md transition-all duration-200 ${
+                      className={`w-full flex items-center gap-2 sm:gap-3 px-2 sm:px-3 py-2 sm:py-2.5 text-left rounded-md transition-all duration-200 ${
                         activeCategory === item.url.substring(1) 
                           ? 'bg-white/10 text-white border border-white/20' 
                           : 'text-white/70 hover:text-white hover:bg-white/5 border border-transparent'
                       }`}
                     >
-                      <item.icon size={16} className="flex-shrink-0" />
-                      <span className="text-sm font-medium">{item.title}</span>
+                      <item.icon size={14} className="sm:w-4 sm:h-4 flex-shrink-0" />
+                      <span className="text-xs sm:text-sm font-medium">{item.title}</span>
                     </button>
                   ))}
                 </div>

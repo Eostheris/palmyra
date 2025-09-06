@@ -9,6 +9,41 @@ import { Button } from "../../components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../../components/ui/accordion";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../components/ui/tabs";
 
+// Mobile navigation component
+function MobileResourceNav({ activeCategory, onCategoryChange }: { activeCategory: string, onCategoryChange: (category: string) => void }) {
+  const categories = [
+    { id: 'faq', label: 'FAQ' },
+    { id: 'controls', label: 'Controls' },
+    { id: 'licenses', label: 'Gun License' },
+    { id: 'contacts', label: 'Public Safety' },
+    { id: 'jobs', label: 'Jobs' },
+    { id: 'businesses', label: 'Businesses' },
+    { id: 'gangs', label: 'Gangs' },
+    { id: 'vehicles', label: 'Vehicles' },
+    { id: 'locations', label: 'Locations' },
+  ];
+
+  return (
+    <div className="lg:hidden mb-6">
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+        {categories.map((category) => (
+          <button
+            key={category.id}
+            onClick={() => onCategoryChange(category.id)}
+            className={`px-3 py-2 text-sm font-medium rounded-md transition-colors ${
+              activeCategory === category.id
+                ? 'bg-white/20 text-white border border-white/30'
+                : 'bg-black/20 text-white/70 hover:text-white hover:bg-white/10 border border-white/10'
+            }`}
+          >
+            {category.label}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 const faqData = [
   {
     question: "How do I get started on Palmyra RP?",
@@ -128,28 +163,34 @@ function ResourcesContent() {
   const searchParams = useSearchParams();
   const activeCategory = searchParams.get('category') || 'faq';
 
+  const handleCategoryChange = (category: string) => {
+    const params = new URLSearchParams(searchParams);
+    params.set('category', category);
+    window.history.pushState(null, '', `?${params.toString()}`);
+  };
+
   const renderContent = () => {
     switch (activeCategory) {
       case "faq":
         return (
-          <div className="space-y-8">
+          <div className="space-y-6 sm:space-y-8">
             <div>
-              <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
-        <p className="text-white mb-8 text-lg leading-relaxed">Common questions about Palmyra RP and how to get started.</p>
+              <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">Frequently Asked Questions</h2>
+              <p className="text-white mb-6 sm:mb-8 text-base sm:text-lg leading-relaxed">Common questions about Palmyra RP and how to get started.</p>
             </div>
-            <Accordion type="single" collapsible className="w-full space-y-4">
+            <Accordion type="single" collapsible className="w-full space-y-3 sm:space-y-4">
               {faqData.map((faq, index) => (
-                <AccordionItem key={index} value={`item-${index}`} className="border-white/20 border-2 rounded-lg px-4">
-          <AccordionTrigger className="text-left text-white hover:text-white text-lg py-4 font-semibold">
+                <AccordionItem key={index} value={`item-${index}`} className="border-white/20 border-2 rounded-lg px-3 sm:px-4">
+                  <AccordionTrigger className="text-left text-white hover:text-white text-base sm:text-lg py-3 sm:py-4 font-semibold">
                     {faq.question}
                   </AccordionTrigger>
-          <AccordionContent className="text-white text-base leading-relaxed pt-2 pb-6 px-2">
+                  <AccordionContent className="text-white text-sm sm:text-base leading-relaxed pt-2 pb-4 sm:pb-6 px-1 sm:px-2">
                     {faq.answer}
                   </AccordionContent>
                 </AccordionItem>
               ))}
             </Accordion>
-            <div className="mt-8 text-center">
+            <div className="mt-6 sm:mt-8 text-center">
               <Button asChild className="bg-red-600 hover:bg-red-700">
                 <a href="/penalcode">
                   📋 View Penal Code
@@ -161,20 +202,20 @@ function ResourcesContent() {
 
       case "controls":
         return (
-          <div className="space-y-8">
+          <div className="space-y-6 sm:space-y-8">
             <div>
-              <h2 className="text-3xl font-bold mb-6">Controls & Keybinds</h2>
-              <p className="text-white mb-8 text-lg leading-relaxed">Essential keybinds for navigating Palmyra RP.</p>
+              <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">Controls & Keybinds</h2>
+              <p className="text-white mb-6 sm:mb-8 text-base sm:text-lg leading-relaxed">Essential keybinds for navigating Palmyra RP.</p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
               {controlsData.map((category, index) => (
-                <Card key={index} className="bg-neutral-800/50 p-6 border border-white/10">
-                  <h3 className="text-xl font-semibold mb-4">{category.category}</h3>
-                  <div className="space-y-3">
+                <Card key={index} className="bg-neutral-800/50 p-4 sm:p-6 border border-white/10">
+                  <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">{category.category}</h3>
+                  <div className="space-y-2 sm:space-y-3">
                     {category.binds.map((bind, bindIndex) => (
-                      <div key={bindIndex} className="flex justify-between items-center py-2">
-                        <span className="text-white text-lg">{bind.action}</span>
-                        <Badge variant="outline" className="font-mono text-base px-4 py-2 bg-neutral-700 border-white/20">{bind.key}</Badge>
+                      <div key={bindIndex} className="flex justify-between items-center py-1 sm:py-2">
+                        <span className="text-white text-sm sm:text-base lg:text-lg pr-2">{bind.action}</span>
+                        <Badge variant="outline" className="font-mono text-xs sm:text-sm lg:text-base px-2 sm:px-4 py-1 sm:py-2 bg-neutral-700 border-white/20 shrink-0">{bind.key}</Badge>
                       </div>
                     ))}
                   </div>
@@ -406,19 +447,21 @@ function ResourcesContent() {
 
   return (
     <div className="min-h-screen pb-16 bg-transparent">
-      <div className="max-w-none mx-auto px-4 lg:px-8 mt-8">
-        <div className="mb-8 text-center">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-white drop-shadow-lg">
+      <div className="max-w-none mx-auto px-3 sm:px-4 lg:px-8 mt-6 sm:mt-8">
+        <div className="mb-6 sm:mb-8 text-center">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 text-white drop-shadow-lg">
             Player Resources
           </h1>
-          <p className="text-xl text-white/80 max-w-6xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg lg:text-xl text-white/80 max-w-6xl mx-auto leading-relaxed">
             Everything you need to know to succeed in Palmyra RP. Guides, tutorials, and essential information for players.
           </p>
         </div>
 
+        <MobileResourceNav activeCategory={activeCategory} onCategoryChange={handleCategoryChange} />
+
         {/* Main Content */}
         <div className="w-full">
-          <Card className="bg-neutral-900/90 backdrop-blur-md border border-white/10 p-6 lg:p-8 text-white">
+          <Card className="bg-neutral-900/90 backdrop-blur-md border border-white/10 p-4 sm:p-6 lg:p-8 text-white">
             {renderContent()}
           </Card>
         </div>
@@ -431,12 +474,12 @@ export default function ResourcesPage() {
   return (
     <Suspense fallback={
       <div className="min-h-screen pb-16 bg-transparent">
-        <div className="max-w-none mx-auto px-4 lg:px-8 mt-8">
-          <div className="mb-8 text-center">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-white drop-shadow-lg">
+        <div className="max-w-none mx-auto px-3 sm:px-4 lg:px-8 mt-6 sm:mt-8">
+          <div className="mb-6 sm:mb-8 text-center">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 text-white drop-shadow-lg">
               Player Resources
             </h1>
-            <p className="text-xl text-white/80 max-w-6xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg lg:text-xl text-white/80 max-w-6xl mx-auto leading-relaxed">
               Loading...
             </p>
           </div>

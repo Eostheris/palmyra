@@ -4,7 +4,8 @@
 
 @layer base {
   :root {
-  --header-h: 88px;
+  --header-h: 64px; /* Mobile header height */
+  --header-h-desktop: 88px; /* Desktop header height */
     --background: 0 0% 100%;
     --foreground: 0 0% 3.9%;
     --card: 0 0% 100%;
@@ -30,7 +31,6 @@
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
   --radius: 0.5rem;
-  --header-h: 88px; /* Global header height for consistent offsets */
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
     --sidebar-primary: 240 5.9% 10%;
@@ -40,8 +40,17 @@
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
+  
+  /* Desktop header height */
+  @media (min-width: 640px) {
+    :root {
+      --header-h: 88px;
+    }
+  }
+  
   .dark {
-  --header-h: 88px;
+  --header-h: 64px; /* Mobile header height */
+  --header-h-desktop: 88px; /* Desktop header height */
     --background: 0 0% 3.9%;
     --foreground: 0 0% 98%;
     --card: 0 0% 3.9%;
@@ -74,7 +83,13 @@
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
   --sidebar-ring: 217.2 91.2% 59.8%;
-  --header-h: 88px; /* mirror in dark mode */
+  }
+  
+  /* Desktop header height for dark mode */
+  @media (min-width: 640px) {
+    .dark {
+      --header-h: 88px;
+    }
   }
 }
 
@@ -96,7 +111,37 @@
   .line-clamp-4 {
     display: -webkit-box;
     -webkit-line-clamp: 4;
+    line-clamp: 4;
     -webkit-box-orient: vertical;
     overflow: hidden;
+  }
+  
+  /* Mobile scroll improvements */
+  @media (max-width: 768px) {
+    body {
+      -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Improve tap targets on mobile */
+    button, a, [role="button"] {
+      min-height: 44px;
+      min-width: 44px;
+    }
+    
+    /* Prevent horizontal scroll on mobile */
+    html, body {
+      overflow-x: hidden;
+    }
+    
+    /* Improve mobile text readability */
+    input, textarea, select {
+      font-size: 16px; /* Prevents zoom on iOS */
+    }
+  }
+  
+  /* Responsive images */
+  img {
+    max-width: 100%;
+    height: auto;
   }
 }
