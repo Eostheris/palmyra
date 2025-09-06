@@ -7,7 +7,7 @@ import Link from "next/link";
 import DiscordLoginButton from "./discord-login-button";
 import UserDashboard from "./user-dashboard";
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 
@@ -247,7 +247,7 @@ export function MainNavigation() {
                     Vanilla Unicorn
                   </Link>
                   <Link href="/bennys" className="block text-white/80 hover:text-white py-2 text-sm" onClick={() => setIsMobileMenuOpen(false)}>
-                    Benny's Motor Works
+                    Benny&apos;s Motor Works
                   </Link>
                 </div>
               </div>
